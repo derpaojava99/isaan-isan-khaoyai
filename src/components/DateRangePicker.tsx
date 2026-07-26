@@ -147,7 +147,8 @@ export default function DateRangePicker({
     }
     onChange({ from: value.from, to: d });
     setStage("from");
-    onClose();
+    // Deliberately stays open: the guest confirms with Done (or ✕ / backdrop /
+    // Escape) so they can review the range and adjust before committing.
   };
 
   // End of the range being previewed while hovering.
