@@ -1,0 +1,98 @@
+"use client";
+
+import Image from "next/image";
+import { useLanguage } from "@/lib/language-context";
+import { useModal } from "@/lib/modal-context";
+import { villas, type Villa } from "@/data/villas";
+import type { Lang } from "@/data/translations";
+import type { Dict } from "@/data/translations";
+import Reveal from "./Reveal";
+
+function VillaModal({ villa, lang, t, onBook }: { villa: Villa; lang: Lang; t: Dict; onBook: () => void }) {
+  return (
+    <>
+      <div className="modal-img">
+        <Image src={villa.image} alt={villa.name[lang]} fill sizes="(max-width: 768px) 100vw, 50vw" />
+      </div>
+      <div className="modal-info">
+        <h3 className="modal-title">{villa.name[lang]}</h3>
+        <p className="modal-tagline">{villa.tagline[lang]}</p>
+        <p className="modal-desc">{villa.longDesc[lang]}</p>
+        <h4 className="modal-amenities-title">{t.villas.amenities}</h4>
+        <div className="modal-features">
+          {villa.features[lang].map((f, i) => (
+            <div className="modal-feature-item" key={i}>
+              {f}
+            </div>
+          ))}
+        </div>
+        <div className="modal-price-row">
+          <span className="modal-price">
+            {villa.price} <small style={{ fontSize: "0.9rem", fontWeight: 400 }}>{t.villas.perNight}</small>
+          </span>
+          <a href="#booking" className="btn btn-primary" onClick={onBook}>
+            {t.villas.bookThis}
+          </a>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default function Villas() {
+  const { lang, t } = useLanguage();
+  const { openModal, closeModal } = useModal();
+
+  const openVilla = (villa: Villa) =>
+    openModal(<VillaModal villa={villa} lang={lang} t={t} onBook={closeModal} />, "room");
+
+  return (
+    <section className="villas-section" id="villas">
+      <div className="container">
+        <Reveal className="section-header text-center">
+          <span className="tagline">{t.villas.tagline}</span>
+          <h2 className="section-title">{t.villas.title}</h2>
+          <p className="section-desc">{t.villas.desc}</p>
+        </Reveal>
+
+        <div className="villas-grid">
+          {villas.map((villa, i) => (
+            <Reveal key={villa.id} variant="up" delay={(i % 3) * 110} className="villa-card-reveal">
+              <article className="villa-card">
+                <div className="villa-img-wrap">
+                  <span className="villa-tag">{villa.tag[lang]}</span>
+                  <Image
+                    src={villa.image}
+                    alt={villa.name[lang]}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="villa-info">
+                  <h3>{villa.name[lang]}</h3>
+                  <div className="villa-specs">
+                    {villa.specs[lang].map((s, j) => (
+                      <span key={j}>{s}</span>
+                    ))}
+                  </div>
+                  <p className="villa-desc">{villa.desc[lang]}</p>
+                  <div className="villa-footer">
+                    <div className="villa-price">
+                      <span className="price-label">{t.villas.startingFrom}</span>
+                      <span className="price-amount">
+                        {villa.price} <small className="price-unit">{t.villas.perNight}</small>
+                      </span>
+                    </div>
+                    <button type="button" className="btn btn-outline" onClick={() => openVilla(villa)}>
+                      {t.villas.viewDetails}
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
