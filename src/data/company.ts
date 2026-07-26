@@ -59,6 +59,12 @@ export const company = {
   },
   priceRange: "฿฿฿",
   starRating: 4.9,
+  /** Direct-booking engine the availability form hands off to. */
+  booking: {
+    baseUrl: "https://book-directonline.com/properties",
+    propertySlug: "isaanisanboutiqueresortdirect",
+    currency: "THB",
+  },
 } as const;
 
 /** URLs used by JSON-LD sameAs. */

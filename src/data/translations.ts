@@ -34,13 +34,8 @@ export interface Dict {
     checkOut: string;
     guests: string;
     guestOptions: string[];
-    promo: string;
-    promoPlaceholder: string;
     submit: string;
-    available: string;
     resortName: string;
-    duration: string;
-    nights: string;
     /** Calendar picker copy. */
     months: string[];
     weekdays: string[];
@@ -51,9 +46,6 @@ export interface Dict {
     nightsSelected: string;
     prevMonth: string;
     nextMonth: string;
-    confirm: string;
-    modify: string;
-    reservedRate: string;
   };
   about: {
     tagline: string;
@@ -147,13 +139,8 @@ export const translations: Record<Lang, Dict> = {
       checkOut: "Check-Out",
       guests: "Guests",
       guestOptions: ["1 Guest", "2 Guests"],
-      promo: "Promo Code",
-      promoPlaceholder: "Enter Code (e.g. ISAN2026)",
       submit: "Check Availability",
-      available: "Rooms Available!",
       resortName: "Isaan Isan Concept at Khaoyai",
-      duration: "Total Duration",
-      nights: "Night(s)",
       months: [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December",
@@ -166,10 +153,6 @@ export const translations: Record<Lang, Dict> = {
       nightsSelected: "nights selected",
       prevMonth: "Previous month",
       nextMonth: "Next month",
-      confirm: "Confirm & Book Now →",
-      modify: "Modify Dates",
-      reservedRate:
-        "We have reserved our best rate for your stay. Click below to proceed to our secure booking gateway.",
     },
     about: {
       tagline: "Sensing The Embrace Of Khao Yai",
@@ -310,13 +293,8 @@ export const translations: Record<Lang, Dict> = {
       checkOut: "เช็คเอาต์",
       guests: "ผู้เข้าพัก",
       guestOptions: ["1 ท่าน", "2 ท่าน"],
-      promo: "รหัสส่วนลด",
-      promoPlaceholder: "กรอกรหัส (เช่น ISAN2026)",
       submit: "ตรวจสอบห้องว่าง",
-      available: "มีห้องว่าง!",
       resortName: "อีสาน อีสาน คอนเซปต์ ที่เขาใหญ่",
-      duration: "ระยะเวลาเข้าพัก",
-      nights: "คืน",
       months: [
         "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
         "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม",
@@ -329,10 +307,6 @@ export const translations: Record<Lang, Dict> = {
       nightsSelected: "คืน",
       prevMonth: "เดือนก่อนหน้า",
       nextMonth: "เดือนถัดไป",
-      confirm: "ยืนยันและจองเลย →",
-      modify: "แก้ไขวันที่",
-      reservedRate:
-        "เราได้สำรองราคาที่ดีที่สุดไว้สำหรับการเข้าพักของคุณ คลิกด้านล่างเพื่อไปยังระบบจองที่ปลอดภัยของเรา",
     },
     about: {
       tagline: "สัมผัสอ้อมกอดแห่งเขาใหญ่",

@@ -2,16 +2,8 @@
 
 import { useRef, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
-import { useModal } from "@/lib/modal-context";
-import { company } from "@/data/company";
+import { buildBookingUrl } from "@/lib/booking-url";
 import DateRangePicker, { type DateRange } from "./DateRangePicker";
-import {
-  CalendarIcon,
-  KeyIcon,
-  MoonIcon,
-  TagIcon,
-  UsersIcon,
-} from "./icons/Icons";
 
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 const DAYS = {
@@ -25,7 +17,6 @@ function fmt(d: Date) {
 
 export default function BookingBar() {
   const { lang, t } = useLanguage();
-  const { openModal, closeModal } = useModal();
 
   // Default to a stay starting tomorrow so the picker always opens on valid dates.
   const [range, setRange] = useState<DateRange>(() => {
@@ -41,74 +32,28 @@ export default function BookingBar() {
   const toBtnRef = useRef<HTMLButtonElement>(null);
   // Index into t.booking.guestOptions; defaults to "2 Guests".
   const [guests, setGuests] = useState(1);
-  const [promo, setPromo] = useState("");
 
   const checkIn = range.from;
   const checkOut = range.to;
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Nothing to hand over yet — reopen the picker on the missing field.
     if (!checkIn || !checkOut) {
       setCalOpen(!checkIn ? "from" : "to");
       return;
     }
-    const nights = Math.max(1, Math.round((+checkOut - +checkIn) / 86400000));
-    const guestsText = t.booking.guestOptions[guests];
-    const promoText = promo || (lang === "th" ? "ไม่มี" : "None");
-    const b = t.booking;
 
-    openModal(
-      <div className="booking-result">
-        <span className="booking-result-mark">
-          <KeyIcon size={30} />
-        </span>
-        <h3 className="modal-title" style={{ color: "var(--secondary-color)" }}>
-          {b.available}
-        </h3>
-        <p className="modal-tagline" style={{ fontSize: "1.2rem" }}>
-          {b.resortName}
-        </p>
-        <div className="booking-summary">
-          <p>
-            <CalendarIcon />
-            <strong>{b.checkIn}:</strong> {fmt(checkIn)} ({DAYS[lang][checkIn.getDay()]})
-          </p>
-          <p>
-            <CalendarIcon />
-            <strong>{b.checkOut}:</strong> {fmt(checkOut)} ({DAYS[lang][checkOut.getDay()]})
-          </p>
-          <p>
-            <MoonIcon />
-            <strong>{b.duration}:</strong> {nights} {b.nights}
-          </p>
-          <p>
-            <UsersIcon />
-            <strong>{b.guests}:</strong> {guestsText}
-          </p>
-          <p>
-            <TagIcon />
-            <strong>{b.promo}:</strong>{" "}
-            <span style={{ color: "var(--main-color)", fontWeight: "bold" }}>{promoText}</span>
-          </p>
-        </div>
-        <p style={{ color: "var(--text-muted)", marginBottom: 30 }}>{b.reservedRate}</p>
-        <div className="booking-result-actions">
-          <a
-            href={company.social.line}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary"
-            style={{ padding: "16px 40px" }}
-          >
-            {b.confirm}
-          </a>
-          <button type="button" className="btn btn-outline" onClick={closeModal}>
-            {b.modify}
-          </button>
-        </div>
-      </div>,
-      "booking"
-    );
+    // Straight to the booking engine: it does the real availability check and
+    // shows live rates, so an interstitial here would only add a click.
+    // guestOptions is ordered 1, 2, … so the index maps to a head count.
+    const url = buildBookingUrl({
+      checkIn,
+      checkOut,
+      adults: guests + 1,
+      lang,
+    });
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -172,17 +117,6 @@ export default function BookingBar() {
             ) : (
               <span className="booking-value">{t.booking.guestOptions[0]}</span>
             )}
-          </div>
-
-          <div className="booking-field">
-            <span className="booking-label">{t.booking.promo}</span>
-            <input
-              type="text"
-              className="booking-input-text"
-              placeholder={t.booking.promoPlaceholder}
-              value={promo}
-              onChange={(e) => setPromo(e.target.value)}
-            />
           </div>
 
           <button type="submit" className="btn btn-primary">
