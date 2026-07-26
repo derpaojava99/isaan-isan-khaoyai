@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { useModal } from "@/lib/modal-context";
 import { company } from "@/data/company";
+import DateRangePicker, { type DateRange } from "./DateRangePicker";
 
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 const DAYS = {
@@ -19,48 +20,28 @@ export default function BookingBar() {
   const { lang, t } = useLanguage();
   const { openModal, closeModal } = useModal();
 
-  const [checkIn, setCheckIn] = useState(new Date(2026, 6, 28));
-  const [checkOut, setCheckOut] = useState(new Date(2026, 6, 30));
+  // Default to a stay starting tomorrow so the picker always opens on valid dates.
+  const [range, setRange] = useState<DateRange>(() => {
+    const from = new Date();
+    from.setDate(from.getDate() + 1);
+    from.setHours(0, 0, 0, 0);
+    const to = new Date(from);
+    to.setDate(to.getDate() + 2);
+    return { from, to };
+  });
+  const [calOpen, setCalOpen] = useState<null | "from" | "to">(null);
   const [guests, setGuests] = useState(0);
   const [promo, setPromo] = useState("");
-  const checkInRef = useRef<HTMLDivElement>(null);
-  const checkOutRef = useRef<HTMLDivElement>(null);
 
-  const pulse = (el: HTMLElement | null) => {
-    if (!el) return;
-    el.style.transform = "scale(1.05)";
-    el.style.color = "var(--main-color)";
-    setTimeout(() => {
-      el.style.transform = "";
-      el.style.color = "";
-    }, 200);
-  };
-
-  const advanceCheckIn = () => {
-    setCheckIn((prev) => {
-      const next = new Date(prev);
-      next.setDate(next.getDate() + 1);
-      if (next >= checkOut) {
-        const co = new Date(next);
-        co.setDate(next.getDate() + 2);
-        setCheckOut(co);
-      }
-      return next;
-    });
-    pulse(checkInRef.current);
-  };
-
-  const advanceCheckOut = () => {
-    setCheckOut((prev) => {
-      const next = new Date(prev);
-      next.setDate(next.getDate() + 1);
-      return next;
-    });
-    pulse(checkOutRef.current);
-  };
+  const checkIn = range.from;
+  const checkOut = range.to;
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!checkIn || !checkOut) {
+      setCalOpen(!checkIn ? "from" : "to");
+      return;
+    }
     const nights = Math.max(1, Math.round((+checkOut - +checkIn) / 86400000));
     const guestsText = t.booking.guestOptions[guests];
     const promoText = promo || (lang === "th" ? "ไม่มี" : "None");
@@ -119,18 +100,36 @@ export default function BookingBar() {
         <form className="booking-form" onSubmit={submit}>
           <div className="booking-field">
             <span className="booking-label">{t.booking.checkIn}</span>
-            <div className="booking-input-wrap" ref={checkInRef} onClick={advanceCheckIn} role="button" tabIndex={0}>
-              <span className="booking-value">{fmt(checkIn)}</span>
-              <span className="booking-subvalue">({DAYS[lang][checkIn.getDay()]})</span>
-            </div>
+            <button
+              type="button"
+              data-cal-trigger
+              className={`booking-input-wrap${calOpen === "from" ? " is-open" : ""}`}
+              onClick={() => setCalOpen(calOpen === "from" ? null : "from")}
+              aria-haspopup="dialog"
+              aria-expanded={calOpen === "from"}
+            >
+              <span className="booking-value">{checkIn ? fmt(checkIn) : "—"}</span>
+              <span className="booking-subvalue">
+                {checkIn ? `(${DAYS[lang][checkIn.getDay()]})` : ""}
+              </span>
+            </button>
           </div>
 
           <div className="booking-field">
             <span className="booking-label">{t.booking.checkOut}</span>
-            <div className="booking-input-wrap" ref={checkOutRef} onClick={advanceCheckOut} role="button" tabIndex={0}>
-              <span className="booking-value">{fmt(checkOut)}</span>
-              <span className="booking-subvalue">({DAYS[lang][checkOut.getDay()]})</span>
-            </div>
+            <button
+              type="button"
+              data-cal-trigger
+              className={`booking-input-wrap${calOpen === "to" ? " is-open" : ""}`}
+              onClick={() => setCalOpen(calOpen === "to" ? null : "to")}
+              aria-haspopup="dialog"
+              aria-expanded={calOpen === "to"}
+            >
+              <span className="booking-value">{checkOut ? fmt(checkOut) : "—"}</span>
+              <span className="booking-subvalue">
+                {checkOut ? `(${DAYS[lang][checkOut.getDay()]})` : ""}
+              </span>
+            </button>
           </div>
 
           <div className="booking-field">
@@ -164,6 +163,15 @@ export default function BookingBar() {
             {t.booking.submit}
           </button>
         </form>
+
+        {calOpen && (
+          <DateRangePicker
+            value={range}
+            focus={calOpen}
+            onChange={setRange}
+            onClose={() => setCalOpen(null)}
+          />
+        )}
       </div>
     </section>
   );

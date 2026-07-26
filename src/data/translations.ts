@@ -39,6 +39,16 @@ export interface Dict {
     resortName: string;
     duration: string;
     nights: string;
+    /** Calendar picker copy. */
+    months: string[];
+    weekdays: string[];
+    selectCheckIn: string;
+    selectCheckOut: string;
+    clearDates: string;
+    done: string;
+    nightsSelected: string;
+    prevMonth: string;
+    nextMonth: string;
     confirm: string;
     modify: string;
     reservedRate: string;
@@ -147,6 +157,18 @@ export const translations: Record<Lang, Dict> = {
       resortName: "Isaan Isan Concept at Khaoyai",
       duration: "Total Duration",
       nights: "Night(s)",
+      months: [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December",
+      ],
+      weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+      selectCheckIn: "Select your check-in date",
+      selectCheckOut: "Select your check-out date",
+      clearDates: "Clear",
+      done: "Done",
+      nightsSelected: "nights selected",
+      prevMonth: "Previous month",
+      nextMonth: "Next month",
       confirm: "Confirm & Book Now →",
       modify: "Modify Dates",
       reservedRate:
@@ -303,6 +325,18 @@ export const translations: Record<Lang, Dict> = {
       resortName: "อีสาน อีสาน คอนเซปต์ ที่เขาใหญ่",
       duration: "ระยะเวลาเข้าพัก",
       nights: "คืน",
+      months: [
+        "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+        "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม",
+      ],
+      weekdays: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+      selectCheckIn: "เลือกวันเช็คอิน",
+      selectCheckOut: "เลือกวันเช็คเอาต์",
+      clearDates: "ล้าง",
+      done: "เสร็จสิ้น",
+      nightsSelected: "คืน",
+      prevMonth: "เดือนก่อนหน้า",
+      nextMonth: "เดือนถัดไป",
       confirm: "ยืนยันและจองเลย →",
       modify: "แก้ไขวันที่",
       reservedRate:

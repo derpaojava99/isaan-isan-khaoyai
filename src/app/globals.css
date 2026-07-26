@@ -442,7 +442,6 @@ html[data-lang="th"] .hero-subtitle { letter-spacing: 2px; }
   display: block;
 }
 html[data-lang="th"] .booking-label { text-transform: none; letter-spacing: 0.5px; }
-.booking-input-wrap { display: flex; align-items: center; gap: 8px; cursor: pointer; transition: transform var(--transition-fast); }
 .booking-value { font-size: 1.15rem; font-weight: 600; color: var(--secondary-color); }
 .booking-subvalue { font-size: 0.85rem; color: var(--text-muted); }
 .booking-select {
@@ -461,6 +460,209 @@ html[data-lang="th"] .booking-label { text-transform: none; letter-spacing: 0.5p
   color: var(--secondary-color);
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
   padding-bottom: 2px;
+}
+
+/* ---- Date range calendar ------------------------------------------------ */
+.booking-bar { position: relative; }
+
+/* The trigger is a <button>, so reset UA styling back to the mockup look. */
+.booking-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  border-radius: 6px;
+  text-align: left;
+  width: calc(100% + 12px);
+  font: inherit;
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.booking-input-wrap:hover { background: rgba(180, 85, 45, 0.07); }
+.booking-input-wrap.is-open {
+  background: rgba(180, 85, 45, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(180, 85, 45, 0.35);
+}
+
+.cal-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  /* Above .floating-contact (900), which otherwise covers the next-month
+     arrow and the Saturday column on mobile. Still below the header (1000). */
+  z-index: 950;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(74, 55, 40, 0.22);
+  padding: 22px 24px 18px;
+  width: min(660px, calc(100vw - 48px));
+  animation: cal-in 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@keyframes cal-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.cal-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+.cal-hint {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  letter-spacing: 0.3px;
+}
+.cal-nights {
+  font-size: 0.8rem;
+  color: var(--white);
+  background: var(--gold);
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Arrows sit over the month headers. */
+.cal-nav {
+  position: absolute;
+  top: 62px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.cal-nav-btn {
+  pointer-events: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface-bg);
+  color: var(--main-color);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.cal-nav-btn:hover:not(:disabled) { background: var(--main-color); color: var(--white); }
+.cal-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.cal-months { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.cal-month-label {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin-bottom: 12px;
+}
+html[data-lang="th"] .cal-month-label { font-size: 1.05rem; }
+
+.cal-weekdays,
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.cal-weekdays {
+  margin-bottom: 6px;
+}
+.cal-weekdays span {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 4px;
+}
+html[data-lang="th"] .cal-weekdays span { text-transform: none; }
+
+.cal-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.cal-cell.is-empty { cursor: default; }
+.cal-cell:hover:not(:disabled):not(.is-from):not(.is-to) {
+  background: rgba(180, 85, 45, 0.13);
+}
+.cal-cell.is-past {
+  color: rgba(138, 115, 85, 0.4);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.cal-cell.is-today { font-weight: 700; box-shadow: inset 0 0 0 1px var(--gold); }
+/* Range fill — square so consecutive days read as one continuous band. */
+.cal-cell.is-between {
+  background: rgba(201, 148, 46, 0.2);
+  border-radius: 0;
+}
+.cal-cell.is-from,
+.cal-cell.is-to {
+  background: var(--main-color);
+  color: var(--white);
+  font-weight: 700;
+}
+.cal-cell.is-from { border-radius: 50% 0 0 50%; }
+.cal-cell.is-to { border-radius: 0 50% 50% 0; }
+.cal-cell.is-from.is-to { border-radius: 50%; }
+
+.cal-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+.cal-clear {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 6px 2px;
+}
+.cal-clear:hover { color: var(--main-color); }
+.cal-done { padding: 10px 26px; font-size: 0.85rem; }
+
+@media (max-width: 768px) {
+  .cal-panel {
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 32px);
+    padding: 18px 16px 14px;
+  }
+  @keyframes cal-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+    to { opacity: 1; transform: translateX(-50%); }
+  }
+  .cal-months { grid-template-columns: 1fr; gap: 20px; }
+  /* Only one month shows on mobile — hide the second to keep the panel short. */
+  .cal-month:nth-child(2) { display: none; }
+  .cal-nav { top: 56px; left: 16px; right: 16px; }
 }
 
 /* About */
