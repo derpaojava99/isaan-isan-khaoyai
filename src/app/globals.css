@@ -750,7 +750,16 @@ html[data-lang="th"] .cal-weekdays span { text-transform: none; }
   text-align: center;
   border: 2px solid var(--gold);
 }
-.about-badge h4 { font-size: 2.2rem; color: var(--gold); margin-bottom: 4px; }
+.about-badge h4 {
+  font-size: 2.2rem;
+  color: var(--gold);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.badge-star { flex-shrink: 0; }
 .about-badge p { font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
 html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
 .about-content h2 { font-size: 2.8rem; margin-bottom: 24px; }
@@ -822,7 +831,9 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
 }
 .villa-info { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
 .villa-info h3 { font-size: 1.6rem; margin-bottom: 8px; }
-.villa-specs { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; font-size: 0.85rem; color: var(--main-color); font-weight: 500; }
+.villa-specs { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; color: var(--main-color); font-weight: 500; }
+.villa-spec { display: inline-flex; align-items: center; gap: 6px; }
+.villa-spec svg { flex-shrink: 0; opacity: 0.9; }
 .villa-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; flex-grow: 1; }
 .villa-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.06); }
 .villa-price { display: flex; flex-direction: column; }
@@ -864,7 +875,7 @@ html[data-lang="th"] .price-label { text-transform: none; }
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 html[data-lang="th"] .facility-badge { text-transform: none; letter-spacing: 0.5px; }
-.facility-icon { color: var(--gold); font-size: 2rem; margin-bottom: 12px; }
+.facility-icon { color: var(--gold); margin-bottom: 12px; display: flex; }
 .facility-title { font-size: 1.8rem; color: var(--white); margin-bottom: 10px; }
 .facility-desc { font-size: 0.95rem; color: rgba(255, 255, 255, 0.75); margin-bottom: 20px; }
 .facility-link {
@@ -975,7 +986,6 @@ html[data-lang="th"] .facility-link { text-transform: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
   flex-shrink: 0;
 }
 .map-detail-label { font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 3px; }
@@ -1064,7 +1074,7 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
 .modal-desc { color: var(--text-muted); margin-bottom: 24px; line-height: 1.7; }
 .modal-features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
 .modal-feature-item { display: flex; align-items: flex-start; gap: 8px; font-size: 0.9rem; color: var(--secondary-color); }
-.modal-feature-item::before { content: "✓"; color: var(--gold); font-weight: bold; }
+.modal-feature-item svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
 .modal-amenities-title { margin-bottom: 12px; font-size: 1.1rem; color: var(--main-color); }
 .modal-price-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--border-color); padding-top: 20px; }
 .modal-price { font-size: 1.5rem; font-weight: bold; color: var(--secondary-color); font-family: var(--font-heading); }
@@ -1079,7 +1089,17 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
 
 /* Booking-result modal (single column) */
 .booking-result { grid-column: span 2; text-align: center; padding: 50px 30px; }
-.booking-result-emoji { font-size: 3.5rem; margin-bottom: 15px; }
+.booking-result-mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(201, 148, 46, 0.14);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
 .booking-summary {
   background: var(--surface-bg);
   padding: 25px;
@@ -1089,8 +1109,16 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
   text-align: left;
   border: 1px solid var(--border-color);
 }
-.booking-summary p { margin-bottom: 10px; color: var(--text-dark); }
+.booking-summary p {
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .booking-summary p:last-child { margin-bottom: 0; }
+.booking-summary svg { color: var(--main-color); flex-shrink: 0; }
 .booking-result-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 
 /* Footer */

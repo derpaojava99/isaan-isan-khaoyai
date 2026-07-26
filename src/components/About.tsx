@@ -5,8 +5,10 @@ import { company } from "@/data/company";
 import Reveal from "./Reveal";
 import SplitHeading from "./animation/SplitHeading";
 import ScrollZoomImage from "./animation/ScrollZoomImage";
+import { Icon, StarIcon, type IconName } from "./icons/Icons";
 
-const FEATURE_ICONS = ["🌿", "🍲", "💆", "⭐"];
+// Matches the order of t.about.features: pool, gastronomy, wellness, butler.
+const FEATURE_ICONS: IconName[] = ["pool", "dining", "wellness", "concierge"];
 
 export default function About() {
   const { t } = useLanguage();
@@ -25,7 +27,10 @@ export default function About() {
             />
           </div>
           <Reveal variant="zoom" delay={420} className="about-badge">
-            <h4>{company.starRating} ★</h4>
+            <h4>
+              {company.starRating}
+              <StarIcon size={26} className="badge-star" />
+            </h4>
             <p>{a.badgeLabel}</p>
           </Reveal>
         </div>
@@ -39,8 +44,8 @@ export default function About() {
           <div className="about-features">
             {a.features.map((feat, i) => (
               <div className="feature-item" key={i}>
-                <div className="feature-icon" aria-hidden="true">
-                  {FEATURE_ICONS[i]}
+                <div className="feature-icon">
+                  <Icon name={FEATURE_ICONS[i]} size={20} />
                 </div>
                 <span className="feature-text">{feat}</span>
               </div>

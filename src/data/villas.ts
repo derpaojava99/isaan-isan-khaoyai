@@ -3,8 +3,15 @@
  * Each field carries both languages so the toggle swaps everything.
  */
 
+import type { IconName } from "@/components/icons/Icons";
+
 export type Localized = { en: string; th: string };
 export type LocalizedList = { en: string[]; th: string[] };
+
+/** Icon is data, not a glyph baked into the label — lets the UI draw an SVG. */
+export interface VillaSpec extends Localized {
+  icon: IconName;
+}
 
 export interface Villa {
   id: string;
@@ -13,7 +20,7 @@ export interface Villa {
   category: "villas";
   tag: Localized;
   name: Localized;
-  specs: LocalizedList;
+  specs: VillaSpec[];
   desc: Localized; // short (card)
   tagline: Localized; // modal sub-headline
   longDesc: Localized; // modal paragraph
@@ -31,10 +38,11 @@ export const villas: Villa[] = [
       en: "Isan Superior Pool Villa",
       th: "อีสาน ซูพีเรีย พูลวิลล่า",
     },
-    specs: {
-      en: ["📐 147 Sq.m.", "🏊 Private Pool", "🏔️ Mountain View"],
-      th: ["📐 147 ตร.ม.", "🏊 สระส่วนตัว", "🏔️ วิวภูเขา"],
-    },
+    specs: [
+      { icon: "area", en: "147 Sq.m.", th: "147 ตร.ม." },
+      { icon: "pool", en: "Private Pool", th: "สระส่วนตัว" },
+      { icon: "mountain", en: "Mountain View", th: "วิวภูเขา" },
+    ],
     desc: {
       en: "Spacious villa featuring handcrafted bamboo weave architecture, plush king-sized bed, and a secluded private outdoor plunge pool.",
       th: "วิลล่ากว้างขวางกับงานสถาปัตยกรรมสานไม้ไผ่ทำมือ เตียงคิงไซส์นุ่มสบาย และสระน้ำส่วนตัวกลางแจ้งอันเป็นส่วนตัว",
@@ -80,10 +88,11 @@ export const villas: Villa[] = [
       en: "Deluxe Mountain Suite",
       th: "ดีลักซ์ เมาน์เทน สวีท",
     },
-    specs: {
-      en: ["📐 95 Sq.m.", "🌅 Private Balcony", "🛁 Soaking Tub"],
-      th: ["📐 95 ตร.ม.", "🌅 ระเบียงส่วนตัว", "🛁 อ่างแช่ตัว"],
-    },
+    specs: [
+      { icon: "area", en: "95 Sq.m.", th: "95 ตร.ม." },
+      { icon: "balcony", en: "Private Balcony", th: "ระเบียงส่วนตัว" },
+      { icon: "tub", en: "Soaking Tub", th: "อ่างแช่ตัว" },
+    ],
     desc: {
       en: "Elevated suite offering breathtaking panoramic views of the Khao Yai hillsides, oversized bathtub, and silk-adorned Isan interiors.",
       th: "สวีทชั้นสูงกับวิวพาโนรามาของเนินเขาเขาใหญ่ที่ตระการตา อ่างอาบน้ำขนาดใหญ่ และการตกแต่งภายในแบบอีสานประดับผ้าไหม",
@@ -129,10 +138,11 @@ export const villas: Villa[] = [
       en: "Family Residence Pool Villa",
       th: "แฟมิลี่ เรสซิเดนซ์ พูลวิลล่า",
     },
-    specs: {
-      en: ["📐 256 Sq.m.", "🛏️ 2 Bedrooms", "🏊 Grand Pool"],
-      th: ["📐 256 ตร.ม.", "🛏️ 2 ห้องนอน", "🏊 สระขนาดใหญ่"],
-    },
+    specs: [
+      { icon: "area", en: "256 Sq.m.", th: "256 ตร.ม." },
+      { icon: "bed", en: "2 Bedrooms", th: "2 ห้องนอน" },
+      { icon: "pool", en: "Grand Pool", th: "สระขนาดใหญ่" },
+    ],
     desc: {
       en: "Sumptuously appointed residence perfect for families or couples traveling together, offering expansive indoor-outdoor living space.",
       th: "ที่พักตกแต่งอย่างหรูหรา เหมาะสำหรับครอบครัวหรือคู่รักที่เดินทางด้วยกัน พร้อมพื้นที่พักผ่อนทั้งในและนอกอาคารที่กว้างขวาง",
@@ -178,10 +188,11 @@ export const villas: Villa[] = [
       en: "Isan Concept Tent Villa",
       th: "อีสาน คอนเซปต์ เต็นท์วิลล่า",
     },
-    specs: {
-      en: ["📐 80 Sq.m.", "⛺ Glamping Luxury", "🚿 Rain Shower"],
-      th: ["📐 80 ตร.ม.", "⛺ แกลมปิงหรู", "🚿 เรนชาวเวอร์"],
-    },
+    specs: [
+      { icon: "area", en: "80 Sq.m.", th: "80 ตร.ม." },
+      { icon: "tent", en: "Glamping Luxury", th: "แกลมปิงหรู" },
+      { icon: "shower", en: "Rain Shower", th: "เรนชาวเวอร์" },
+    ],
     desc: {
       en: "Experience luxury glamping with air-conditioned comfort, rustic Isan decorative charm, and a relaxing outdoor garden rain shower.",
       th: "สัมผัสแกลมปิงสุดหรูพร้อมความสบายจากเครื่องปรับอากาศ เสน่ห์การตกแต่งแบบอีสานพื้นถิ่น และฝักบัวเรนชาวเวอร์กลางสวน",
@@ -227,10 +238,11 @@ export const villas: Villa[] = [
       en: "Duplex Canal Villa",
       th: "ดูเพล็กซ์ คาแนล วิลล่า",
     },
-    specs: {
-      en: ["📐 160 Sq.m.", "🪜 2 Levels", "🌊 Canal View"],
-      th: ["📐 160 ตร.ม.", "🪜 2 ชั้น", "🌊 วิวลำคลอง"],
-    },
+    specs: [
+      { icon: "area", en: "160 Sq.m.", th: "160 ตร.ม." },
+      { icon: "levels", en: "2 Levels", th: "2 ชั้น" },
+      { icon: "canal", en: "Canal View", th: "วิวลำคลอง" },
+    ],
     desc: {
       en: "Two-story luxury villa overlooking a tranquil resort water canal, featuring a private wooden deck and traditional Isan art installations.",
       th: "วิลล่าหรูสองชั้นที่มองเห็นลำคลองอันเงียบสงบของรีสอร์ต พร้อมระเบียงไม้ส่วนตัวและงานศิลปะอีสานดั้งเดิม",
@@ -276,10 +288,11 @@ export const villas: Villa[] = [
       en: "Royal Isan Heritage Suite",
       th: "รอยัล อีสาน เฮอริเทจ สวีท",
     },
-    specs: {
-      en: ["📐 310 Sq.m.", "🛏️ 3 Bedrooms", "🍷 Private Butler"],
-      th: ["📐 310 ตร.ม.", "🛏️ 3 ห้องนอน", "🍷 บัตเลอร์ส่วนตัว"],
-    },
+    specs: [
+      { icon: "area", en: "310 Sq.m.", th: "310 ตร.ม." },
+      { icon: "bed", en: "3 Bedrooms", th: "3 ห้องนอน" },
+      { icon: "butler", en: "Private Butler", th: "บัตเลอร์ส่วนตัว" },
+    ],
     desc: {
       en: "The pinnacle of luxury at Khao Yai, featuring private butler service, an expansive infinity swimming pool, and a private dining pavilion.",
       th: "สุดยอดแห่งความหรูหราที่เขาใหญ่ พร้อมบริการบัตเลอร์ส่วนตัว สระว่ายน้ำอินฟินิตี้ขนาดใหญ่ และศาลารับประทานอาหารส่วนตัว",

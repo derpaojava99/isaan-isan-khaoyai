@@ -9,6 +9,7 @@ import Reveal from "./Reveal";
 import SplitHeading from "./animation/SplitHeading";
 import ScrollExpandLine from "./animation/ScrollExpandLine";
 import StaggeredTags from "./animation/StaggeredTags";
+import { ExpandIcon } from "./icons/Icons";
 
 export default function Gallery() {
   const { lang, t } = useLanguage();
@@ -72,8 +73,8 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
                 <div className="gallery-hover">
-                  <span className="gallery-zoom" aria-hidden="true">
-                    🔍
+                  <span className="gallery-zoom">
+                    <ExpandIcon size={22} />
                   </span>
                 </div>
               </div>

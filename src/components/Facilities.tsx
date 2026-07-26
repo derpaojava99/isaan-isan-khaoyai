@@ -5,6 +5,7 @@ import { useLanguage } from "@/lib/language-context";
 import Reveal from "./Reveal";
 import SplitHeading from "./animation/SplitHeading";
 import ScrollExpandLine from "./animation/ScrollExpandLine";
+import { Icon } from "./icons/Icons";
 
 const FACILITY_IMAGES = [
   "/picture/isaan-food-khao-yai.webp",
@@ -45,8 +46,8 @@ export default function Facilities() {
               <div className="facility-overlay">
                 <div className="facility-content">
                   {item.badge && <span className="facility-badge">{item.badge}</span>}
-                  <div className="facility-icon" aria-hidden="true">
-                    {item.icon}
+                  <div className="facility-icon">
+                    <Icon name={item.icon} size={30} />
                   </div>
                   <h3 className="facility-title">{item.title}</h3>
                   <p className="facility-desc">{item.desc}</p>

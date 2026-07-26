@@ -10,6 +10,7 @@ import Reveal from "./Reveal";
 import SplitHeading from "./animation/SplitHeading";
 import ScrollExpandLine from "./animation/ScrollExpandLine";
 import StaggeredTags from "./animation/StaggeredTags";
+import { CheckIcon, Icon } from "./icons/Icons";
 
 function VillaModal({ villa, lang, t, onBook }: { villa: Villa; lang: Lang; t: Dict; onBook: () => void }) {
   return (
@@ -25,7 +26,8 @@ function VillaModal({ villa, lang, t, onBook }: { villa: Villa; lang: Lang; t: D
         <div className="modal-features">
           {villa.features[lang].map((f, i) => (
             <div className="modal-feature-item" key={i}>
-              {f}
+              <CheckIcon />
+              <span>{f}</span>
             </div>
           ))}
         </div>
@@ -79,8 +81,11 @@ export default function Villas() {
                 <div className="villa-info">
                   <h3>{villa.name[lang]}</h3>
                   <StaggeredTags className="villa-specs" delay={220}>
-                    {villa.specs[lang].map((s, j) => (
-                      <span key={j}>{s}</span>
+                    {villa.specs.map((s, j) => (
+                      <span key={j} className="villa-spec">
+                        <Icon name={s.icon} />
+                        {s[lang]}
+                      </span>
                     ))}
                   </StaggeredTags>
                   <p className="villa-desc">{villa.desc[lang]}</p>

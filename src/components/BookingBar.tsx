@@ -5,6 +5,13 @@ import { useLanguage } from "@/lib/language-context";
 import { useModal } from "@/lib/modal-context";
 import { company } from "@/data/company";
 import DateRangePicker, { type DateRange } from "./DateRangePicker";
+import {
+  CalendarIcon,
+  KeyIcon,
+  MoonIcon,
+  TagIcon,
+  UsersIcon,
+} from "./icons/Icons";
 
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 const DAYS = {
@@ -51,7 +58,9 @@ export default function BookingBar() {
 
     openModal(
       <div className="booking-result">
-        <div className="booking-result-emoji">✨ 🏨 ✨</div>
+        <span className="booking-result-mark">
+          <KeyIcon size={30} />
+        </span>
         <h3 className="modal-title" style={{ color: "var(--secondary-color)" }}>
           {b.available}
         </h3>
@@ -60,19 +69,24 @@ export default function BookingBar() {
         </p>
         <div className="booking-summary">
           <p>
-            <strong>📅 {b.checkIn}:</strong> {fmt(checkIn)} ({DAYS[lang][checkIn.getDay()]})
+            <CalendarIcon />
+            <strong>{b.checkIn}:</strong> {fmt(checkIn)} ({DAYS[lang][checkIn.getDay()]})
           </p>
           <p>
-            <strong>📅 {b.checkOut}:</strong> {fmt(checkOut)} ({DAYS[lang][checkOut.getDay()]})
+            <CalendarIcon />
+            <strong>{b.checkOut}:</strong> {fmt(checkOut)} ({DAYS[lang][checkOut.getDay()]})
           </p>
           <p>
-            <strong>🌙 {b.duration}:</strong> {nights} {b.nights}
+            <MoonIcon />
+            <strong>{b.duration}:</strong> {nights} {b.nights}
           </p>
           <p>
-            <strong>👥 {b.guests}:</strong> {guestsText}
+            <UsersIcon />
+            <strong>{b.guests}:</strong> {guestsText}
           </p>
           <p>
-            <strong>🏷️ {b.promo}:</strong>{" "}
+            <TagIcon />
+            <strong>{b.promo}:</strong>{" "}
             <span style={{ color: "var(--main-color)", fontWeight: "bold" }}>{promoText}</span>
           </p>
         </div>

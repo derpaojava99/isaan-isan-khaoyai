@@ -3,6 +3,8 @@
  * Components read `t.<section>.<key>` for the active language.
  */
 
+import type { IconName } from "@/components/icons/Icons";
+
 export type Lang = "en" | "th";
 
 export interface HeroSlide {
@@ -66,7 +68,7 @@ export interface Dict {
     tagline: string;
     title: string;
     desc: string;
-    items: { badge?: string; icon: string; title: string; desc: string; link: string }[];
+    items: { badge?: string; icon: IconName; title: string; desc: string; link: string }[];
   };
   gallery: {
     tagline: string;
@@ -204,19 +206,19 @@ export const translations: Record<Lang, Dict> = {
       items: [
         {
           badge: "Taste of Isan",
-          icon: "🍽️",
+          icon: "dining",
           title: "Khaoyai Isan Dining",
           desc: "Savor authentic Isan gastronomy and modern Thai fusion cuisine crafted from organic local farm ingredients and traditional spices.",
           link: "Explore Menu →",
         },
         {
-          icon: "🌿",
+          icon: "spa",
           title: "Isan Heritage Spa",
           desc: "Rejuvenate body and spirit with ancient herbal compresses, aromatic oil therapies, and traditional Thai healing massage techniques.",
           link: "Discover Treatments →",
         },
         {
-          icon: "🏊",
+          icon: "pool",
           title: "Jungle Pool Deck",
           desc: "Lounge by our scenic outdoor swimming pool surrounded by verdant tropical hillsides, refreshing mountain breezes, and sunset cocktails.",
           link: "View Atmosphere →",
@@ -372,19 +374,19 @@ export const translations: Record<Lang, Dict> = {
       items: [
         {
           badge: "รสชาติแห่งอีสาน",
-          icon: "🍽️",
+          icon: "dining",
           title: "ห้องอาหารอีสานเขาใหญ่",
           desc: "ลิ้มรสอาหารอีสานแท้และอาหารไทยฟิวชันสมัยใหม่ ปรุงจากวัตถุดิบออร์แกนิกจากฟาร์มท้องถิ่นและเครื่องเทศดั้งเดิม",
           link: "ดูเมนู →",
         },
         {
-          icon: "🌿",
+          icon: "spa",
           title: "อีสาน เฮอริเทจ สปา",
           desc: "ฟื้นฟูกายและใจด้วยลูกประคบสมุนไพรโบราณ การบำบัดด้วยน้ำมันหอมระเหย และศาสตร์การนวดแผนไทยดั้งเดิม",
           link: "ดูทรีตเมนต์ →",
         },
         {
-          icon: "🏊",
+          icon: "pool",
           title: "สระว่ายน้ำกลางป่า",
           desc: "พักผ่อนริมสระว่ายน้ำกลางแจ้งท่ามกลางเนินเขาเขตร้อนเขียวขจี สายลมภูเขาที่สดชื่น และค็อกเทลยามพระอาทิตย์ตก",
           link: "ชมบรรยากาศ →",
