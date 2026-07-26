@@ -903,39 +903,35 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
    Easing note: easeOutExpo (0.16,1,0.3,1) front-loads ~90% of the motion into
    the first quarter of the duration — it reads as a "pop", not a fade. These
    use a gentle easeOutCubic-style curve so progress is spread evenly, with a
-   slightly longer, later-settling opacity curve and a soft blur→sharp focus
-   pull for an unhurried, refined entrance. */
+   slightly longer, later-settling opacity curve for an unhurried entrance.
+
+   No blur filter here on purpose: animating text in and out of focus forces
+   the eye to keep re-accommodating and reads as eye strain, so the entrance
+   is carried by opacity and a small rise alone. */
 .reveal {
   opacity: 0;
   transition:
-    opacity 1.35s cubic-bezier(0.33, 0.02, 0.24, 1),
-    transform 1.25s cubic-bezier(0.22, 0.61, 0.36, 1),
-    filter 1.25s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform, filter;
+    opacity 1.15s cubic-bezier(0.33, 0.02, 0.24, 1),
+    transform 1.05s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
 }
-.reveal-up { transform: translateY(30px) scale(0.988); filter: blur(7px); }
-.reveal-left { transform: translateX(-34px); filter: blur(7px); }
-.reveal-right { transform: translateX(34px); filter: blur(7px); }
-.reveal-zoom { transform: scale(0.96); filter: blur(7px); }
-.reveal-fade { transform: none; filter: blur(5px); }
+.reveal-up { transform: translateY(34px); }
+.reveal-left { transform: translateX(-38px); }
+.reveal-right { transform: translateX(38px); }
+.reveal-zoom { transform: scale(0.965); }
+.reveal-fade { transform: none; }
 .reveal.is-visible {
   opacity: 1;
   transform: none;
-  filter: blur(0);
 }
 /* Drop the compositor hint once the entrance is done. */
 .reveal.is-settled { will-change: auto; }
-
-/* The map embed wraps a live Google Maps iframe — blurring it forces expensive
-   repaints of the tile content and stutters. It still fades and slides in. */
-.map-frame.reveal { filter: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal {
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
     transition: none !important;
   }
   .hero-slide-img img { transition: none; transform: none; }
