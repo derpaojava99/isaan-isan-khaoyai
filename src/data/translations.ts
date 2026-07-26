@@ -60,7 +60,7 @@ export interface Dict {
     tagline: string;
     title: string;
     desc: string;
-    items: { badge?: string; icon: IconName; title: string; desc: string; link: string }[];
+    items: { badge?: string; icon: IconName; title: string; desc: string; link: string; href?: string }[];
   };
   gallery: {
     tagline: string;
@@ -188,6 +188,7 @@ export const translations: Record<Lang, Dict> = {
           title: "Khaoyai Isan Dining",
           desc: "Savor authentic Isan gastronomy and modern Thai fusion cuisine crafted from organic local farm ingredients and traditional spices.",
           link: "Explore Menu →",
+          href: "/menu",
         },
         {
           icon: "spa",
@@ -342,6 +343,7 @@ export const translations: Record<Lang, Dict> = {
           title: "ห้องอาหารอีสานเขาใหญ่",
           desc: "ลิ้มรสอาหารอีสานแท้และอาหารไทยฟิวชันสมัยใหม่ ปรุงจากวัตถุดิบออร์แกนิกจากฟาร์มท้องถิ่นและเครื่องเทศดั้งเดิม",
           link: "ดูเมนู →",
+          href: "/menu",
         },
         {
           icon: "spa",

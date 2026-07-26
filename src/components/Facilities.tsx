@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
 import Reveal from "./Reveal";
 import SplitHeading from "./animation/SplitHeading";
@@ -51,7 +52,13 @@ export default function Facilities() {
                   </div>
                   <h3 className="facility-title">{item.title}</h3>
                   <p className="facility-desc">{item.desc}</p>
-                  <span className="facility-link">{item.link}</span>
+                  {item.href ? (
+                    <Link href={item.href} className="facility-link">
+                      {item.link}
+                    </Link>
+                  ) : (
+                    <span className="facility-link">{item.link}</span>
+                  )}
                 </div>
               </div>
             </Reveal>

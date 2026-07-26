@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Outfit, Sarabun } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Outfit,
+  Playfair_Display,
+  Prompt,
+  Sarabun,
+} from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language-context";
 import { ModalProvider } from "@/lib/modal-context";
@@ -24,6 +30,20 @@ const sarabun = Sarabun({
   subsets: ["thai", "latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sarabun",
+  display: "swap",
+});
+// Used only by the restaurant menu page.
+const prompt = Prompt({
+  subsets: ["thai", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-prompt",
+  display: "swap",
+});
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -98,7 +118,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-lang="en"
-      className={`${cormorant.variable} ${outfit.variable} ${sarabun.variable}`}
+      className={`${cormorant.variable} ${outfit.variable} ${sarabun.variable} ${prompt.variable} ${playfair.variable}`}
     >
       <body>
         <LanguageProvider>
