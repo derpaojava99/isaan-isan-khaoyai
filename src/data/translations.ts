@@ -102,7 +102,7 @@ export const translations: Record<Lang, Dict> = {
     hero: {
       slides: [
         {
-          image: "/picture/khao-yai-resort-concept.webp",
+          image: "/picture/51205307327_1cc96cb36e_h.jpg",
           subtitle: "Sensing The Embrace Of Khao Yai",
           title: "Isaan Isan Concept at Khaoyai",
           desc: "Where contemporary Isan artistry meets the tranquil wilderness of Khao Yai mountains. Experience refined comfort and timeless Thai hospitality.",
@@ -120,7 +120,7 @@ export const translations: Record<Lang, Dict> = {
           ctaStyle: "gold",
         },
         {
-          image: "/picture/51205307327_1cc96cb36e_h.jpg",
+          image: "/picture/khao-yai-resort-concept.webp",
           subtitle: "Nature Awaits You Here, Always",
           title: "Authentic Isan Heritage",
           desc: "Unwind with organic farm-to-table gastronomy, traditional wellness therapies, and unforgettable sunset views.",
@@ -258,7 +258,7 @@ export const translations: Record<Lang, Dict> = {
     hero: {
       slides: [
         {
-          image: "/picture/khao-yai-resort-concept.webp",
+          image: "/picture/51205307327_1cc96cb36e_h.jpg",
           subtitle: "สัมผัสอ้อมกอดแห่งเขาใหญ่",
           title: "อีสาน อีสาน คอนเซปต์ ที่เขาใหญ่",
           desc: "ที่ซึ่งศิลปะอีสานร่วมสมัยมาบรรจบกับความสงบของขุนเขาเขาใหญ่ สัมผัสความสะดวกสบายอันประณีตและการต้อนรับแบบไทยที่ไม่มีวันจางหาย",
@@ -276,7 +276,7 @@ export const translations: Record<Lang, Dict> = {
           ctaStyle: "gold",
         },
         {
-          image: "/picture/51205307327_1cc96cb36e_h.jpg",
+          image: "/picture/khao-yai-resort-concept.webp",
           subtitle: "ธรรมชาติรอคุณอยู่ที่นี่ เสมอ",
           title: "มรดกอีสานแท้",
           desc: "ผ่อนคลายกับอาหารออร์แกนิกฟาร์มทูเทเบิล การบำบัดเพื่อสุขภาพแบบดั้งเดิม และวิวพระอาทิตย์ตกที่ไม่รู้ลืม",
