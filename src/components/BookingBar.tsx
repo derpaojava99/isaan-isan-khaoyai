@@ -39,7 +39,9 @@ export default function BookingBar() {
   const [calOpen, setCalOpen] = useState<null | "from" | "to">(null);
   const fromBtnRef = useRef<HTMLButtonElement>(null);
   const toBtnRef = useRef<HTMLButtonElement>(null);
-  const [guests, setGuests] = useState(0);
+  // Index into t.booking.guestOptions (1–3 guests); defaults to 2, the
+  // common case for a couples resort and what the old list defaulted to.
+  const [guests, setGuests] = useState(1);
   const [promo, setPromo] = useState("");
 
   const checkIn = range.from;

@@ -145,13 +145,8 @@ export const translations: Record<Lang, Dict> = {
     booking: {
       checkIn: "Check-In",
       checkOut: "Check-Out",
-      guests: "Guests & Rooms",
-      guestOptions: [
-        "2 Adults, 1 Room",
-        "2 Adults, 2 Rooms",
-        "4 Adults (Family Villa)",
-        "6 Adults, 2 Rooms",
-      ],
+      guests: "Guests",
+      guestOptions: ["1 Guest", "2 Guests", "3 Guests"],
       promo: "Promo Code",
       promoPlaceholder: "Enter Code (e.g. ISAN2026)",
       submit: "Check Availability",
@@ -313,13 +308,8 @@ export const translations: Record<Lang, Dict> = {
     booking: {
       checkIn: "เช็คอิน",
       checkOut: "เช็คเอาต์",
-      guests: "ผู้เข้าพักและห้อง",
-      guestOptions: [
-        "ผู้ใหญ่ 2 ท่าน, 1 ห้อง",
-        "ผู้ใหญ่ 2 ท่าน, 2 ห้อง",
-        "ผู้ใหญ่ 4 ท่าน (วิลล่าครอบครัว)",
-        "ผู้ใหญ่ 6 ท่าน, 2 ห้อง",
-      ],
+      guests: "ผู้เข้าพัก",
+      guestOptions: ["1 ท่าน", "2 ท่าน", "3 ท่าน"],
       promo: "รหัสส่วนลด",
       promoPlaceholder: "กรอกรหัส (เช่น ISAN2026)",
       submit: "ตรวจสอบห้องว่าง",
