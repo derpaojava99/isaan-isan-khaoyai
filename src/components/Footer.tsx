@@ -3,6 +3,15 @@
 import { useLanguage } from "@/lib/language-context";
 import { company } from "@/data/company";
 import { villas } from "@/data/villas";
+import {
+  ChatIcon,
+  FacebookIcon,
+  InstagramIcon,
+  MailIcon,
+  PhoneIcon,
+  PinIcon,
+  ReviewStarIcon,
+} from "./icons/Icons";
 
 export default function Footer() {
   const { lang, t } = useLanguage();
@@ -18,10 +27,18 @@ export default function Footer() {
             <span className="brand-subtitle">{company.subtitle[lang]}</span>
             <p className="footer-desc">{f.desc}</p>
             <div className="footer-social">
-              <a href={company.social.facebook} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">📘</a>
-              <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">📸</a>
-              <a href={company.social.line} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LINE Official">💬</a>
-              <a href={company.social.tripadvisor} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="TripAdvisor">🦉</a>
+              <a href={company.social.facebook} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">
+                <FacebookIcon />
+              </a>
+              <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href={company.social.line} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LINE Official">
+                <ChatIcon size={18} />
+              </a>
+              <a href={company.social.tripadvisor} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="TripAdvisor">
+                <ReviewStarIcon />
+              </a>
             </div>
           </div>
 
@@ -52,11 +69,11 @@ export default function Footer() {
             <h4 className="footer-title">{f.contactLocation}</h4>
             <ul className="contact-info">
               <li>
-                <span className="contact-icon" aria-hidden="true">📍</span>
+                <span className="contact-icon"><PinIcon /></span>
                 <span>{company.address.full[lang]}</span>
               </li>
               <li>
-                <span className="contact-icon" aria-hidden="true">📞</span>
+                <span className="contact-icon"><PhoneIcon size={18} /></span>
                 <span>
                   {company.phones.map((p, i) => (
                     <span key={p.tel}>
@@ -67,7 +84,7 @@ export default function Footer() {
                 </span>
               </li>
               <li>
-                <span className="contact-icon" aria-hidden="true">✉️</span>
+                <span className="contact-icon"><MailIcon /></span>
                 <span>
                   <a href={`mailto:${company.email}`}>{company.email}</a>
                 </span>
