@@ -1,12 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { menu } from "@/data/menu";
 
 /** Sticky chapter rail with scroll-spy, plus a persistent way back home. */
 export default function MenuNav() {
   const [active, setActive] = useState(menu[0].id);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  // The rail is wider than a phone screen, so the highlighted chapter can sit
+  // off to the right where nobody sees it. Bring it back into view whenever
+  // scrolling moves us into a new chapter. Adjusting scrollLeft directly rather
+  // than scrollIntoView, which would also yank the page vertically.
+  useEffect(() => {
+    const list = listRef.current;
+    const link = list?.querySelector<HTMLElement>(`a[href="#${active}"]`);
+    if (!list || !link) return;
+
+    const target = link.offsetLeft - (list.clientWidth - link.clientWidth) / 2;
+    const left = Math.max(0, Math.min(target, list.scrollWidth - list.clientWidth));
+    if (Math.abs(list.scrollLeft - left) < 2) return;
+
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    list.scrollTo({ left, behavior: reduced ? "auto" : "smooth" });
+  }, [active]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,7 +51,7 @@ export default function MenuNav() {
           <span className="menu-nav__home-label">หน้าแรก</span>
         </Link>
 
-        <ul className="menu-nav__list">
+        <ul className="menu-nav__list" ref={listRef}>
           {menu.map((c) => (
             <li key={c.id}>
               <a
