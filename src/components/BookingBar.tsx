@@ -39,9 +39,8 @@ export default function BookingBar() {
   const [calOpen, setCalOpen] = useState<null | "from" | "to">(null);
   const fromBtnRef = useRef<HTMLButtonElement>(null);
   const toBtnRef = useRef<HTMLButtonElement>(null);
-  // Index into t.booking.guestOptions (1–3 guests); defaults to 2, the
-  // common case for a couples resort and what the old list defaulted to.
-  const [guests, setGuests] = useState(1);
+  // Index into t.booking.guestOptions.
+  const [guests, setGuests] = useState(0);
   const [promo, setPromo] = useState("");
 
   const checkIn = range.from;
@@ -154,18 +153,25 @@ export default function BookingBar() {
 
           <div className="booking-field">
             <span className="booking-label">{t.booking.guests}</span>
-            <select
-              className="booking-select"
-              aria-label={t.booking.guests}
-              value={guests}
-              onChange={(e) => setGuests(Number(e.target.value))}
-            >
-              {t.booking.guestOptions.map((opt, i) => (
-                <option key={i} value={i}>
-                  {opt}
-                </option>
-              ))}
-            </select>
+            {/* A one-entry dropdown looks interactive but offers no choice —
+                show the value plainly, and only fall back to a select if more
+                occupancy options are added later. */}
+            {t.booking.guestOptions.length > 1 ? (
+              <select
+                className="booking-select"
+                aria-label={t.booking.guests}
+                value={guests}
+                onChange={(e) => setGuests(Number(e.target.value))}
+              >
+                {t.booking.guestOptions.map((opt, i) => (
+                  <option key={i} value={i}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span className="booking-value">{t.booking.guestOptions[0]}</span>
+            )}
           </div>
 
           <div className="booking-field">
