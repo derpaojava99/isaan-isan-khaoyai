@@ -36,7 +36,16 @@ export default function Facilities() {
 
         <div className="facilities-grid">
           {f.items.map((item, i) => (
-            <Reveal key={i} variant="up" delay={i * 180} className="facility-card">
+            <Reveal
+              key={i}
+              variant="up"
+              delay={i * 180}
+              className="facility-card"
+              // The whole card is clickable when it has a destination, not
+              // just the "Explore Menu →" text.
+              as={item.href ? Link : "div"}
+              href={item.href}
+            >
               <Image
                 src={FACILITY_IMAGES[i]}
                 alt={item.title}
@@ -52,13 +61,7 @@ export default function Facilities() {
                   </div>
                   <h3 className="facility-title">{item.title}</h3>
                   <p className="facility-desc">{item.desc}</p>
-                  {item.href ? (
-                    <Link href={item.href} className="facility-link">
-                      {item.link}
-                    </Link>
-                  ) : (
-                    <span className="facility-link">{item.link}</span>
-                  )}
+                  <span className="facility-link">{item.link}</span>
                 </div>
               </div>
             </Reveal>

@@ -11,6 +11,8 @@ interface RevealProps {
   className?: string;
   as?: ElementType;
   once?: boolean;
+  /** Forwarded to the rendered element — e.g. `href` when `as={Link}`. */
+  [key: string]: unknown;
 }
 
 /**
@@ -24,6 +26,7 @@ export default function Reveal({
   className = "",
   as,
   once = true,
+  ...rest
 }: RevealProps) {
   const Tag = (as ?? "div") as ElementType;
   const ref = useRef<HTMLElement | null>(null);
@@ -83,6 +86,7 @@ export default function Reveal({
         settled ? " is-settled" : ""
       } ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      {...rest}
     >
       {children}
     </Tag>

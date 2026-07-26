@@ -849,7 +849,7 @@ html[data-lang="th"] .price-label { text-transform: none; }
 /* Facilities */
 .facilities-section { padding: 100px 0; background: var(--dark-bg); color: var(--white); }
 .facilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.facility-card { position: relative; height: 420px; border-radius: 8px; overflow: hidden; cursor: pointer; }
+.facility-card { display: block; position: relative; height: 420px; border-radius: 8px; overflow: hidden; cursor: pointer; }
 .facility-img { object-fit: cover; transition: transform 0.8s ease; }
 .facility-card:hover .facility-img { transform: scale(1.08); }
 .facility-overlay {
