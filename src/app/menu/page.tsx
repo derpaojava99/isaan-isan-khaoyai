@@ -38,8 +38,8 @@ export default function MenuPage() {
           </div>
           <p className="menu-cover__intro">{restaurant.intro}</p>
           <p className="menu-cover__tagline">— {restaurant.tagline} —</p>
-          <Link href="/#facilities" className="menu-cover__back">
-            ← กลับสู่เว็บไซต์รีสอร์ต · Back to the resort
+          <Link href="/" className="menu-cover__back">
+            ← กลับสู่หน้าแรก · Back to the resort
           </Link>
         </div>
       </header>
@@ -92,6 +92,9 @@ export default function MenuPage() {
             {" · "}
             <a href={`mailto:${company.email}`}>{company.email}</a>
           </address>
+          <Link href="/" className="menu-cover__back">
+            ← กลับสู่หน้าแรก · Back to the resort
+          </Link>
           <p className="menu-cover__tagline">— ISAAN · BAAN HAO · KHAO YAI —</p>
         </div>
       </footer>

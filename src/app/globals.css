@@ -72,7 +72,10 @@ body {
   color: var(--text-dark);
   background-color: var(--light-bg);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* `clip`, never `hidden`: `overflow-x: hidden` computes to `hidden auto`,
+     which makes body a scroll container and then swallows `position: sticky`
+     descendants (it broke the menu's chapter rail). `clip` still clips. */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
