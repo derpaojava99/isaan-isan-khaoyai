@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useLanguage } from "@/lib/language-context";
 
 export interface DateRange {
@@ -14,7 +15,12 @@ interface DateRangePickerProps {
   /** Which field opened the panel — decides which date gets picked first. */
   focus: "from" | "to";
   onClose: () => void;
+  /** Trigger button, used to anchor the desktop dropdown. */
+  anchorEl?: HTMLElement | null;
 }
+
+const DESKTOP_PANEL_W = 660;
+const EDGE = 16;
 
 /** Midnight-normalised copy, so comparisons ignore time-of-day. */
 const day = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -42,11 +48,58 @@ export default function DateRangePicker({
   onChange,
   focus,
   onClose,
+  anchorEl,
 }: DateRangePickerProps) {
   const { t } = useLanguage();
   const b = t.booking;
   const today = day(new Date());
   const panelRef = useRef<HTMLDivElement>(null);
+
+  // Rendered through a portal on <body>: .booking-section sets z-index, which
+  // creates a stacking context that would otherwise trap the panel beneath the
+  // floating contact buttons no matter how high its own z-index goes.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  // Desktop: pin under the trigger, clamped to the viewport.
+  const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
+  useLayoutEffect(() => {
+    if (isMobile || !anchorEl) {
+      setPos(null);
+      return;
+    }
+    const place = () => {
+      const r = anchorEl.getBoundingClientRect();
+      const maxLeft = window.innerWidth - DESKTOP_PANEL_W - EDGE;
+      setPos({ top: r.bottom + 12, left: Math.max(EDGE, Math.min(r.left, maxLeft)) });
+    };
+    place();
+    window.addEventListener("resize", place);
+    window.addEventListener("scroll", place, true);
+    return () => {
+      window.removeEventListener("resize", place);
+      window.removeEventListener("scroll", place, true);
+    };
+  }, [isMobile, anchorEl]);
+
+  // The sheet covers the page on mobile, so stop the page scrolling behind it.
+  useEffect(() => {
+    if (!isMobile) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isMobile]);
 
   const [view, setView] = useState<Date>(() =>
     value.from ? new Date(value.from.getFullYear(), value.from.getMonth(), 1) : new Date(today.getFullYear(), today.getMonth(), 1)
@@ -114,17 +167,38 @@ export default function DateRangePicker({
     view.getFullYear() > today.getFullYear() ||
     (view.getFullYear() === today.getFullYear() && view.getMonth() > today.getMonth());
 
-  return (
-    <div className="cal-panel" ref={panelRef} role="dialog" aria-label={b.checkIn}>
+  if (!mounted) return null;
+
+  const panel = (
+    <div
+      className={`cal-panel ${isMobile ? "cal-panel--sheet" : "cal-panel--drop"}`}
+      ref={panelRef}
+      role="dialog"
+      aria-modal={isMobile}
+      aria-label={b.checkIn}
+      style={!isMobile && pos ? { top: pos.top, left: pos.left } : undefined}
+    >
+      {isMobile && <span className="cal-grabber" aria-hidden="true" />}
+
       <div className="cal-head">
         <span className="cal-hint">
           {stage === "from" || !value.from ? b.selectCheckIn : b.selectCheckOut}
         </span>
-        {nights > 0 && (
-          <span className="cal-nights">
-            {nights} {b.nightsSelected}
-          </span>
-        )}
+        <div className="cal-head-right">
+          {nights > 0 && (
+            <span className="cal-nights">
+              {nights} {b.nightsSelected}
+            </span>
+          )}
+          <button
+            type="button"
+            className="cal-close"
+            onClick={onClose}
+            aria-label={b.done}
+          >
+            &times;
+          </button>
+        </div>
       </div>
 
       <div className="cal-nav">
@@ -212,5 +286,17 @@ export default function DateRangePicker({
         </button>
       </div>
     </div>
+  );
+
+  return createPortal(
+    isMobile ? (
+      <div className="cal-sheet-root">
+        <div className="cal-backdrop" onClick={onClose} />
+        {panel}
+      </div>
+    ) : (
+      panel
+    ),
+    document.body
   );
 }

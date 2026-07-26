@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { useModal } from "@/lib/modal-context";
 import { company } from "@/data/company";
@@ -30,6 +30,8 @@ export default function BookingBar() {
     return { from, to };
   });
   const [calOpen, setCalOpen] = useState<null | "from" | "to">(null);
+  const fromBtnRef = useRef<HTMLButtonElement>(null);
+  const toBtnRef = useRef<HTMLButtonElement>(null);
   const [guests, setGuests] = useState(0);
   const [promo, setPromo] = useState("");
 
@@ -103,6 +105,7 @@ export default function BookingBar() {
             <button
               type="button"
               data-cal-trigger
+              ref={fromBtnRef}
               className={`booking-input-wrap${calOpen === "from" ? " is-open" : ""}`}
               onClick={() => setCalOpen(calOpen === "from" ? null : "from")}
               aria-haspopup="dialog"
@@ -120,6 +123,7 @@ export default function BookingBar() {
             <button
               type="button"
               data-cal-trigger
+              ref={toBtnRef}
               className={`booking-input-wrap${calOpen === "to" ? " is-open" : ""}`}
               onClick={() => setCalOpen(calOpen === "to" ? null : "to")}
               aria-haspopup="dialog"
@@ -170,6 +174,7 @@ export default function BookingBar() {
             focus={calOpen}
             onChange={setRange}
             onClose={() => setCalOpen(null)}
+            anchorEl={calOpen === "from" ? fromBtnRef.current : toBtnRef.current}
           />
         )}
       </div>
