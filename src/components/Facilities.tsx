@@ -27,7 +27,7 @@ export default function Facilities() {
 
         <div className="facilities-grid">
           {f.items.map((item, i) => (
-            <Reveal key={i} variant="up" delay={i * 130} className="facility-card">
+            <Reveal key={i} variant="up" delay={i * 180} className="facility-card">
               <Image
                 src={FACILITY_IMAGES[i]}
                 alt={item.title}

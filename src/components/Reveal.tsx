@@ -28,6 +28,7 @@ export default function Reveal({
   const Tag = (as ?? "div") as ElementType;
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -52,17 +53,35 @@ export default function Reveal({
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+      // Fire as soon as a sliver enters, while the element is still low in the
+      // viewport — the longer entrance then plays out as the user keeps
+      // scrolling instead of starting once the card is already fully in frame.
+      { threshold: 0.05, rootMargin: "0px 0px -2% 0px" }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, [once]);
 
+  // Release the compositor hint once the entrance has finished — leaving
+  // will-change on every revealed element permanently wastes GPU memory.
+  useEffect(() => {
+    if (!visible || !once) return;
+    const el = ref.current;
+    if (!el) return;
+    const onEnd = (e: TransitionEvent) => {
+      if (e.target === el && e.propertyName === "opacity") setSettled(true);
+    };
+    el.addEventListener("transitionend", onEnd);
+    return () => el.removeEventListener("transitionend", onEnd);
+  }, [visible, once]);
+
   return (
     <Tag
       ref={ref}
-      className={`reveal reveal-${variant}${visible ? " is-visible" : ""} ${className}`}
+      className={`reveal reveal-${variant}${visible ? " is-visible" : ""}${
+        settled ? " is-settled" : ""
+      } ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

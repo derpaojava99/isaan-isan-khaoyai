@@ -57,7 +57,7 @@ export default function Villas() {
 
         <div className="villas-grid">
           {villas.map((villa, i) => (
-            <Reveal key={villa.id} variant="up" delay={(i % 3) * 110} className="villa-card-reveal">
+            <Reveal key={villa.id} variant="up" delay={(i % 3) * 170} className="villa-card-reveal">
               <article className="villa-card">
                 <div className="villa-img-wrap">
                   <span className="villa-tag">{villa.tag[lang]}</span>
