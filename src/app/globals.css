@@ -61,6 +61,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 92px; /* offset fixed header for anchor jumps */
   font-size: 16px;
+  /* `overflow-x: hidden` on body alone is unreliable on iOS Safari — the
+     viewport still scrolls sideways. `clip` clips without creating a scroll
+     container, so sticky/fixed and smooth anchor scrolling keep working. */
+  overflow-x: clip;
 }
 
 body {
@@ -1279,4 +1283,10 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
   .modal-body { grid-template-columns: 1fr; }
   .modal-img { min-height: 260px; }
   .modal-features { grid-template-columns: 1fr; }
+
+  /* Sideways slides push content past the viewport edge on narrow screens,
+     which iOS Safari turns into a real horizontal scroll. Reveal vertically
+     instead — it also reads better in a single column. */
+  .reveal-left,
+  .reveal-right { transform: translateY(30px); }
 }
