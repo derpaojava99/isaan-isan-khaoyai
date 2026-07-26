@@ -6,6 +6,9 @@ import { useLanguage } from "@/lib/language-context";
 import { useModal } from "@/lib/modal-context";
 import { galleryItems, type GalleryItem } from "@/data/gallery";
 import Reveal from "./Reveal";
+import SplitHeading from "./animation/SplitHeading";
+import ScrollExpandLine from "./animation/ScrollExpandLine";
+import StaggeredTags from "./animation/StaggeredTags";
 
 export default function Gallery() {
   const { lang, t } = useLanguage();
@@ -27,13 +30,18 @@ export default function Gallery() {
   return (
     <section className="gallery-section" id="gallery">
       <div className="container">
-        <Reveal className="section-header text-center">
-          <span className="tagline">{t.gallery.tagline}</span>
-          <h2 className="section-title">{t.gallery.title}</h2>
-          <p className="section-desc">{t.gallery.desc}</p>
-        </Reveal>
+        <div className="section-header text-center">
+          <Reveal variant="fade">
+            <span className="tagline">{t.gallery.tagline}</span>
+          </Reveal>
+          <SplitHeading text={t.gallery.title} className="section-title" />
+          <ScrollExpandLine delay={180} />
+          <Reveal variant="fade" delay={120}>
+            <p className="section-desc">{t.gallery.desc}</p>
+          </Reveal>
+        </div>
 
-        <Reveal variant="fade" className="gallery-filters">
+        <StaggeredTags className="gallery-filters" stagger={80}>
           {t.gallery.filters.map((btn) => (
             <button
               key={btn.key}
@@ -44,7 +52,7 @@ export default function Gallery() {
               {btn.label}
             </button>
           ))}
-        </Reveal>
+        </StaggeredTags>
 
         <div className="gallery-grid" id="galleryGrid">
           {galleryItems.map((item, i) => {

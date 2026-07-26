@@ -7,6 +7,9 @@ import { villas, type Villa } from "@/data/villas";
 import type { Lang } from "@/data/translations";
 import type { Dict } from "@/data/translations";
 import Reveal from "./Reveal";
+import SplitHeading from "./animation/SplitHeading";
+import ScrollExpandLine from "./animation/ScrollExpandLine";
+import StaggeredTags from "./animation/StaggeredTags";
 
 function VillaModal({ villa, lang, t, onBook }: { villa: Villa; lang: Lang; t: Dict; onBook: () => void }) {
   return (
@@ -49,11 +52,16 @@ export default function Villas() {
   return (
     <section className="villas-section" id="villas">
       <div className="container">
-        <Reveal className="section-header text-center">
-          <span className="tagline">{t.villas.tagline}</span>
-          <h2 className="section-title">{t.villas.title}</h2>
-          <p className="section-desc">{t.villas.desc}</p>
-        </Reveal>
+        <div className="section-header text-center">
+          <Reveal variant="fade">
+            <span className="tagline">{t.villas.tagline}</span>
+          </Reveal>
+          <SplitHeading text={t.villas.title} className="section-title" />
+          <ScrollExpandLine delay={180} />
+          <Reveal variant="fade" delay={120}>
+            <p className="section-desc">{t.villas.desc}</p>
+          </Reveal>
+        </div>
 
         <div className="villas-grid">
           {villas.map((villa, i) => (
@@ -70,11 +78,11 @@ export default function Villas() {
                 </div>
                 <div className="villa-info">
                   <h3>{villa.name[lang]}</h3>
-                  <div className="villa-specs">
+                  <StaggeredTags className="villa-specs" delay={220}>
                     {villa.specs[lang].map((s, j) => (
                       <span key={j}>{s}</span>
                     ))}
-                  </div>
+                  </StaggeredTags>
                   <p className="villa-desc">{villa.desc[lang]}</p>
                   <div className="villa-footer">
                     <div className="villa-price">

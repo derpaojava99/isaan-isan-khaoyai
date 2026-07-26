@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useLanguage } from "@/lib/language-context";
 import Reveal from "./Reveal";
+import SplitHeading from "./animation/SplitHeading";
+import ScrollExpandLine from "./animation/ScrollExpandLine";
 
 const FACILITY_IMAGES = [
   "/picture/isaan-food-khao-yai.webp",
@@ -17,13 +19,18 @@ export default function Facilities() {
   return (
     <section className="facilities-section" id="facilities">
       <div className="container">
-        <Reveal className="section-header text-center">
-          <span className="tagline">{f.tagline}</span>
-          <h2 className="section-title light">{f.title}</h2>
-          <p className="section-desc" style={{ color: "rgba(255,255,255,0.7)" }}>
-            {f.desc}
-          </p>
-        </Reveal>
+        <div className="section-header text-center">
+          <Reveal variant="fade">
+            <span className="tagline">{f.tagline}</span>
+          </Reveal>
+          <SplitHeading text={f.title} className="section-title light" />
+          <ScrollExpandLine delay={180} />
+          <Reveal variant="fade" delay={120}>
+            <p className="section-desc" style={{ color: "rgba(255,255,255,0.7)" }}>
+              {f.desc}
+            </p>
+          </Reveal>
+        </div>
 
         <div className="facilities-grid">
           {f.items.map((item, i) => (

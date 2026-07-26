@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useLanguage } from "@/lib/language-context";
 import { company } from "@/data/company";
 import Reveal from "./Reveal";
+import SplitHeading from "./animation/SplitHeading";
+import ScrollZoomImage from "./animation/ScrollZoomImage";
 
 const FEATURE_ICONS = ["🌿", "🍲", "💆", "⭐"];
 
@@ -14,24 +15,24 @@ export default function About() {
   return (
     <section className="about-section" id="about">
       <div className="container about-grid">
-        <Reveal variant="left" className="about-images">
+        <div className="about-images">
           <div className="about-img-main">
-            <Image
+            <ScrollZoomImage
               src="/picture/khao-yai-boutique-hotel-big.webp"
               alt={a.title}
-              fill
               sizes="(max-width: 768px) 100vw, 45vw"
+              from="bottom"
             />
           </div>
-          <div className="about-badge">
+          <Reveal variant="zoom" delay={420} className="about-badge">
             <h4>{company.starRating} ★</h4>
             <p>{a.badgeLabel}</p>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
         <Reveal variant="right" delay={120} className="about-content">
           <span className="tagline">{a.tagline}</span>
-          <h2 className="section-title">{a.title}</h2>
+          <SplitHeading text={a.title} className="section-title" />
           <p className="about-lead">{a.lead}</p>
           <p className="about-text">{a.text}</p>
 

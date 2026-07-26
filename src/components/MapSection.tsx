@@ -3,6 +3,8 @@
 import { useLanguage } from "@/lib/language-context";
 import { company } from "@/data/company";
 import Reveal from "./Reveal";
+import SplitHeading from "./animation/SplitHeading";
+import ScrollExpandLine from "./animation/ScrollExpandLine";
 
 const { lat, lng } = company.geo;
 const EMBED_SRC = `https://www.google.com/maps?q=${lat},${lng}&z=13&hl=en&output=embed`;
@@ -18,7 +20,8 @@ export default function MapSection() {
         <div className="map-wrap">
           <Reveal variant="left" className="map-info">
             <span className="tagline">{m.tagline}</span>
-            <h2>{m.title}</h2>
+            <SplitHeading text={m.title} />
+            <ScrollExpandLine align="left" delay={200} width="64px" />
             <p className="map-info-desc">{m.desc}</p>
 
             <div className="map-detail-list">
