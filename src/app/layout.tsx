@@ -61,9 +61,12 @@ export const metadata: Metadata = {
     alternateLocale: "th_TH",
     images: [
       {
-        url: "/picture/khao-yai-resort-concept.webp",
+        // JPEG, not WebP: LINE's crawler does not reliably decode WebP and
+        // falls back to showing no preview at all.
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Isaan Isan Concept at Khaoyai Resort",
       },
     ],
@@ -73,7 +76,7 @@ export const metadata: Metadata = {
     title: "Isaan Isan Concept at Khaoyai | Luxury Boutique Pool Villa Resort",
     description:
       "Contemporary Isan boutique luxury, private pool villas, and serene Khao Yai mountain views.",
-    images: ["/picture/khao-yai-resort-concept.webp"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

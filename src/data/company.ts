@@ -4,7 +4,19 @@
  * Change a phone number once → it updates everywhere (playbook §2).
  */
 
-export const SITE_URL = "https://www.isaanisan-khaoyai.com";
+/**
+ * Canonical origin. Everything absolute — canonical tags, OG image, sitemap,
+ * JSON-LD — is built from this, so it must point at a host that actually
+ * serves the site: crawlers (LINE especially) fetch og:image over the network
+ * and silently show no preview if it 404s.
+ *
+ * Override per environment with NEXT_PUBLIC_SITE_URL, e.g.
+ *   NEXT_PUBLIC_SITE_URL=https://www.isaanisan-khaoyai.com
+ * once the real domain is live.
+ */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://isaan-isan-khaoyai.vercel.app"
+).replace(/\/$/, "");
 
 export const company = {
   name: "Isaan Isan Concept at Khaoyai",

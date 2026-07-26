@@ -20,6 +20,7 @@ export default function JsonLd() {
         email: company.email,
         priceRange: company.priceRange,
         image: [
+          `${SITE_URL}/og-image.jpg`,
           `${SITE_URL}/picture/khao-yai-resort-concept.webp`,
           `${SITE_URL}/picture/khao-yai-boutique-hotel-big.webp`,
         ],

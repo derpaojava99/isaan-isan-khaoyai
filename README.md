@@ -35,8 +35,8 @@ npm start        # serve the production build
 These are demo/placeholder values — swap them for the real ones:
 
 1. **`src/data/company.ts`** — real phone numbers, email, **GPS coordinates** (`geo`), and **social/LINE URLs** (currently generic `facebook.com` / `line.me`).
-2. **`SITE_URL`** in `src/data/company.ts` — set to your real domain (used by canonical, sitemap, OG, JSON-LD).
-3. **OG image** — currently reuses a hero photo. A dedicated **1200×630** image is ideal.
+2. **Domain** — set `NEXT_PUBLIC_SITE_URL` (Vercel → Settings → Environment Variables) to the real domain once it's live, e.g. `https://www.isaanisan-khaoyai.com`. It defaults to the Vercel URL. Everything absolute (canonical, sitemap, OG image, JSON-LD) follows it — if it points somewhere that doesn't serve the site, **link previews break silently**.
+3. **OG image** — `public/og-image.jpg`, 1200×630. Regenerate after a rebrand with `node scripts/generate-og.mjs`.
 4. **Booking button** — the "Confirm & Book" CTA points to the LINE URL; wire it to your real booking engine.
 5. **Reviews / rating** — the 4.9★ badge is decorative only. Do **not** add `aggregateRating` to the schema until you have real, on-page reviews (avoids a Google manual action).
 6. Set up **Google Business Profile**, Search Console (submit `…/main-sitemap.xml`), and GA4.
