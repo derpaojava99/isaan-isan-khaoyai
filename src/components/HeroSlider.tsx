@@ -12,6 +12,21 @@ export default function HeroSlider() {
 
   const goTo = useCallback((i: number) => setCurrent(((i % total) + total) % total), [total]);
 
+  // Flip on the Ken Burns zoom only once the browser has painted the initial
+  // scale(1.05). Two frames: the first rAF still runs before that paint is
+  // committed, so a single one can coalesce with mount and skip the transition.
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => setStarted(true));
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
+  }, []);
+
   // Auto-play every 6s.
   useEffect(() => {
     const id = setInterval(() => setCurrent((c) => (c + 1) % total), 6000);
@@ -20,7 +35,7 @@ export default function HeroSlider() {
 
   return (
     <section className="hero-section" id="home">
-      <div className="hero-slider">
+      <div className={`hero-slider${started ? " is-started" : ""}`}>
         {slides.map((slide, i) => (
           <div key={i} className={`hero-slide${i === current ? " active" : ""}`}>
             <div className="hero-slide-img">

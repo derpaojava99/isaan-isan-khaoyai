@@ -332,7 +332,14 @@ html[data-lang="th"] .btn { letter-spacing: 0.5px; text-transform: none; }
   transform: scale(1.05);
   transition: transform 8s ease-out;
 }
-.hero-slide.active .hero-slide-img img { transform: scale(1); }
+/* Gated on .is-started, which the slider adds after the first paint. The first
+   slide ships already `.active`, so without this its image would render at
+   scale(1) immediately — the transform never changes and the slow zoom-out
+   never runs. Holding it at 1.05 for one frame gives the transition something
+   to animate from. */
+.hero-slider.is-started .hero-slide.active .hero-slide-img img {
+  transform: scale(1);
+}
 
 .hero-overlay {
   position: absolute;
