@@ -39,10 +39,11 @@ export const company = {
       th: "54 หมู่ 4 ตำบลหมูสี อำเภอปากช่อง จังหวัดนครราชสีมา 30130",
     },
   },
-  // Approx. coordinates for Mu Si, Pak Chong (Khao Yai) — themed map marker.
+  // Actual Google Maps pin for "Recall Isaan Isan Concept at Khaoyai"
+  // (resolved from https://maps.app.goo.gl/p5GheCEq27qz9MY89).
   geo: {
-    lat: 14.5069,
-    lng: 101.3722,
+    lat: 14.5133391,
+    lng: 101.3753775,
   },
   // Display Thai-style, dial international (playbook §8).
   phones: [
