@@ -47,7 +47,7 @@ export const company = {
   },
   // Display Thai-style, dial international (playbook §8).
   phones: [
-    { display: "+66 (0) 44 000 999", tel: "+6644000999" },
+    { display: "+66 (0) 44 011 888", tel: "+6644011888" },
     { display: "+66 (0) 81 234 5678", tel: "+66812345678" },
   ],
   email: "rsvn@isaanisan-khaoyai.com",
