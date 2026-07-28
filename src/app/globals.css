@@ -812,6 +812,83 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
 .villas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .villa-card-reveal { display: flex; }
 .villa-card-reveal > .villa-card { width: 100%; }
+
+/* ---- Featured room (overlay hero) ---------------------------------------
+   Seven rooms in a 3-up grid leave one card stranded on the last row. The
+   flagged room instead runs full width below the grid with its copy set over
+   the image, borrowing the treatment already used by the facility cards so it
+   reads as part of the same design language rather than a bolted-on block. */
+.villa-featured-reveal { display: block; margin-top: 30px; }
+.villa-card--featured {
+  position: relative;
+  display: block;
+  min-height: 440px;
+}
+.villa-card--featured .villa-img-wrap {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+/* Scoped to the settled state and specific enough to beat .zoom-image.is-in
+   img — otherwise the hover zoom either kills the clip-path reveal's starting
+   scale, or loses to it and never fires. Same reasoning as .about-img-main. */
+.villa-card--featured:hover .zoom-image.is-in img {
+  transform: scale(1.05);
+  transition: transform 0.9s ease;
+}
+.villa-card--featured .villa-tag {
+  background: rgba(20, 23, 22, 0.82);
+  z-index: 3;
+}
+/* Copy sits on the image, so it needs its own scrim to stay legible. */
+.villa-card--featured .villa-info {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  justify-content: flex-end;
+  padding: 44px 46px;
+  background: linear-gradient(
+    0deg,
+    rgba(20, 16, 12, 0.94) 0%,
+    rgba(20, 16, 12, 0.72) 45%,
+    rgba(20, 16, 12, 0.12) 100%
+  );
+}
+.villa-card--featured .villa-info h3 {
+  font-size: 2.1rem;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.villa-card--featured .villa-specs { color: var(--gold); }
+.villa-card--featured .villa-desc {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.02rem;
+  max-width: 56ch;
+  flex-grow: 0;
+  margin-bottom: 22px;
+}
+.villa-card--featured .villa-footer {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+.villa-card--featured .price-label { color: rgba(255, 255, 255, 0.7); }
+.villa-card--featured .price-amount { font-size: 1.7rem; color: var(--white); }
+.villa-card--featured .price-unit { color: rgba(255, 255, 255, 0.7); }
+.villa-card--featured .btn-outline {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.villa-card--featured .btn-outline:hover {
+  background: var(--gold);
+  color: var(--dark-bg);
+}
+
+@media (max-width: 768px) {
+  .villa-card--featured { min-height: 420px; }
+  .villa-card--featured .villa-info { padding: 30px 24px; }
+  .villa-card--featured .villa-info h3 { font-size: 1.6rem; }
+  .villa-card--featured .villa-desc { font-size: 0.95rem; }
+  .villa-card--featured .villa-footer { flex-wrap: wrap; gap: 14px; }
+}
 .villa-card {
   background: var(--card-bg);
   border-radius: 8px;
@@ -821,6 +898,8 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* The whole card opens the detail modal, not just the button. */
+  cursor: pointer;
 }
 .villa-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
 .villa-img-wrap { position: relative; height: 280px; overflow: hidden; }
@@ -850,8 +929,25 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
 .villa-price { display: flex; flex-direction: column; }
 .price-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
 html[data-lang="th"] .price-label { text-transform: none; }
-.price-amount { font-size: 1.35rem; font-weight: 700; color: var(--secondary-color); font-family: var(--font-heading); }
+/* Price treatment copied from the restaurant menu: Playfair numerals with the
+   ฿ trailing in gold at a smaller size. Uses --font-playfair directly rather
+   than --font-heading so it stays Playfair in Thai too, where --font-heading
+   switches to Sarabun. Latin digits render the same in both languages. */
+.price-amount {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
 .price-unit { font-size: 0.8rem; font-weight: 400; color: var(--text-muted); }
+.price-amount .baht,
+.modal-price .baht {
+  color: var(--gold);
+  font-size: 0.78em;
+  margin-left: 4px;
+}
 
 /* Facilities */
 .facilities-section { padding: 100px 0; background: var(--dark-bg); color: var(--white); }
@@ -1088,7 +1184,14 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
 .modal-feature-item svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
 .modal-amenities-title { margin-bottom: 12px; font-size: 1.1rem; color: var(--main-color); }
 .modal-price-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--border-color); padding-top: 20px; }
-.modal-price { font-size: 1.5rem; font-weight: bold; color: var(--secondary-color); font-family: var(--font-heading); }
+.modal-price {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
 
 /* Lightbox */
 .lightbox-content { max-width: 1000px; background: transparent; box-shadow: none; overflow: visible; }
