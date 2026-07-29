@@ -819,6 +819,18 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
    the image, borrowing the treatment already used by the facility cards so it
    reads as part of the same design language rather than a bolted-on block. */
 .villa-featured-reveal { display: block; margin-top: 30px; }
+/* The clip lives here, one level inside the observed .villa-featured-reveal.
+   Putting it on the observed node makes it report intersectionRatio 0, so the
+   observer never fires and the card stays clipped out of existence. */
+.villa-featured-wipe {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: clip-path;
+  border-radius: 8px;
+}
+.villa-featured-reveal.is-visible .villa-featured-wipe {
+  clip-path: inset(0 0 0 0);
+}
 .villa-card--featured {
   position: relative;
   display: block;
@@ -829,10 +841,18 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
   inset: 0;
   height: 100%;
 }
-/* Scoped to the settled state and specific enough to beat .zoom-image.is-in
-   img — otherwise the hover zoom either kills the clip-path reveal's starting
-   scale, or loses to it and never fires. Same reasoning as .about-img-main. */
-.villa-card--featured:hover .zoom-image.is-in img {
+/* Ken Burns runs off the wrapper's reveal state so it plays in step with the
+   card's wipe. Specificity has to clear `.villa-card:hover .villa-img-wrap img`
+   (0,2,1), and the hover rule below has to clear this one in turn. */
+.villa-featured-reveal .villa-card--featured .villa-img-wrap img {
+  transform: scale(1.12);
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.villa-featured-reveal.is-visible .villa-card--featured .villa-img-wrap img {
+  transform: scale(1);
+}
+.villa-featured-reveal .villa-card--featured:hover .villa-img-wrap img,
+.villa-featured-reveal.is-visible .villa-card--featured:hover .villa-img-wrap img {
   transform: scale(1.05);
   transition: transform 0.9s ease;
 }
@@ -1410,6 +1430,13 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
   }
   .reveal {
     opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  /* JS also flips these on immediately, but reset them here too so the card
+     can't stay clipped out of view if the observer never runs. */
+  .villa-featured-wipe { clip-path: none !important; transition: none !important; }
+  .villa-featured-reveal .villa-card--featured .villa-img-wrap img {
     transform: none !important;
     transition: none !important;
   }

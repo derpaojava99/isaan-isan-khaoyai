@@ -10,7 +10,6 @@ import Reveal from "./Reveal";
 import SplitHeading from "./animation/SplitHeading";
 import ScrollExpandLine from "./animation/ScrollExpandLine";
 import StaggeredTags from "./animation/StaggeredTags";
-import ScrollZoomImage from "./animation/ScrollZoomImage";
 import { CheckIcon, Icon } from "./icons/Icons";
 
 function VillaModal({ villa, lang, t, onBook }: { villa: Villa; lang: Lang; t: Dict; onBook: () => void }) {
@@ -71,19 +70,7 @@ function VillaCard({
     >
       <div className="villa-img-wrap">
         <span className="villa-tag">{villa.tag[lang]}</span>
-        {villa.featured ? (
-          // Signature room gets the clip-path wipe + Ken Burns zoom, the same
-          // reveal the About image uses, so its entrance matches its billing.
-          <ScrollZoomImage
-            src={villa.image}
-            alt={villa.name[lang]}
-            sizes={sizes}
-            from="bottom"
-            duration={1400}
-          />
-        ) : (
-          <Image src={villa.image} alt={villa.name[lang]} fill sizes={sizes} />
-        )}
+        <Image src={villa.image} alt={villa.name[lang]} fill sizes={sizes} />
       </div>
       <div className="villa-info">
         <h3>{villa.name[lang]}</h3>
@@ -164,16 +151,20 @@ export default function Villas() {
         </div>
 
         {featured.map((villa) => (
-          // Fade rather than slide: the image's clip-path wipe is the entrance
-          // here, and a moving container would compete with it.
+          // The whole card wipes in as one piece — clipping only the image left
+          // the empty card frame and its tag sitting there first. The clip goes
+          // on an inner div, never on the observed element: a node clipped to
+          // inset(100%) reports intersectionRatio 0 and would never trigger.
           <Reveal key={villa.id} variant="fade" className="villa-featured-reveal">
-            <VillaCard
-              villa={villa}
-              lang={lang}
-              t={t}
-              onDetails={() => openVilla(villa)}
-              sizes="(max-width: 900px) 100vw, 50vw"
-            />
+            <div className="villa-featured-wipe">
+              <VillaCard
+                villa={villa}
+                lang={lang}
+                t={t}
+                onDetails={() => openVilla(villa)}
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+            </div>
           </Reveal>
         ))}
       </div>

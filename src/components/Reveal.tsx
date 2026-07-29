@@ -2,6 +2,13 @@
 
 import { useEffect, useRef, useState, type ElementType } from "react";
 
+/**
+ * No clip-path variant here on purpose: this component observes the same
+ * element it styles, and `clip-path: inset(100%)` makes an element report
+ * intersectionRatio 0 — the observer would never fire and the element would
+ * stay clipped forever. A wipe needs the clip on a child of the observed node
+ * (see .villa-featured-wipe).
+ */
 type RevealVariant = "up" | "fade" | "zoom" | "left" | "right";
 
 interface RevealProps {
