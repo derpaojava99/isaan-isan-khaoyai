@@ -842,6 +842,15 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
   display: block;
   min-height: 440px;
 }
+/* The image is lazy, so it can land after the wipe has already played. The card
+   inherits white from .villa-card, and the scrim over white renders as a grey
+   wash that reads as a broken card. Go dark instead: a late image then arrives
+   over a panel that looks deliberate and keeps the copy legible throughout.
+   Doubled class because the plain .villa-card background rule is defined below
+   this block and would otherwise win on source order. */
+.villa-card.villa-card--featured {
+  background: var(--dark-bg);
+}
 .villa-card--featured .villa-img-wrap {
   position: absolute;
   inset: 0;
