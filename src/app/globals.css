@@ -824,12 +824,18 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
    observer never fires and the card stays clipped out of existence. */
 .villa-featured-wipe {
   clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: clip-path 1.15s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: clip-path;
-  border-radius: 8px;
 }
 .villa-featured-reveal.is-visible .villa-featured-wipe {
   clip-path: inset(0 0 0 0);
+}
+/* Drop the clip once the wipe is done. Leaving it at inset(0) keeps clipping
+   the card to its resting box, which crops the hover lift and eats the shadow.
+   Matched to the 1.15s opacity transition that fires Reveal's is-settled. */
+.villa-featured-reveal.is-settled .villa-featured-wipe {
+  clip-path: none;
+  will-change: auto;
 }
 .villa-card--featured {
   position: relative;

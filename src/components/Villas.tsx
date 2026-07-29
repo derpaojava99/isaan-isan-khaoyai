@@ -162,7 +162,9 @@ export default function Villas() {
                 lang={lang}
                 t={t}
                 onDetails={() => openVilla(villa)}
-                sizes="(max-width: 900px) 100vw, 50vw"
+                // Full-bleed behind the whole card, so it fills the container
+                // (1280px cap less 24px gutters) rather than half of it.
+                sizes="(max-width: 1280px) 100vw, 1232px"
               />
             </div>
           </Reveal>
