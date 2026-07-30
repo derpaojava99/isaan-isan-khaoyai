@@ -151,10 +151,11 @@ export default function Villas() {
         </div>
 
         {featured.map((villa) => (
-          // The whole card wipes in as one piece — clipping only the image left
-          // the empty card frame and its tag sitting there first. The clip goes
-          // on an inner div, never on the observed element: a node clipped to
-          // inset(100%) reports intersectionRatio 0 and would never trigger.
+          // The whole card wipes in as one piece — revealing only the image left
+          // the empty card frame and its tag sitting there first. The wipe is a
+          // curtain overlay rather than a clip-path: clipping zeroes the reported
+          // intersection of every descendant too, which stalled StaggeredTags and
+          // the lazy image inside this card (see .villa-featured-wipe).
           <Reveal key={villa.id} variant="fade" className="villa-featured-reveal">
             <div className="villa-featured-wipe">
               <VillaCard

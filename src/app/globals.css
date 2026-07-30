@@ -840,23 +840,33 @@ html[data-lang="th"] .about-badge p { text-transform: none; letter-spacing: 0; }
    the image, borrowing the treatment already used by the facility cards so it
    reads as part of the same design language rather than a bolted-on block. */
 .villa-featured-reveal { display: block; margin-top: 30px; }
-/* The clip lives here, one level inside the observed .villa-featured-reveal.
-   Putting it on the observed node makes it report intersectionRatio 0, so the
-   observer never fires and the card stays clipped out of existence. */
-.villa-featured-wipe {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.15s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: clip-path;
+/* The wipe is a retracting curtain, not a clip on the card.
+   clip-path zeroes the reported intersection of everything beneath it, so while
+   the card was clipped its descendants were invisible to IntersectionObserver
+   too: StaggeredTags never reached its 0.3 threshold and the lazy <img> never
+   began loading. Chrome happens to recover once the clip opens, but that is not
+   guaranteed — on browsers that don't re-evaluate, the specs and the photo never
+   appeared at all. Covering the card with an opaque layer that scales away
+   reveals it identically while leaving every descendant unclipped. */
+.villa-featured-wipe { position: relative; }
+.villa-featured-wipe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: var(--surface-bg);
+  transform-origin: top;
+  transition: transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
-.villa-featured-reveal.is-visible .villa-featured-wipe {
-  clip-path: inset(0 0 0 0);
+.villa-featured-reveal.is-visible .villa-featured-wipe::after {
+  transform: scaleY(0);
 }
-/* Drop the clip once the wipe is done. Leaving it at inset(0) keeps clipping
-   the card to its resting box, which crops the hover lift and eats the shadow.
-   Matched to the 1.15s opacity transition that fires Reveal's is-settled. */
-.villa-featured-reveal.is-settled .villa-featured-wipe {
-  clip-path: none;
-  will-change: auto;
+/* Retire the curtain once it has retracted, so it stops holding a compositor
+   layer for the life of the page. */
+.villa-featured-reveal.is-settled .villa-featured-wipe::after {
+  display: none;
 }
 .villa-card--featured {
   position: relative;
@@ -1469,9 +1479,9 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
     transform: none !important;
     transition: none !important;
   }
-  /* JS also flips these on immediately, but reset them here too so the card
-     can't stay clipped out of view if the observer never runs. */
-  .villa-featured-wipe { clip-path: none !important; transition: none !important; }
+  /* JS also flips these on immediately, but drop the curtain here too so the
+     card can't stay covered if the observer never runs. */
+  .villa-featured-wipe::after { display: none !important; }
   .villa-featured-reveal .villa-card--featured .villa-img-wrap img {
     transform: none !important;
     transition: none !important;

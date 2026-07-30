@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState, type ElementType } from "react";
 
 /**
- * No clip-path variant here on purpose: this component observes the same
- * element it styles, and `clip-path: inset(100%)` makes an element report
- * intersectionRatio 0 — the observer would never fire and the element would
- * stay clipped forever. A wipe needs the clip on a child of the observed node
- * (see .villa-featured-wipe).
+ * No clip-path variant here on purpose. `clip-path: inset(100%)` makes an
+ * element report intersectionRatio 0 — and so does every descendant beneath it.
+ * Used here it would deadlock this component's own observer, and even on a
+ * child it silently stalls any nested IntersectionObserver or lazy <img> for as
+ * long as the clip is closed. Reveal a subtree with an opaque overlay that
+ * animates away instead (see .villa-featured-wipe).
  */
 type RevealVariant = "up" | "fade" | "zoom" | "left" | "right";
 
