@@ -8,8 +8,16 @@ import ScrollExpandLine from "./animation/ScrollExpandLine";
 import { Icon } from "./icons/Icons";
 
 const { lat, lng } = company.geo;
-const EMBED_SRC = `https://www.google.com/maps?q=${lat},${lng}&z=13&hl=en&output=embed`;
 const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+const PLACE_URL = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+
+/**
+ * `iwloc=` suppresses the embed's info window. Without it Google tries to
+ * resolve a place card for the raw coordinates and, when that lookup fails,
+ * renders a "Place info couldn't load" box over the map.
+ */
+const embedSrc = (hl: string) =>
+  `https://maps.google.com/maps?q=${lat},${lng}&z=15&hl=${hl}&t=&ie=UTF8&iwloc=&output=embed`;
 
 export default function MapSection() {
   const { lang, t } = useLanguage();
@@ -62,11 +70,27 @@ export default function MapSection() {
           <Reveal variant="right" delay={120} className="map-frame">
             <iframe
               title={`Map to ${company.name}`}
-              src={EMBED_SRC}
+              src={embedSrc(lang)}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
+            {/* Covers the embed on purpose: the map is a preview that opens the
+                real thing, which also stops the iframe swallowing page scroll
+                on touch. The pill stays visible rather than appearing on hover
+                so the target is obvious without a pointer. */}
+            <a
+              href={PLACE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="map-frame-link"
+              aria-label={m.openInMaps}
+            >
+              <span className="map-frame-cta">
+                <Icon name="pin" size={16} />
+                {m.openInMaps}
+              </span>
+            </a>
           </Reveal>
         </div>
       </div>

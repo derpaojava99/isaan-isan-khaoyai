@@ -74,6 +74,7 @@ export interface Dict {
     title: string;
     desc: string;
     getDirections: string;
+    openInMaps: string;
     addressLabel: string;
     hoursLabel: string;
     hoursValue: string;
@@ -223,6 +224,7 @@ export const translations: Record<Lang, Dict> = {
       title: "Nestled in the Heart of Khao Yai",
       desc: "Set amidst the verdant hillsides of Mu Si, Pak Chong — just moments from Khao Yai National Park, vineyards, and the region's finest attractions.",
       getDirections: "Get Directions",
+      openInMaps: "Open in Google Maps",
       addressLabel: "Our Address",
       hoursLabel: "Reception Hours",
       hoursValue: "Open 24 Hours, Daily",
@@ -378,6 +380,7 @@ export const translations: Record<Lang, Dict> = {
       title: "ซ่อนตัวอยู่ใจกลางเขาใหญ่",
       desc: "ตั้งอยู่ท่ามกลางเนินเขาเขียวขจีของตำบลหมูสี ปากช่อง ห่างเพียงไม่กี่นาทีจากอุทยานแห่งชาติเขาใหญ่ ไร่องุ่น และสถานที่ท่องเที่ยวชั้นนำของภูมิภาค",
       getDirections: "นำทาง",
+      openInMaps: "เปิดใน Google Maps",
       addressLabel: "ที่อยู่ของเรา",
       hoursLabel: "เวลาทำการต้อนรับ",
       hoursValue: "เปิดทุกวัน ตลอด 24 ชั่วโมง",

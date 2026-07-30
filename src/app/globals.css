@@ -1170,7 +1170,10 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  border: 4px solid var(--white);
+  /* A gold hairline instead of the old white mat, so this reads as the same
+     object as the .map-info panel beside it rather than a pasted-in widget. */
+  border: 1px solid rgba(201, 148, 46, 0.28);
+  background: var(--dark-bg);
   min-height: 480px;
 }
 .map-frame::after {
@@ -1178,6 +1181,7 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
   background: linear-gradient(120deg, rgba(180, 85, 45, 0.06), rgba(201, 148, 46, 0.05));
   mix-blend-mode: multiply;
@@ -1190,6 +1194,49 @@ html[data-lang="th"] .map-detail-label { text-transform: none; letter-spacing: 0
   display: block;
   filter: sepia(0.18) saturate(1.05) contrast(0.97) brightness(1.01);
 }
+.map-frame-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* Extra bottom padding clears Google's logo and attribution strip, which
+     their terms require to stay visible. */
+  padding: 26px 20px 56px;
+  text-decoration: none;
+  /* Just enough of a foot to keep the pill legible over any map tile. */
+  background: linear-gradient(0deg, rgba(20, 16, 12, 0.5) 0%, rgba(20, 16, 12, 0) 30%);
+  transition: background var(--transition-smooth);
+}
+.map-frame-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: rgba(20, 16, 12, 0.82);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  transition: all var(--transition-smooth);
+}
+html[data-lang="th"] .map-frame-cta { text-transform: none; letter-spacing: 0.5px; }
+.map-frame-link:hover {
+  background: linear-gradient(0deg, rgba(20, 16, 12, 0.62) 0%, rgba(20, 16, 12, 0.12) 60%);
+}
+.map-frame-link:hover .map-frame-cta,
+.map-frame-link:focus-visible .map-frame-cta {
+  background: var(--gold);
+  color: var(--dark-bg);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(20, 16, 12, 0.45);
+}
+.map-frame-link:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
 
 /* Modal / Lightbox */
 .modal-overlay {
