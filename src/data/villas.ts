@@ -135,14 +135,14 @@ export const villas: Villa[] = [
   },
 
   {
-    id: "deluxe-double",
-    image: "/picture/a1c1bff1db1336d255fda3f853484d8f.webp",
+    id: "deluxe-king",
+    image: "/picture/deluxe-king-khao-yai.webp",
     price: "1,980",
     category: "villas",
     tag: { en: "Mountain View", th: "วิวภูเขา" },
     name: {
-      en: "Deluxe Double",
-      th: "ดีลักซ์ ดับเบิล",
+      en: "Deluxe King",
+      th: "ดีลักซ์ คิง",
     },
     specs: [
       { icon: "area", en: "35 Sq.m.", th: "35 ตร.ม." },
@@ -158,8 +158,8 @@ export const villas: Villa[] = [
       th: "พื้นที่พักผ่อน 35 ตร.ม. พร้อมระเบียงส่วนตัว",
     },
     longDesc: {
-      en: "7 Deluxe Double bedrooms with a cozy living space of 35 sqm. Each comes with a private balcony, mountain view, mini fridge, bathrobes and a tea & coffee maker for an unhurried stay.",
-      th: "ห้องดีลักซ์ ดับเบิล 7 ห้อง พื้นที่พักผ่อนขนาด 35 ตร.ม. ทุกห้องมาพร้อมระเบียงส่วนตัว วิวทิวเขา ตู้เย็นเล็ก เสื้อคลุมอาบน้ำ และเครื่องชงชา/กาแฟ เพื่อการพักผ่อนอย่างไม่เร่งรีบ",
+      en: "7 Deluxe King bedrooms with a cozy living space of 35 sqm. Each comes with a private balcony, mountain view, mini fridge, bathrobes and a tea & coffee maker for an unhurried stay.",
+      th: "ห้องดีลักซ์ คิง 7 ห้อง พื้นที่พักผ่อนขนาด 35 ตร.ม. ทุกห้องมาพร้อมระเบียงส่วนตัว วิวทิวเขา ตู้เย็นเล็ก เสื้อคลุมอาบน้ำ และเครื่องชงชา/กาแฟ เพื่อการพักผ่อนอย่างไม่เร่งรีบ",
     },
     features: {
       en: [
