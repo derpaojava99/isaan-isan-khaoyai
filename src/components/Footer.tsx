@@ -77,6 +77,9 @@ export default function Footer() {
                 <span>
                   {company.phones.map((p, i) => (
                     <span key={p.tel}>
+                      {/* M / T tells guests which line is the mobile — the
+                          property lists them that way on its own contact sheet. */}
+                      <span className="phone-label">{p.label}</span>
                       <a href={`tel:${p.tel}`}>{p.display}</a>
                       {i < company.phones.length - 1 && <br />}
                     </span>

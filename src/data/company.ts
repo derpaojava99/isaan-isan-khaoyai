@@ -19,38 +19,40 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const company = {
-  name: "Isaan Isan Concept at Khaoyai",
-  legalName: "Isaan Isan Concept Resort",
+  name: "Isaan Isan Resort Khaoyai",
+  legalName: "Isaan Isan Resort Khaoyai",
   shortName: "ISAAN ISAN",
   subtitle: {
-    en: "CONCEPT RESORT • KHAO YAI",
-    th: "คอนเซปต์ รีสอร์ต • เขาใหญ่",
+    en: "RESORT • KHAO YAI",
+    th: "รีสอร์ท • เขาใหญ่",
   },
   // Address (NAP) — keep identical, char-for-char, everywhere it appears.
   address: {
-    street: "54 Moo 4, Mu Si",
-    district: "Pak Chong District",
+    street: "54, 55 Moo 17, Moo Si",
+    district: "Pak Chong",
     city: "Nakhon Ratchasima",
-    postalCode: "30130",
+    postalCode: "30450",
     country: "TH",
     countryName: "Thailand",
     full: {
-      en: "54 Moo 4, Mu Si, Pak Chong District, Nakhon Ratchasima 30130, Thailand",
-      th: "54 หมู่ 4 ตำบลหมูสี อำเภอปากช่อง จังหวัดนครราชสีมา 30130",
+      en: "54, 55 Moo 17, Moo Si, Pak Chong, Nakhon Ratchasima 30450",
+      th: "54, 55 หมู่ 17 ตำบลหมูสี อำเภอปากช่อง จังหวัดนครราชสีมา 30450",
     },
   },
-  // Actual Google Maps pin for "Recall Isaan Isan Concept at Khaoyai"
+  // Actual Google Maps pin for "Recall Isaan Isan Resort Khaoyai"
   // (resolved from https://maps.app.goo.gl/p5GheCEq27qz9MY89).
   geo: {
     lat: 14.5133391,
     lng: 101.3753775,
   },
-  // Display Thai-style, dial international (playbook §8).
+  // Display Thai-style, dial international (playbook §8). The mobile leads:
+  // it is the line guests actually reach, and phones[0] is what the floating
+  // call button, the menu page and the JSON-LD `telephone` all use.
   phones: [
-    { display: "+66 (0) 44 011 888", tel: "+6644011888" },
-    { display: "+66 (0) 81 234 5678", tel: "+66812345678" },
+    { label: "M", display: "+66 (0) 95 554 4246", tel: "+66955544246" },
+    { label: "T", display: "+66 (44) 011 888", tel: "+6644011888" },
   ],
-  email: "rsvn@isaanisan-khaoyai.com",
+  email: "info@isaan-isan.com",
   // LINE OA matters more than email in Thailand (playbook §8).
   social: {
     facebook: "https://www.facebook.com/",

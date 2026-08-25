@@ -7,8 +7,8 @@ import SplitHeading from "./animation/SplitHeading";
 import ScrollZoomImage from "./animation/ScrollZoomImage";
 import { Icon, StarIcon, type IconName } from "./icons/Icons";
 
-// Matches the order of t.about.features: pool, gastronomy, wellness, butler.
-const FEATURE_ICONS: IconName[] = ["pool", "dining", "wellness", "concierge"];
+// Matches the order of t.about.features: pool villas, gastronomy, spa, cinema.
+const FEATURE_ICONS: IconName[] = ["pool", "dining", "wellness", "cinema"];
 
 export default function About() {
   const { t } = useLanguage();

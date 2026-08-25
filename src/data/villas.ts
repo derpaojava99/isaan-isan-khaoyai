@@ -33,14 +33,14 @@ export interface Villa {
  */
 export const villas: Villa[] = [
   {
-    id: "superior-double",
+    id: "superior-king",
     image: "/picture/pool-room-khao-yai.webp",
     price: "1,520",
     category: "villas",
     tag: { en: "Popular choice", th: "ยอดนิยม" },
     name: {
-      en: "Superior Double",
-      th: "ซูพีเรีย ดับเบิล",
+      en: "Superior King",
+      th: "ซูพีเรีย คิง",
     },
     specs: [
       { icon: "area", en: "32 Sq.m.", th: "32 ตร.ม." },
@@ -237,14 +237,14 @@ export const villas: Villa[] = [
   },
 
   {
-    id: "grand-deluxe-double",
+    id: "grand-deluxe-king",
     image: "/picture/12d7cee452f3dc22ded6747028ce8176.webp",
     price: "2,610",
     category: "villas",
     tag: { en: "With Bathtub", th: "มีอ่างอาบน้ำ" },
     name: {
-      en: "Grand Deluxe Double",
-      th: "แกรนด์ ดีลักซ์ ดับเบิล",
+      en: "Grand Deluxe King",
+      th: "แกรนด์ ดีลักซ์ คิง",
     },
     specs: [
       { icon: "area", en: "40 Sq.m.", th: "40 ตร.ม." },
@@ -260,8 +260,8 @@ export const villas: Villa[] = [
       th: "วิวตระการตาเหนือลำธารกลางขุนเขา",
     },
     longDesc: {
-      en: "5 Grand Deluxe Double bedrooms at 40 sqm. with a stunning view over the landscape and its natural mountain streams. Covered with comfort duvets, open-style bathrooms and a private balcony with a relaxation area for those special moments — plus access to the snack buffet from 2–4 pm.",
-      th: "ห้องแกรนด์ ดีลักซ์ ดับเบิล 5 ห้อง ขนาด 40 ตร.ม. พร้อมวิวตระการตาของภูมิทัศน์และลำธารธรรมชาติกลางขุนเขา ปูด้วยผ้านวมนุ่มสบาย ห้องน้ำแบบเปิดโล่ง และระเบียงส่วนตัวพร้อมมุมพักผ่อนสำหรับช่วงเวลาพิเศษ พร้อมสิทธิ์ใช้บริการสแน็คบุฟเฟต์ เวลา 14.00–16.00 น.",
+      en: "5 Grand Deluxe King bedrooms at 40 sqm. with a stunning view over the landscape and its natural mountain streams. Covered with comfort duvets, open-style bathrooms and a private balcony with a relaxation area for those special moments — plus access to the snack buffet from 2–4 pm.",
+      th: "ห้องแกรนด์ ดีลักซ์ คิง 5 ห้อง ขนาด 40 ตร.ม. พร้อมวิวตระการตาของภูมิทัศน์และลำธารธรรมชาติกลางขุนเขา ปูด้วยผ้านวมนุ่มสบาย ห้องน้ำแบบเปิดโล่ง และระเบียงส่วนตัวพร้อมมุมพักผ่อนสำหรับช่วงเวลาพิเศษ พร้อมสิทธิ์ใช้บริการสแน็คบุฟเฟต์ เวลา 14.00–16.00 น.",
     },
     features: {
       en: [
@@ -294,8 +294,8 @@ export const villas: Villa[] = [
     category: "villas",
     tag: { en: "With Benefits", th: "พร้อมสิทธิพิเศษ" },
     name: {
-      en: "Grand Deluxe Twin with Benefits",
-      th: "แกรนด์ ดีลักซ์ ทวิน พร้อมสิทธิพิเศษ",
+      en: "Grand Deluxe Twin",
+      th: "แกรนด์ ดีลักซ์ ทวิน",
     },
     specs: [
       { icon: "area", en: "40 Sq.m.", th: "40 ตร.ม." },

@@ -50,14 +50,14 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Isaan Isan Concept at Khaoyai | Luxury Boutique Pool Villa Resort",
-    template: "%s | Isaan Isan Concept at Khaoyai",
+    default: "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park",
+    template: "%s | Isaan Isan Resort Khaoyai",
   },
   description:
-    "Isaan Isan Concept at Khaoyai — contemporary Isan boutique luxury, private pool villas, and serene mountain views in Mu Si, Pak Chong, Khao Yai.",
+    "Your gateway to Khao Yai and to the soul of Isan. Just 300 metres from Khao Yai National Park — 9 private pool villas, authentic Isan dining, and a resort built from the kratip, the pha khao ma and the rooster.",
   keywords: [
     "Isaan Isan",
-    "Concept Resort Khao Yai",
+    "Isaan Isan Resort Khaoyai",
     "Khao Yai pool villa",
     "boutique resort Khao Yai",
     "Pak Chong resort",
@@ -74,9 +74,9 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: company.name,
-    title: "Isaan Isan Concept at Khaoyai | Luxury Boutique Pool Villa Resort",
+    title: "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park",
     description:
-      "Contemporary Isan boutique luxury, private pool villas, and serene Khao Yai mountain views in Pak Chong.",
+      "Experience Isan in the heart of Khao Yai — 9 private pool villas, authentic Isan gastronomy, and a resort that tells the Isan story in every detail.",
     locale: "en_US",
     alternateLocale: "th_TH",
     images: [
@@ -87,15 +87,15 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "Isaan Isan Concept at Khaoyai Resort",
+        alt: "Isaan Isan Resort Khaoyai Resort",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Isaan Isan Concept at Khaoyai | Luxury Boutique Pool Villa Resort",
+    title: "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park",
     description:
-      "Contemporary Isan boutique luxury, private pool villas, and serene Khao Yai mountain views.",
+      "Experience Isan in the heart of Khao Yai — 9 private pool villas and authentic Isan gastronomy, 300 metres from the national park.",
     images: ["/og-image.jpg"],
   },
   robots: {

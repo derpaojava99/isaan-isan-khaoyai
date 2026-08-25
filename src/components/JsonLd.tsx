@@ -14,7 +14,7 @@ export default function JsonLd() {
         "@id": `${SITE_URL}/#resort`,
         name: company.name,
         description:
-          "Contemporary Isan boutique pool-villa resort in Mu Si, Pak Chong — private pool villas, authentic Isan dining, and serene Khao Yai mountain views.",
+          "Boutique Isan pool-villa resort 300 metres from Khao Yai National Park in Moo Si, Pak Chong — 9 private pool villas, authentic Isan dining, and Isan cultural heritage in every detail.",
         url: SITE_URL,
         telephone: company.phones[0].tel,
         email: company.email,

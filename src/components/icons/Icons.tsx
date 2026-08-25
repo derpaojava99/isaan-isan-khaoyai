@@ -370,6 +370,46 @@ export function StarIcon({ className, size = 22 }: IconProps) {
 }
 
 /* Registry so data files can name an icon instead of embedding a glyph. */
+/** Open-air cinema — projector throwing a beam at a screen. */
+export function CinemaIcon({ className, size = 16 }: IconProps) {
+  return (
+    <svg {...stroke(size)} className={className}>
+      <rect x="2.2" y="4" width="12" height="8.4" rx="1.6" />
+      <circle cx="6.2" cy="8.2" r="1.9" />
+      <circle cx="11" cy="8.2" r="1.3" />
+      <path d="M2.2 15.4h12" />
+      <path d="M16.6 9.6 21.8 6v10.2l-5.2-3.4" />
+      <path d="M5 15.4V20M11.4 15.4V20" />
+    </svg>
+  );
+}
+
+/** Night market — a market stall under an awning. */
+export function MarketIcon({ className, size = 16 }: IconProps) {
+  return (
+    <svg {...stroke(size)} className={className}>
+      <path d="M3 9.2 4.6 4.6h14.8L21 9.2" />
+      <path d="M3 9.2c0 1.5 1 2.5 2.3 2.5S7.5 10.7 7.5 9.2c0 1.5 1 2.5 2.3 2.5s2.2-1 2.2-2.5c0 1.5 1 2.5 2.3 2.5s2.2-1 2.2-2.5c0 1.5 1 2.5 2.3 2.5S21 10.7 21 9.2" />
+      <path d="M4.9 12.1V19a.9.9 0 0 0 .9.9h12.4a.9.9 0 0 0 .9-.9v-6.9" />
+      <path d="M9.4 19.9v-4.3h5.2v4.3" />
+    </svg>
+  );
+}
+
+/** Complimentary bicycles. */
+export function BicycleIcon({ className, size = 16 }: IconProps) {
+  return (
+    <svg {...stroke(size)} className={className}>
+      <circle cx="5.6" cy="16.4" r="3.7" />
+      <circle cx="18.4" cy="16.4" r="3.7" />
+      <path d="m5.6 16.4 4-8h5.2" />
+      <path d="m9.6 8.4 5.4 8h3.4" />
+      <path d="M8.2 8.4h3.2" />
+      <path d="M14.6 8.4 16 5.4h2" />
+    </svg>
+  );
+}
+
 export const iconMap = {
   area: AreaIcon,
   pool: WavesIcon,
@@ -389,6 +429,9 @@ export const iconMap = {
   clock: ClockIcon,
   key: KeyIcon,
   pin: PinIcon,
+  cinema: CinemaIcon,
+  market: MarketIcon,
+  bicycle: BicycleIcon,
 } as const;
 
 export type IconName = keyof typeof iconMap;

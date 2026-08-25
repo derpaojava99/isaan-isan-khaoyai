@@ -6,13 +6,22 @@ import { useLanguage } from "@/lib/language-context";
 import Reveal from "./Reveal";
 import SplitHeading from "./animation/SplitHeading";
 import ScrollExpandLine from "./animation/ScrollExpandLine";
-import { Icon } from "./icons/Icons";
+import { Icon, type IconName } from "./icons/Icons";
 
-const FACILITY_IMAGES = [
-  "/picture/isaan-food-khao-yai.webp",
-  "/picture/khao-yai-massage.webp",
-  "/picture/bd147f63208d59f5d1d12bfff7c2c5aa.webp",
-];
+/**
+ * Keyed by the item's icon, not by array position. The previous positional
+ * array silently handed an empty `src` to <Image> the moment the item list
+ * grew past three, so reordering or adding a card can no longer break it.
+ */
+const FACILITY_IMAGES: Partial<Record<IconName, string>> = {
+  dining: "/picture/isaan-food-khao-yai.webp",
+  cinema: "/picture/b43b5b240b289a880775928f1cb476ec.webp",
+  market: "/picture/39ac354a7b6fae5b3d653ac18c702493.webp",
+  pool: "/picture/bd147f63208d59f5d1d12bfff7c2c5aa.webp",
+  spa: "/picture/khao-yai-massage.webp",
+  bicycle: "/picture/7d949d98ff458c254bdc75eb417af592.webp",
+};
+const FACILITY_IMAGE_FALLBACK = "/picture/khao-yai-resort-concept.webp";
 
 export default function Facilities() {
   const { t } = useLanguage();
@@ -47,7 +56,7 @@ export default function Facilities() {
               href={item.href}
             >
               <Image
-                src={FACILITY_IMAGES[i]}
+                src={FACILITY_IMAGES[item.icon] ?? FACILITY_IMAGE_FALLBACK}
                 alt={item.title}
                 fill
                 className="facility-img"
