@@ -200,18 +200,6 @@ export const translations: Record<Lang, Dict> = {
       elementsTitle: "Every element of the resort tells the Isan story",
       elements: [
         {
-          title: "A lobby shaped like a kratip",
-          desc: "Our signature architecture draws on the kratip, the woven vessel found in every Isan kitchen, together with the region's bamboo-weaving craft. It's a symbol of welcome, warmth, and sharing.",
-        },
-        {
-          title: "Pha khao ma weaves",
-          desc: "The everyday cloth of Isan life. Its patterns and vivid colors run throughout the resort, from bed runners to décor, so you feel the vibrancy of the region all around you.",
-        },
-        {
-          title: "The rooster, our emblem",
-          desc: "The rooster is the companion of every Isan household. That's why it stands at the heart of our brand.",
-        },
-        {
           title: "Terracotta tones and local weaving patterns",
           desc: "Warm terracotta hues and woven motifs inspired by traditional Isan weaving, reflecting wisdom passed down through generations.",
         },
@@ -422,18 +410,6 @@ export const translations: Record<Lang, Dict> = {
       ],
       elementsTitle: "ทุกองค์ประกอบของรีสอร์ทถูกออกแบบเพื่อเล่าเรื่องอีสาน",
       elements: [
-        {
-          title: "ล็อบบี้ทรงกระติบข้าวเหนียว",
-          desc: "สถาปัตยกรรมของเราได้แรงบันดาลใจจากกระติบข้าว ภาชนะที่อยู่คู่ครัวอีสานทุกบ้าน ผสานกับภูมิปัญญาการจักสานไม้ไผ่ สื่อถึงการต้อนรับ ความอบอุ่น และการแบ่งปัน",
-        },
-        {
-          title: "ลายผ้าขาวม้า",
-          desc: "ผ้าประจำถิ่นที่คนอีสานใช้ในชีวิตประจำวัน เรานำลวดลายและสีสันสดใสมาตกแต่งทั่วรีสอร์ท ตั้งแต่ผ้าคลุมเตียงไปจนถึงของตกแต่ง เพื่อให้คุณสัมผัสถึงความมีชีวิตชีวาของภาคอีสาน",
-        },
-        {
-          title: "ไก่ สัญลักษณ์ประจำแบรนด์",
-          desc: "ไก่คือสัตว์คู่บ้านคู่เรือนของชาวอีสาน เราจึงนำไก่มาเป็นสัญลักษณ์ของรีสอร์ท",
-        },
         {
           title: "สีดินเผาและลายทอพื้นถิ่น",
           desc: "โทนสีเทอราคอตต้าอบอุ่นและลายทอที่ได้แรงบันดาลใจจากเทคนิคการทอผ้าอีสาน สะท้อนภูมิปัญญาที่ส่งต่อกันมาหลายชั่วอายุคน",

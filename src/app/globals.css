@@ -914,9 +914,8 @@ html[data-lang="th"] .story-element h4 {
 }
 html[data-lang="th"] .story-closing p { font-style: normal; font-size: 1.2rem; }
 
-@media (max-width: 1024px) {
-  .story-elements { grid-template-columns: repeat(2, 1fr); }
-}
+/* Three short items stay three across down to mobile — dropping to two here
+   would strand the third on a row of its own. */
 @media (max-width: 768px) {
   .story-section { padding: 70px 0; }
   .story-elements { grid-template-columns: 1fr; gap: 24px; }
