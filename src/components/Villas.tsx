@@ -136,6 +136,19 @@ export default function Villas() {
           </Reveal>
         </div>
 
+        {/* Inventory lives here, not on the cards: three of the four types are
+            split into King and Twin variants below, so a per-card count would
+            read as twice the real number of rooms. */}
+        <Reveal variant="fade" delay={60} className="room-types">
+          {t.villas.roomTypes.map((rt) => (
+            <span className="room-type" key={rt.name}>
+              <span className="room-type-name">{rt.name}</span>
+              <span className="room-type-count">{rt.count}</span>
+            </span>
+          ))}
+          <span className="room-type room-type--total">{t.villas.roomTypesTotal}</span>
+        </Reveal>
+
         <div className="villas-grid">
           {gridVillas.map((villa, i) => (
             <Reveal key={villa.id} variant="up" delay={(i % 3) * 170} className="villa-card-reveal">

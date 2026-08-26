@@ -65,7 +65,21 @@ export interface Dict {
     elements: { title: string; desc: string }[];
     closing: string;
   };
-  villas: { tagline: string; title: string; desc: string; viewDetails: string; startingFrom: string; perNight: string; amenities: string; bookThis: string };
+  villas: {
+    tagline: string;
+    title: string;
+    desc: string;
+    /** Counts are per room TYPE, so they live here rather than on the cards —
+        the grid splits three of the types into King and Twin variants, and a
+        per-card count would read as double the real inventory. */
+    roomTypes: { name: string; count: string }[];
+    roomTypesTotal: string;
+    viewDetails: string;
+    startingFrom: string;
+    perNight: string;
+    amenities: string;
+    bookThis: string;
+  };
   facilities: {
     tagline: string;
     title: string;
@@ -107,7 +121,7 @@ export const translations: Record<Lang, Dict> = {
     nav: {
       home: "Home",
       about: "About Resort",
-      villas: "Villas & Suites",
+      villas: "Rooms & Suites",
       facilities: "Facilities & Dining",
       gallery: "Gallery",
       contact: "Contact Us",
@@ -120,16 +134,16 @@ export const translations: Record<Lang, Dict> = {
           image: "/picture/51205307327_1cc96cb36e_h.jpg",
           subtitle: "Your Gateway to Khao Yai",
           title: "Experience the Heart of Isan in the Heart of Khao Yai",
-          desc: "Just 300 metres from Khao Yai National Park, this is where your journey begins — and where Isan culture lives in every detail, from your first step into the lobby to your last night in a private pool villa.",
-          cta: "Explore Villas",
+          desc: "Just 300 metres from Khao Yai National Park, this is where your journey begins — and where Isan culture lives in every detail, from your first step into the lobby to your restful nights in a private room.",
+          cta: "Explore Rooms",
           ctaHref: "#villas",
           ctaStyle: "primary",
         },
         {
           image: "/picture/khao-yai-resort-big.webp",
           subtitle: "Your Access to Isan Culture",
-          title: "Private Pool Villas & Suites",
-          desc: "Immerse yourself in refined luxury amid Khao Yai's green hillsides — in just 9 private pool villas, in architecture woven from authentic Isan bamboo craft and local wisdom.",
+          title: "Four Room Types, 82 Rooms",
+          desc: "Choose your way to unwind across 4 room types and 82 rooms — from warm garden-view rooms to Pool Houses with private pools, each designed with natural textures and authentic Isan craft.",
           cta: "Reserve Your Stay",
           ctaHref: "#booking",
           ctaStyle: "gold",
@@ -172,7 +186,7 @@ export const translations: Record<Lang, Dict> = {
       text: "Set amid the green hillsides of Khao Yai, just 300 metres from the entrance to Khao Yai National Park — a UNESCO World Heritage Site — Isaan Isan Resort Khaoyai is where your access to both the nature of Khao Yai and the rich cultural heritage of Isan begins. Every moment of your stay is designed to be an authentic Isan experience — right in the heart of Khao Yai.",
       badgeLabel: "Boutique Resort of Khao Yai",
       features: [
-        "9 Private Pool Villas",
+        "82 Rooms · 4 Room Types",
         "Authentic Isan Gastronomy",
         "Thai Spa & Traditional Massage",
         "Open-Air Cinema & Isan Night Market",
@@ -217,13 +231,20 @@ export const translations: Record<Lang, Dict> = {
     },
     villas: {
       tagline: "Accommodations",
-      title: "Villas & Suites",
-      desc: "Each villa is crafted to provide absolute privacy, generous living space, and stunning views of the surrounding Khao Yai mountain ranges.",
+      title: "Four Room Types, 82 Rooms",
+      desc: "Choose from 4 room types across 82 rooms. Every room is designed with natural textures, Isan weaves, and a private balcony to bring you closer to the nature of Khao Yai.",
+      roomTypes: [
+        { name: "Superior", count: "50 rooms" },
+        { name: "Deluxe", count: "14 rooms" },
+        { name: "Grand Deluxe", count: "9 rooms" },
+        { name: "Pool House", count: "9 villas" },
+      ],
+      roomTypesTotal: "82 rooms in total",
       viewDetails: "View Details",
       startingFrom: "Starting From",
       perNight: "/ night",
-      amenities: "Villa Amenities & Features:",
-      bookThis: "Book This Villa",
+      amenities: "Room Amenities & Features:",
+      bookThis: "Book This Room",
     },
     facilities: {
       tagline: "Experiences at Isaan Isan",
@@ -234,14 +255,14 @@ export const translations: Record<Lang, Dict> = {
           badge: "Taste of Isan",
           icon: "dining",
           title: "Isaan Isan Restaurant",
-          desc: "Authentic Isan cuisine from local ingredients, prepared with traditional recipes and spices.",
+          desc: "Authentic Isan cuisine from local ingredients, prepared with traditional recipes and spices. 84 seats, indoor and outdoor.",
           link: "Explore Menu →",
           href: "/menu",
         },
         {
           icon: "cinema",
           title: "Open-Air Cinema",
-          desc: "Starlit movie nights in the resort gardens, an atmosphere you won't find in the city.",
+          desc: "Starlit movie nights on a canvas screen in the resort grounds, a nostalgic atmosphere you won't find in the city.",
           link: "View Atmosphere →",
         },
         {
@@ -252,9 +273,9 @@ export const translations: Record<Lang, Dict> = {
         },
         {
           icon: "pool",
-          title: "Outdoor Pool & Pool Villas",
-          desc: "An outdoor swimming pool for everyone, plus 9 private pool villas with a pool of their own.",
-          link: "Explore Villas →",
+          title: "Outdoor Swimming Pool",
+          desc: "An outdoor pool with a kids' pool alongside it, framed by Khao Yai mountain views.",
+          link: "View Atmosphere →",
         },
         {
           icon: "spa",
@@ -263,10 +284,11 @@ export const translations: Record<Lang, Dict> = {
           link: "Discover Treatments →",
         },
         {
-          icon: "bicycle",
-          title: "Complimentary Bicycles",
-          desc: "Free to borrow, for exploring Khao Yai's nature routes right from the resort gate.",
-          link: "View Atmosphere →",
+          icon: "concierge",
+          title: "More Services",
+          desc: "Concierge, tour desk, laundry, meeting room, EV charging, and complimentary Wi-Fi throughout.",
+          link: "Contact Us →",
+          href: "#location",
         },
       ],
     },
@@ -276,7 +298,7 @@ export const translations: Record<Lang, Dict> = {
       desc: "Glimpse into the serene beauty, handcrafted architectural details, and natural splendor of Isaan Isan Resort Khaoyai.",
       filters: [
         { key: "all", label: "All Photos" },
-        { key: "villas", label: "Villas & Rooms" },
+        { key: "villas", label: "Rooms & Villas" },
         { key: "dining", label: "Dining & Food" },
         { key: "atmosphere", label: "Nature & Atmosphere" },
       ],
@@ -304,7 +326,7 @@ export const translations: Record<Lang, Dict> = {
       links: {
         home: "Home",
         about: "About Resort",
-        villas: "Villas & Suites",
+        villas: "Rooms & Suites",
         facilities: "Facilities & Dining",
         gallery: "Photo Gallery",
         offers: "Special Offers",
@@ -318,7 +340,7 @@ export const translations: Record<Lang, Dict> = {
     nav: {
       home: "หน้าแรก",
       about: "เกี่ยวกับรีสอร์ต",
-      villas: "วิลล่าและสวีท",
+      villas: "ห้องพัก",
       facilities: "สิ่งอำนวยความสะดวกและร้านอาหาร",
       gallery: "แกลเลอรี",
       contact: "ติดต่อเรา",
@@ -331,16 +353,16 @@ export const translations: Record<Lang, Dict> = {
           image: "/picture/51205307327_1cc96cb36e_h.jpg",
           subtitle: "ประตูสู่เขาใหญ่",
           title: "สัมผัสหัวใจอีสาน ณ ใจกลางเขาใหญ่",
-          desc: "ห่างจากอุทยานแห่งชาติเขาใหญ่เพียง 300 เมตร จุดเริ่มต้นของการเดินทางที่ซึ่งวัฒนธรรมอีสานมีชีวิตอยู่ในทุกรายละเอียด — ตั้งแต่ก้าวแรกที่ล็อบบี้ ไปจนถึงคืนสุดท้ายในพูลวิลล่าส่วนตัว",
-          cta: "สำรวจวิลล่า",
+          desc: "ห่างจากอุทยานแห่งชาติเขาใหญ่เพียง 300 เมตร จุดเริ่มต้นของการเดินทางที่ซึ่งวัฒนธรรมอีสานมีชีวิตอยู่ในทุกรายละเอียด — ตั้งแต่ก้าวแรกที่ล็อบบี้ ไปจนถึงคืนพักผ่อนในห้องพักส่วนตัว",
+          cta: "สำรวจห้องพัก",
           ctaHref: "#villas",
           ctaStyle: "primary",
         },
         {
           image: "/picture/khao-yai-resort-big.webp",
           subtitle: "ประตูสู่วัฒนธรรมอีสาน",
-          title: "พูลวิลล่าและสวีทส่วนตัว",
-          desc: "ดื่มด่ำความหรูหราท่ามกลางขุนเขาเขียวขจี ในพูลวิลล่าส่วนตัวเพียง 9 หลัง พร้อมสระว่ายน้ำส่วนตัว งานสถาปัตยกรรมถักทอจากภูมิปัญญาจักสานไม้ไผ่และหัตถศิลป์อีสานแท้",
+          title: "ห้องพัก 4 ประเภท รวม 82 ห้อง",
+          desc: "เลือกการพักผ่อนในแบบของคุณ จากห้องพัก 4 ประเภท 82 ห้อง — ตั้งแต่ห้องวิวสวนอบอุ่น ไปจนถึงพูลเฮาส์พร้อมสระว่ายน้ำส่วนตัว ทุกห้องออกแบบด้วยพื้นผิวธรรมชาติและงานหัตถศิลป์อีสานแท้",
           cta: "จองที่พักของคุณ",
           ctaHref: "#booking",
           ctaStyle: "gold",
@@ -383,7 +405,7 @@ export const translations: Record<Lang, Dict> = {
       text: "Isaan Isan Resort Khaoyai ตั้งอยู่ท่ามกลางขุนเขาเขียวขจีของเขาใหญ่ ห่างจากทางเข้าอุทยานแห่งชาติเขาใหญ่ มรดกโลกโดยยูเนสโก เพียง 300 เมตร เป็นจุดเริ่มต้นที่พาคุณเข้าถึงทั้งธรรมชาติของเขาใหญ่ และมรดกวัฒนธรรมอีสานอันงดงามในเวลาเดียวกัน เราตั้งใจให้ทุกช่วงเวลาที่คุณพักที่นี่ คือการได้สัมผัสประสบการณ์อีสานแท้ — ณ ใจกลางเขาใหญ่",
       badgeLabel: "บูทีครีสอร์ตแห่งเขาใหญ่",
       features: [
-        "พูลวิลล่าส่วนตัว 9 หลัง",
+        "ห้องพัก 82 ห้อง 4 ประเภท",
         "อาหารอีสานต้นตำรับ",
         "สปาและนวดแผนไทย",
         "หนังกลางแปลง & ตลาดนัดอีสาน",
@@ -428,13 +450,20 @@ export const translations: Record<Lang, Dict> = {
     },
     villas: {
       tagline: "ห้องพัก",
-      title: "วิลล่าและสวีท",
-      desc: "ทุกวิลล่ารังสรรค์ขึ้นเพื่อมอบความเป็นส่วนตัวอย่างสมบูรณ์ พื้นที่ใช้สอยกว้างขวาง และวิวทิวเขาเขาใหญ่อันงดงาม",
+      title: "ห้องพัก 4 ประเภท รวม 82 ห้อง",
+      desc: "เรามีห้องพักให้เลือก 4 ประเภท รวม 82 ห้อง ทุกห้องออกแบบด้วยพื้นผิวธรรมชาติ ลายผ้าอีสาน และระเบียงส่วนตัว เพื่อให้คุณใกล้ชิดธรรมชาติเขาใหญ่มากที่สุด",
+      roomTypes: [
+        { name: "ซูพีเรีย", count: "50 ห้อง" },
+        { name: "ดีลักซ์", count: "14 ห้อง" },
+        { name: "แกรนด์ดีลักซ์", count: "9 ห้อง" },
+        { name: "พูลเฮาส์", count: "9 หลัง" },
+      ],
+      roomTypesTotal: "รวมทั้งหมด 82 ห้อง",
       viewDetails: "ดูรายละเอียด",
       startingFrom: "เริ่มต้น",
       perNight: "/ คืน",
-      amenities: "สิ่งอำนวยความสะดวกในวิลล่า:",
-      bookThis: "จองวิลล่านี้",
+      amenities: "สิ่งอำนวยความสะดวกในห้องพัก:",
+      bookThis: "จองห้องนี้",
     },
     facilities: {
       tagline: "ประสบการณ์ ณ Isaan Isan",
@@ -445,7 +474,7 @@ export const translations: Record<Lang, Dict> = {
           badge: "รสชาติแห่งอีสาน",
           icon: "dining",
           title: "ห้องอาหาร Isaan Isan",
-          desc: "อาหารอีสานต้นตำรับจากวัตถุดิบท้องถิ่น ปรุงด้วยสูตรและเครื่องปรุงแบบอีสานแท้",
+          desc: "อาหารอีสานต้นตำรับจากวัตถุดิบท้องถิ่น ปรุงด้วยสูตรและเครื่องปรุงแบบอีสานแท้ 84 ที่นั่ง ทั้งในอาคารและกลางแจ้ง",
           link: "ดูเมนู →",
           href: "/menu",
         },
@@ -463,9 +492,9 @@ export const translations: Record<Lang, Dict> = {
         },
         {
           icon: "pool",
-          title: "สระว่ายน้ำกลางแจ้ง และพูลวิลล่า",
-          desc: "สระว่ายน้ำกลางแจ้งสำหรับทุกท่าน พร้อมพูลวิลล่าส่วนตัว 9 หลังที่มีสระเป็นของตัวเอง",
-          link: "สำรวจวิลล่า →",
+          title: "สระว่ายน้ำกลางแจ้ง",
+          desc: "สระว่ายน้ำกลางแจ้งพร้อมสระเด็ก ท่ามกลางวิวขุนเขาเขาใหญ่",
+          link: "ชมบรรยากาศ →",
         },
         {
           icon: "spa",
@@ -474,10 +503,11 @@ export const translations: Record<Lang, Dict> = {
           link: "ดูทรีตเมนต์ →",
         },
         {
-          icon: "bicycle",
-          title: "จักรยานฟรี",
-          desc: "ยืมได้ฟรี สำหรับปั่นชมเส้นทางธรรมชาติรอบเขาใหญ่ ออกจากประตูรีสอร์ทได้เลย",
-          link: "ชมบรรยากาศ →",
+          icon: "concierge",
+          title: "บริการอื่นๆ",
+          desc: "คอนเซียร์จ จัดทัวร์ท่องเที่ยว ซักรีด ห้องประชุม สถานีชาร์จรถไฟฟ้า (EV) และ Wi-Fi ฟรีทั่วโรงแรม",
+          link: "ติดต่อเรา →",
+          href: "#location",
         },
       ],
     },
@@ -487,7 +517,7 @@ export const translations: Record<Lang, Dict> = {
       desc: "สัมผัสความงามอันเงียบสงบ รายละเอียดสถาปัตยกรรมทำมือ และความงดงามของธรรมชาติแห่ง Isaan Isan Resort Khaoyai",
       filters: [
         { key: "all", label: "ภาพทั้งหมด" },
-        { key: "villas", label: "วิลล่าและห้องพัก" },
+        { key: "villas", label: "ห้องพักและวิลลา" },
         { key: "dining", label: "อาหารและเครื่องดื่ม" },
         { key: "atmosphere", label: "ธรรมชาติและบรรยากาศ" },
       ],
@@ -515,7 +545,7 @@ export const translations: Record<Lang, Dict> = {
       links: {
         home: "หน้าแรก",
         about: "เกี่ยวกับรีสอร์ต",
-        villas: "วิลล่าและสวีท",
+        villas: "ห้องพัก",
         facilities: "สิ่งอำนวยความสะดวกและร้านอาหาร",
         gallery: "แกลเลอรีภาพ",
         offers: "โปรโมชันพิเศษ",

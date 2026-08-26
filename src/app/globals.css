@@ -927,6 +927,49 @@ html[data-lang="th"] .story-closing p { font-style: normal; font-size: 1.2rem; }
 }
 
 .villas-section { padding: 100px 0; background-color: var(--surface-bg); }
+/* Room-type inventory strip. Sits above the grid because the counts describe
+   types, while the grid below splits most types into King and Twin cards. */
+.room-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 12px;
+  margin-bottom: 44px;
+}
+.room-type {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+}
+.room-type-name { font-size: 0.9rem; font-weight: 500; color: var(--secondary-color); }
+.room-type-count {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--main-color);
+  font-variant-numeric: tabular-nums;
+}
+.room-type--total {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+@media (max-width: 768px) {
+  .room-types { gap: 8px; margin-bottom: 32px; }
+  .room-type { padding: 7px 14px; }
+  .room-type-name { font-size: 0.82rem; }
+  .room-type-count { font-size: 0.92rem; }
+}
+
 .villas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .villa-card-reveal { display: flex; }
 .villa-card-reveal > .villa-card { width: 100%; }
