@@ -196,19 +196,19 @@ export const translations: Record<Lang, Dict> = {
       tagline: "Our Design Story",
       title: "The Story of the Kratip, the Pha Khao Ma, and the Isan Rooster",
       intro:
-        "Every design choice at Isaan Isan Resort Khaoyai carries a story. We don't simply decorate with Isan culture — we let it live in every space.",
+        "We don't decorate with Isan culture. We let it live in every space.",
       blocks: [
         {
           title: "The Kratip",
-          text: "The sticky-rice basket is the heart of the Isan kitchen — a vessel that holds a family's warmth and the spirit of sharing. We shaped our lobby after it, so the very first building you encounter speaks of true Isan welcome.",
+          text: "The sticky-rice basket at the heart of every Isan kitchen, holding a family's warmth and the spirit of sharing. We shaped our lobby after it.",
         },
         {
           title: "The Pha Khao Ma",
-          text: "The all-purpose cloth that accompanies Isan people through every stage of life — worn, wrapped, tied, or laid down to sit on. Its patterns, colors, and textures appear throughout the resort, connecting you to the real way of life here.",
+          text: "The all-purpose cloth of Isan life — worn, wrapped, tied, or laid down to sit on. Its patterns and colors run throughout the resort.",
         },
         {
           title: "The Rooster",
-          text: "The emblem in our logo, and an animal woven deeply into the Isan way of life. For generations, nearly every Isan household kept chickens — easy to raise, and a source of eggs, meat, affordable protein, and extra income for the family. The rooster's morning crow signals a new day and the diligence of Isan people. The chicken also gives rise to the region's most beloved dishes — kai yang, grilled chicken eaten with sticky rice and som tam — while the tradition of raising fighting cocks is a craft passed down through generations. For us, the rooster stands for warmth, abundance, and the very heart of the Isan home.",
+          text: "The emblem in our logo. Nearly every Isan household kept chickens — the morning crow, kai yang with sticky rice, the old craft of fighting cocks. For us: warmth and abundance.",
         },
       ],
       elementsTitle: "Every element of the resort tells the Isan story",
@@ -415,19 +415,19 @@ export const translations: Record<Lang, Dict> = {
       tagline: "ที่มาของการออกแบบ",
       title: "เรื่องเล่าจากกระติบข้าว ผ้าขาวม้า และไก่แห่งอีสาน",
       intro:
-        "ทุกดีไซน์ที่ Isaan Isan Resort Khaoyai มีเรื่องราวเบื้องหลัง เราไม่ได้แค่นำวัฒนธรรมอีสานมา “ตกแต่ง” แต่ตั้งใจให้มัน “มีชีวิต” อยู่ในทุกพื้นที่",
+        "เราไม่ได้นำวัฒนธรรมอีสานมา “ตกแต่ง” แต่ตั้งใจให้มัน “มีชีวิต” อยู่ในทุกพื้นที่",
       blocks: [
         {
           title: "กระติบข้าวเหนียว",
-          text: "คือหัวใจของครัวอีสาน เป็นภาชนะที่เก็บความอบอุ่นและการแบ่งปันของครอบครัว เราจึงเลือกทรงกระติบมาเป็นรูปทรงของล็อบบี้ เพื่อให้อาคารหลังแรกที่คุณพบ บอกเล่าถึงการต้อนรับแบบอีสานอย่างแท้จริง",
+          text: "ภาชนะคู่ครัวอีสานทุกบ้าน ที่เก็บความอบอุ่นและการแบ่งปันของครอบครัว เราจึงให้ล็อบบี้เป็นทรงกระติบ",
         },
         {
           title: "ผ้าขาวม้า",
-          text: "คือผ้าสารพัดประโยชน์ที่อยู่กับคนอีสานทุกช่วงชีวิต ทั้งใช้นุ่ง คาดเอว โพกหัว หรือปูรองนั่ง เรานำลาย สี และเนื้อผ้ามาไว้ในรายละเอียดของรีสอร์ท เพื่อเชื่อมโยงคุณกับวิถีชีวิตจริงของผู้คนที่นี่",
+          text: "ผ้าสารพัดประโยชน์ที่อยู่กับคนอีสานทุกช่วงชีวิต ทั้งนุ่ง คาดเอว โพกหัว หรือปูรองนั่ง ลายและสีของมันอยู่ทั่วรีสอร์ท",
         },
         {
           title: "ไก่",
-          text: "คือสัญลักษณ์ในโลโก้ของเรา และเป็นสัตว์ที่ผูกพันกับวิถีอีสานอย่างลึกซึ้ง ในอดีตแทบทุกบ้านอีสานเลี้ยงไก่ไว้ เพราะเลี้ยงง่าย ให้ทั้งไข่และเนื้อ เป็นแหล่งโปรตีนราคาย่อมเยาและรายได้เสริมของครอบครัว เสียงไก่ขันยามเช้าคือสัญญาณของวันใหม่และความขยันของคนอีสาน ไก่ยังเป็นที่มาของอาหารอีสานอันเลื่องชื่ออย่าง “ไก่ย่าง” ที่กินคู่กับข้าวเหนียวและส้มตำ อีกทั้ง “ไก่ชน” ยังเป็นภูมิปัญญาและวัฒนธรรมที่สืบทอดกันมารุ่นสู่รุ่น เราจึงเลือกไก่เป็นตัวแทนของความอบอุ่น ความอุดมสมบูรณ์ และหัวใจของบ้านอีสาน",
+          text: "สัญลักษณ์ในโลโก้ของเรา แทบทุกบ้านอีสานเลี้ยงไก่ — เสียงขันยามเช้า ไก่ย่างคู่ข้าวเหนียว และ “ไก่ชน” ที่สืบทอดรุ่นสู่รุ่น สำหรับเราคือความอบอุ่นและความอุดมสมบูรณ์",
         },
       ],
       elementsTitle: "ทุกองค์ประกอบของรีสอร์ทถูกออกแบบเพื่อเล่าเรื่องอีสาน",
