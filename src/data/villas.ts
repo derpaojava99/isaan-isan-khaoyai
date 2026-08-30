@@ -34,7 +34,7 @@ export interface Villa {
 export const villas: Villa[] = [
   {
     id: "superior-king",
-    image: "/picture/pool-room-khao-yai.webp",
+    image: "/picture/superior-king-khao-yai.webp",
     price: "1,520",
     category: "villas",
     tag: { en: "Popular choice", th: "ยอดนิยม" },
@@ -85,7 +85,7 @@ export const villas: Villa[] = [
 
   {
     id: "superior-twin",
-    image: "/picture/51201640283_5a8cb853b7_b.jpg",
+    image: "/picture/superior-twin-khao-yai.webp",
     price: "1,520",
     category: "villas",
     tag: { en: "Twin Beds", th: "เตียงคู่" },
@@ -136,7 +136,7 @@ export const villas: Villa[] = [
 
   {
     id: "deluxe-king",
-    image: "/picture/deluxe-king-khao-yai.webp",
+    image: "/picture/deluxe-king-balcony-khao-yai.webp",
     price: "1,980",
     category: "villas",
     tag: { en: "Mountain View", th: "วิวภูเขา" },
@@ -187,7 +187,7 @@ export const villas: Villa[] = [
 
   {
     id: "deluxe-twin",
-    image: "/picture/47f5a4274d2418658ad989f3c0bac61f.webp",
+    image: "/picture/deluxe-twin-khao-yai.webp",
     price: "1,980",
     category: "villas",
     tag: { en: "Garden View", th: "วิวสวน" },
@@ -238,7 +238,7 @@ export const villas: Villa[] = [
 
   {
     id: "grand-deluxe-king",
-    image: "/picture/12d7cee452f3dc22ded6747028ce8176.webp",
+    image: "/picture/grand-deluxe-king-khao-yai.webp",
     price: "2,610",
     category: "villas",
     tag: { en: "With Bathtub", th: "มีอ่างอาบน้ำ" },
@@ -289,7 +289,7 @@ export const villas: Villa[] = [
 
   {
     id: "grand-deluxe-twin",
-    image: "/picture/5ce352162720403755d52c3887b2f76b.webp",
+    image: "/picture/grand-deluxe-twin-khao-yai.webp",
     price: "2,610",
     category: "villas",
     tag: { en: "With Benefits", th: "พร้อมสิทธิพิเศษ" },
@@ -340,7 +340,7 @@ export const villas: Villa[] = [
 
   {
     id: "pool-house",
-    image: "/picture/04c5ca72ebcaccefe8be207df205c3a8.webp",
+    image: "/picture/pool-house-private-pool.webp",
     price: "3,870",
     category: "villas",
     featured: true,
