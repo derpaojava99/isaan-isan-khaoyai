@@ -282,6 +282,7 @@ export const translations: Record<Lang, Dict> = {
           title: "Thai Spa & Massage",
           desc: "Traditional Thai and foot massage to rejuvenate body and spirit after a day in the mountains.",
           link: "Discover Treatments →",
+          href: "/spa",
         },
         {
           icon: "concierge",
@@ -501,6 +502,7 @@ export const translations: Record<Lang, Dict> = {
           title: "สปาและนวดแผนไทย",
           desc: "นวดแผนไทยและนวดฝ่าเท้า ฟื้นฟูกายและใจหลังวันเดินทางท่ามกลางขุนเขา",
           link: "ดูทรีตเมนต์ →",
+          href: "/spa",
         },
         {
           icon: "concierge",

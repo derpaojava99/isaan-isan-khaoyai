@@ -32,7 +32,7 @@ const sarabun = Sarabun({
   variable: "--font-sarabun",
   display: "swap",
 });
-// Used only by the restaurant menu page.
+// Thai headings on the restaurant menu and spa pages.
 const prompt = Prompt({
   subsets: ["thai", "latin"],
   weight: ["400", "500", "600", "700"],
