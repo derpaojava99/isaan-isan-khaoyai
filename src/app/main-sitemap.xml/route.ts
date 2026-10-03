@@ -14,6 +14,7 @@ export function GET() {
   const urls = [
     { loc: `${SITE_URL}/`, changefreq: "weekly", priority: "1.0" },
     { loc: `${SITE_URL}/menu`, changefreq: "monthly", priority: "0.8" },
+    { loc: `${SITE_URL}/spa`, changefreq: "monthly", priority: "0.8" },
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

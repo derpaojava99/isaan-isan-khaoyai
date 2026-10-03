@@ -10,12 +10,13 @@
  * serves the site: crawlers (LINE especially) fetch og:image over the network
  * and silently show no preview if it 404s.
  *
- * Override per environment with NEXT_PUBLIC_SITE_URL, e.g.
- *   NEXT_PUBLIC_SITE_URL=https://www.isaanisan-khaoyai.com
- * once the real domain is live.
+ * Defaults to the live domain. It serves on the apex — www.isaan-isan.com
+ * redirects there — so the apex is canonical. Pointing this at the
+ * vercel.app deployment told search engines to index that copy instead of
+ * the hotel's own domain. Override per environment with NEXT_PUBLIC_SITE_URL.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://isaan-isan-khaoyai.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://isaan-isan.com"
 ).replace(/\/$/, "");
 
 export const company = {
