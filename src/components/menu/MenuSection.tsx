@@ -26,6 +26,11 @@ function Group({ group }: { group: MenuGroup }) {
               <div className="menu-item__title">
                 <h4 className="menu-item__thai">{item.th}</h4>
                 <p className="menu-item__en">{item.en}</p>
+                {item.pick && (
+                  <p className="menu-item__pick">
+                    <span aria-hidden="true">★</span> แนะนำจากบ้านเฮา · Chef’s Pick
+                  </p>
+                )}
               </div>
               <div className="menu-item__price">
                 {item.price}
