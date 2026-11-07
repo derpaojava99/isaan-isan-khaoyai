@@ -11,8 +11,6 @@ export interface VillaSpec extends Localized {
 export interface Villa {
   id: string;
   image: string;
-  /** Numerals only — the ฿ is rendered as a separate styled element. */
-  price: string;
   category: "villas";
   /** Renders full-width below the grid instead of as a normal card. */
   featured?: boolean;
@@ -35,7 +33,6 @@ export const villas: Villa[] = [
   {
     id: "superior-king",
     image: "/picture/superior-king-khao-yai.webp",
-    price: "1,520",
     category: "villas",
     tag: { en: "Popular choice", th: "ยอดนิยม" },
     name: {
@@ -86,7 +83,6 @@ export const villas: Villa[] = [
   {
     id: "superior-twin",
     image: "/picture/superior-twin-khao-yai.webp",
-    price: "1,520",
     category: "villas",
     tag: { en: "Twin Beds", th: "เตียงคู่" },
     name: {
@@ -137,7 +133,6 @@ export const villas: Villa[] = [
   {
     id: "deluxe-king",
     image: "/picture/deluxe-king-balcony-khao-yai.webp",
-    price: "1,980",
     category: "villas",
     tag: { en: "Mountain View", th: "วิวภูเขา" },
     name: {
@@ -188,7 +183,6 @@ export const villas: Villa[] = [
   {
     id: "deluxe-twin",
     image: "/picture/deluxe-twin-khao-yai.webp",
-    price: "1,980",
     category: "villas",
     tag: { en: "Garden View", th: "วิวสวน" },
     name: {
@@ -239,7 +233,6 @@ export const villas: Villa[] = [
   {
     id: "grand-deluxe-king",
     image: "/picture/grand-deluxe-king-khao-yai.webp",
-    price: "2,610",
     category: "villas",
     tag: { en: "With Bathtub", th: "มีอ่างอาบน้ำ" },
     name: {
@@ -290,7 +283,6 @@ export const villas: Villa[] = [
   {
     id: "grand-deluxe-twin",
     image: "/picture/grand-deluxe-twin-khao-yai.webp",
-    price: "2,610",
     category: "villas",
     tag: { en: "With Benefits", th: "พร้อมสิทธิพิเศษ" },
     name: {
@@ -341,7 +333,6 @@ export const villas: Villa[] = [
   {
     id: "pool-house",
     image: "/picture/pool-house-private-pool.webp",
-    price: "3,870",
     category: "villas",
     featured: true,
     tag: { en: "Signature Stay", th: "ห้องพักซิกเนเจอร์" },

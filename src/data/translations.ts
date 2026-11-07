@@ -75,8 +75,6 @@ export interface Dict {
     roomTypes: { name: string; count: string }[];
     roomTypesTotal: string;
     viewDetails: string;
-    startingFrom: string;
-    perNight: string;
     amenities: string;
     bookThis: string;
   };
@@ -241,8 +239,6 @@ export const translations: Record<Lang, Dict> = {
       ],
       roomTypesTotal: "82 rooms in total",
       viewDetails: "View Details",
-      startingFrom: "Starting From",
-      perNight: "/ night",
       amenities: "Room Amenities & Features:",
       bookThis: "Book This Room",
     },
@@ -461,8 +457,6 @@ export const translations: Record<Lang, Dict> = {
       ],
       roomTypesTotal: "รวมทั้งหมด 82 ห้อง",
       viewDetails: "ดูรายละเอียด",
-      startingFrom: "เริ่มต้น",
-      perNight: "/ คืน",
       amenities: "สิ่งอำนวยความสะดวกในห้องพัก:",
       bookThis: "จองห้องนี้",
     },

@@ -31,12 +31,7 @@ function VillaModal({ villa, lang, t, onBook }: { villa: Villa; lang: Lang; t: D
             </div>
           ))}
         </div>
-        <div className="modal-price-row">
-          <span className="modal-price">
-            {villa.price}
-            <span className="baht">฿</span>
-            <small style={{ fontSize: "0.9rem", fontWeight: 400 }}> {t.villas.perNight}</small>
-          </span>
+        <div className="modal-actions">
           <a href="#booking" className="btn btn-primary" onClick={onBook}>
             {t.villas.bookThis}
           </a>
@@ -84,14 +79,6 @@ function VillaCard({
         </StaggeredTags>
         <p className="villa-desc">{villa.desc[lang]}</p>
         <div className="villa-footer">
-          <div className="villa-price">
-            <span className="price-label">{t.villas.startingFrom}</span>
-            <span className="price-amount">
-              {villa.price}
-              <span className="baht">฿</span>
-              <small className="price-unit"> {t.villas.perNight}</small>
-            </span>
-          </div>
           <button
             type="button"
             className="btn btn-outline"

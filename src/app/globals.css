@@ -1076,9 +1076,6 @@ html[data-lang="th"] .story-closing p { font-style: normal; font-size: 1.2rem; }
 .villa-card--featured .villa-footer {
   border-top-color: rgba(255, 255, 255, 0.18);
 }
-.villa-card--featured .price-label { color: rgba(255, 255, 255, 0.7); }
-.villa-card--featured .price-amount { font-size: 1.7rem; color: var(--white); }
-.villa-card--featured .price-unit { color: rgba(255, 255, 255, 0.7); }
 .villa-card--featured .btn-outline {
   border-color: var(--gold);
   color: var(--gold);
@@ -1131,29 +1128,7 @@ html[data-lang="th"] .story-closing p { font-style: normal; font-size: 1.2rem; }
 .villa-spec { display: inline-flex; align-items: center; gap: 6px; }
 .villa-spec svg { flex-shrink: 0; opacity: 0.9; }
 .villa-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; flex-grow: 1; }
-.villa-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.06); }
-.villa-price { display: flex; flex-direction: column; }
-.price-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
-html[data-lang="th"] .price-label { text-transform: none; }
-/* Price treatment copied from the restaurant menu: Playfair numerals with the
-   ฿ trailing in gold at a smaller size. Uses --font-playfair directly rather
-   than --font-heading so it stays Playfair in Thai too, where --font-heading
-   switches to Sarabun. Latin digits render the same in both languages. */
-.price-amount {
-  font-family: var(--font-playfair), Georgia, serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.price-unit { font-size: 0.8rem; font-weight: 400; color: var(--text-muted); }
-.price-amount .baht,
-.modal-price .baht {
-  color: var(--gold);
-  font-size: 0.78em;
-  margin-left: 4px;
-}
+.villa-footer { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.06); }
 
 /* Facilities */
 .facilities-section { padding: 100px 0; background: var(--dark-bg); color: var(--white); }
@@ -1436,15 +1411,7 @@ html[data-lang="th"] .map-frame-cta { text-transform: none; letter-spacing: 0.5p
 .modal-feature-item { display: flex; align-items: flex-start; gap: 8px; font-size: 0.9rem; color: var(--secondary-color); }
 .modal-feature-item svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
 .modal-amenities-title { margin-bottom: 12px; font-size: 1.1rem; color: var(--main-color); }
-.modal-price-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--border-color); padding-top: 20px; }
-.modal-price {
-  font-family: var(--font-playfair), Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
+.modal-actions { display: flex; align-items: center; justify-content: flex-end; gap: 16px; border-top: 1px solid var(--border-color); padding-top: 20px; }
 
 /* Lightbox */
 .lightbox-content { max-width: 1000px; background: transparent; box-shadow: none; overflow: visible; }
