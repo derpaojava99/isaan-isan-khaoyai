@@ -409,7 +409,7 @@ export const menu: MenuChapter[] = [
             th: "เนื้อย่างโคขุน",
             en: "Charcoal-Grilled Premium Beef with Jaew Dip",
             price: "450",
-            desc: "Premium Australian sirloin carefully selected for its rich flavour and tenderness — charcoal-grilled to enhance its natural juiciness and smoky aroma. Served with our signature Isan chilli dipping sauce.",
+            desc: "Premium Kho Khun beef carefully selected for its rich flavour and tenderness — charcoal-grilled to enhance its natural juiciness and smoky aroma. Served with our signature Isan chilli dipping sauce.",
           },
           {
             th: "คอหมูย่างตะไคร้",
