@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: company.name,
     short_name: company.shortName,
     description:
-      "Contemporary Isan boutique pool-villa resort in Pak Chong, Khao Yai.",
+      "Boutique Isan resort in Pak Chong, 300 m from Khao Yai National Park.",
     start_url: "/",
     display: "standalone",
     background_color: "#f6efe2",

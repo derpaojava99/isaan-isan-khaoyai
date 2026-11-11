@@ -1,9 +1,12 @@
-import { company, sameAs, SITE_URL } from "@/data/company";
+import { company, OG_IMAGE, sameAs, SITE_URL } from "@/data/company";
 
 /**
  * Structured data. A Resort (LodgingBusiness) + WebSite.
  * No aggregateRating — there are no real, visible reviews yet, and faking one
  * risks a manual action (playbook §4D). The 4.9★ badge stays decorative.
+ * No starRating either: 4.9 is a guest-review score, not an official star
+ * classification, and the resort has not given us one.
+ * Amenities list only what the site states; add one only once it is confirmed.
  */
 export default function JsonLd() {
   const graph = {
@@ -14,13 +17,14 @@ export default function JsonLd() {
         "@id": `${SITE_URL}/#resort`,
         name: company.name,
         description:
-          "Boutique Isan pool-villa resort 300 metres from Khao Yai National Park in Moo Si, Pak Chong — 9 private pool villas, authentic Isan dining, and Isan cultural heritage in every detail.",
+          "Boutique Isan resort 300 metres from Khao Yai National Park in Moo Si, Pak Chong. It has 82 rooms across 4 room types: Superior, Deluxe, Grand Deluxe and 9 Pool House villas with private pools. Guests enjoy authentic Isan dining at the resort restaurant and treatments at the Isaan Sumbai spa.",
         url: SITE_URL,
+        numberOfRooms: 82,
         telephone: company.phones[0].tel,
         email: company.email,
         priceRange: company.priceRange,
         image: [
-          `${SITE_URL}/og-image.jpg`,
+          `${SITE_URL}${OG_IMAGE}`,
           `${SITE_URL}/picture/khao-yai-resort-concept.webp`,
           `${SITE_URL}/picture/khao-yai-boutique-hotel-big.webp`,
         ],
@@ -40,13 +44,11 @@ export default function JsonLd() {
         checkinTime: "14:00",
         checkoutTime: "12:00",
         petsAllowed: false,
-        starRating: { "@type": "Rating", ratingValue: "5" },
         amenityFeature: [
-          { "@type": "LocationFeatureSpecification", name: "Private Pool", value: true },
+          { "@type": "LocationFeatureSpecification", name: "Outdoor Swimming Pool", value: true },
           { "@type": "LocationFeatureSpecification", name: "Free Wi-Fi", value: true },
           { "@type": "LocationFeatureSpecification", name: "Restaurant", value: true },
           { "@type": "LocationFeatureSpecification", name: "Spa", value: true },
-          { "@type": "LocationFeatureSpecification", name: "Butler Service", value: true },
         ],
         sameAs,
       },

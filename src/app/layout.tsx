@@ -10,7 +10,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/language-context";
 import { ModalProvider } from "@/lib/modal-context";
 import JsonLd from "@/components/JsonLd";
-import { company, SITE_URL } from "@/data/company";
+import { company, OG_IMAGE, SITE_URL } from "@/data/company";
 
 // English fonts follow the mockup; Thai renders in Sarabun. All self-hosted.
 const cormorant = Cormorant_Garamond({
@@ -47,24 +47,43 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+// Search and share snippets. Keep these in step with the rooms copy in
+// translations.ts and public/llms.txt — when the positioning changes, grep the
+// repo for the old claim (an old "9 private pool villas" line outlived the move
+// to 82 rooms here once). Title ≤ 60 chars, descriptions ≤ 155.
+const TITLE = "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park";
+const DESCRIPTION =
+  "Stay 300 m from Khao Yai National Park in one of 82 rooms across 4 types, including 9 Pool House villas. Dine on Isan food and unwind at Isaan Sumbai Spa.";
+const SHARE_DESCRIPTION =
+  "Experience Isan in the heart of Khao Yai, 300 m from the national park. Choose from 82 rooms, from Superior rooms to Pool House villas with private pools.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park",
+    default: TITLE,
     template: "%s | Isaan Isan Resort Khaoyai",
   },
-  description:
-    "Your gateway to Khao Yai and to the soul of Isan. Just 300 metres from Khao Yai National Park — 9 private pool villas, authentic Isan dining, and a resort built from the kratip, the pha khao ma and the rooster.",
+  description: DESCRIPTION,
+  // Rooms/resort terms lead; pool-villa terms stay as secondary (9 of the 82
+  // rooms are Pool House villas).
   keywords: [
     "Isaan Isan",
     "Isaan Isan Resort Khaoyai",
-    "Khao Yai pool villa",
+    "Khao Yai resort",
+    "Khao Yai hotel",
+    "resort near Khao Yai National Park",
     "boutique resort Khao Yai",
     "Pak Chong resort",
+    "Pak Chong hotel",
+    "Khao Yai pool villa",
     "รีสอร์ทเขาใหญ่",
-    "พูลวิลล่าเขาใหญ่",
+    "ที่พักเขาใหญ่",
+    "โรงแรมเขาใหญ่",
+    "ที่พักใกล้อุทยานแห่งชาติเขาใหญ่",
     "ที่พักปากช่อง",
+    "รีสอร์ทปากช่อง",
     "รีสอร์ทหรูเขาใหญ่",
+    "พูลวิลล่าเขาใหญ่",
   ],
   authors: [{ name: company.name }],
   alternates: {
@@ -74,29 +93,27 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: company.name,
-    title: "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park",
-    description:
-      "Experience Isan in the heart of Khao Yai — 9 private pool villas, authentic Isan gastronomy, and a resort that tells the Isan story in every detail.",
+    title: TITLE,
+    description: SHARE_DESCRIPTION,
     locale: "en_US",
     alternateLocale: "th_TH",
     images: [
       {
         // JPEG, not WebP: LINE's crawler does not reliably decode WebP and
         // falls back to showing no preview at all.
-        url: "/og-image.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "Isaan Isan Resort Khaoyai Resort",
+        alt: "Isaan Isan Resort Khaoyai, 300 m from Khao Yai National Park",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park",
-    description:
-      "Experience Isan in the heart of Khao Yai — 9 private pool villas and authentic Isan gastronomy, 300 metres from the national park.",
-    images: ["/og-image.jpg"],
+    title: TITLE,
+    description: SHARE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
   robots: {
     index: true,
