@@ -19,6 +19,13 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://isaan-isan.com"
 ).replace(/\/$/, "");
 
+/**
+ * Social share card (1200×630 JPEG), built by scripts/generate-og.mjs.
+ * A regenerated card gets a NEW filename: LINE, Facebook and the Next image
+ * cache all key on the URL, so overwriting the old file keeps showing it.
+ */
+export const OG_IMAGE = "/og-image-v2.jpg";
+
 export const company = {
   name: "Isaan Isan Resort Khaoyai",
   legalName: "Isaan Isan Resort Khaoyai",

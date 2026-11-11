@@ -1,7 +1,11 @@
 /**
- * Builds the social share card at public/og-image.jpg.
+ * Builds the social share card at public/og-image-v2.jpg.
  *
  * Run with: node scripts/generate-og.mjs
+ *
+ * When the card changes, bump the filename here AND in OG_IMAGE
+ * (src/data/company.ts): LINE, Facebook and the Next image cache key on the
+ * URL, so an overwritten file keeps showing the old card.
  *
  * Why a committed JPEG rather than a runtime-generated image:
  * LINE's crawler does not reliably decode WebP, and it fetches the card with
@@ -14,7 +18,7 @@ import path from "node:path";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(root, "../public/picture/51205307327_1cc96cb36e_h.jpg");
-const OUT = path.join(root, "../public/og-image.jpg");
+const OUT = path.join(root, "../public/og-image-v2.jpg");
 
 const W = 1200;
 const H = 630;
@@ -28,6 +32,8 @@ const overlay = Buffer.from(`
     <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#000000" stop-opacity="0.15"/>
       <stop offset="45%"  stop-color="#1b1610" stop-opacity="0.55"/>
+      <!-- deeper under the eyebrow: it runs across the sunlit bamboo -->
+      <stop offset="60%"  stop-color="#171208" stop-opacity="0.8"/>
       <stop offset="100%" stop-color="#171208" stop-opacity="0.92"/>
     </linearGradient>
   </defs>
@@ -40,15 +46,15 @@ const overlay = Buffer.from(`
 
   <text x="72" y="404" fill="#c9942e"
         font-family="Helvetica, Arial, sans-serif" font-size="25"
-        letter-spacing="7" font-weight="600">${esc("CONCEPT RESORT  •  KHAO YAI")}</text>
+        letter-spacing="7" font-weight="600">${esc("300 M FROM KHAO YAI NATIONAL PARK")}</text>
 
   <text x="70" y="484" fill="#ffffff"
         font-family="Georgia, 'Times New Roman', serif" font-size="70"
-        font-weight="700">${esc("Isaan Isan Concept")}</text>
+        font-weight="700">${esc("Isaan Isan Resort")}</text>
 
   <text x="70" y="544" fill="#ffffff"
         font-family="Georgia, 'Times New Roman', serif" font-size="70"
-        font-weight="700">${esc("at Khaoyai")}</text>
+        font-weight="700">${esc("Khaoyai")}</text>
 
   <rect x="72" y="566" width="96" height="3" fill="#c9942e"/>
 </svg>
@@ -61,4 +67,4 @@ await sharp(SRC)
   .toFile(OUT);
 
 const meta = await sharp(OUT).metadata();
-console.log(`og-image.jpg → ${meta.format} ${meta.width}x${meta.height}`);
+console.log(`${path.basename(OUT)} → ${meta.format} ${meta.width}x${meta.height}`);

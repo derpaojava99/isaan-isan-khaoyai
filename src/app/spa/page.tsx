@@ -11,7 +11,7 @@ import {
   packageNoteEn,
   promo,
 } from "@/data/spa";
-import { company, SITE_URL } from "@/data/company";
+import { company, OG_IMAGE, SITE_URL } from "@/data/company";
 import "./spa.css";
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "อีสานซำบาย สปา | Isaan Sumbai Spa",
     description:
       "Thai–Isaan healing with local herbs and aromatic oils, at Isaan Isan Resort Khaoyai.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, type: "image/jpeg" }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, type: "image/jpeg" }],
   },
 };
 

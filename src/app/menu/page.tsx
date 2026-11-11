@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { menu, restaurant } from "@/data/menu";
-import { company, SITE_URL } from "@/data/company";
+import { company, OG_IMAGE, SITE_URL } from "@/data/company";
 import MenuNav from "@/components/menu/MenuNav";
 import MenuSection from "@/components/menu/MenuSection";
 import "./menu.css";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "อีสานบ้านเฮา เขาใหญ่ | Isaan Baan Hao — Menu",
     description:
       "Northeastern Thai cuisine crafted from heritage recipes and ingredients grown in the valleys of Khao Yai.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, type: "image/jpeg" }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, type: "image/jpeg" }],
   },
 };
 
