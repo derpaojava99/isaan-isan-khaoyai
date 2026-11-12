@@ -40,7 +40,7 @@ npm start        # serve the production build
 
 ## Content rules
 
-- **Positioning:** 300 m from Khao Yai National Park; 82 rooms across 4 types (Superior 50, Deluxe 14, Grand Deluxe 9, Pool House 9). When it changes, grep the whole repo for the old claim — `layout.tsx`, `JsonLd.tsx`, `manifest.ts`, `llms.txt`, gallery alts and the share card all repeat it.
+- **Positioning:** 300 m from Khao Yai National Park; 82 rooms across 4 types (Superior 50, Deluxe 14, Grand Deluxe 9, Pool House Villa 9). When it changes, grep the whole repo for the old claim — `layout.tsx`, `JsonLd.tsx`, `manifest.ts`, `llms.txt`, gallery alts and the share card all repeat it.
 - **No room rates** on the site or in `llms.txt`; rates change often, so guests check them in the booking engine.
 - **No `aggregateRating` or `starRating`** in the schema. The 4.9★ badge is a review score shown for decoration, not an official star class; add a rating only with real, on-page reviews.
 - **Don't invent facts** (amenities, room sizes, views). Ask the resort first.

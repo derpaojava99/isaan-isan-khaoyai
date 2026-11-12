@@ -53,9 +53,9 @@ const playfair = Playfair_Display({
 // to 82 rooms here once). Title ≤ 60 chars, descriptions ≤ 155.
 const TITLE = "Isaan Isan Resort Khaoyai | 300m from Khao Yai National Park";
 const DESCRIPTION =
-  "Stay 300 m from Khao Yai National Park in one of 82 rooms across 4 types, including 9 Pool House villas. Dine on Isan food and unwind at Isaan Sumbai Spa.";
+  "Stay 300 m from Khao Yai National Park in one of 82 rooms across 4 types, including 9 Pool House Villas. Dine on Isan food and unwind at Isaan Sumbai Spa.";
 const SHARE_DESCRIPTION =
-  "Experience Isan in the heart of Khao Yai, 300 m from the national park. Choose from 82 rooms, from Superior rooms to Pool House villas with private pools.";
+  "Experience Isan in the heart of Khao Yai, 300 m from the national park. Choose from 82 rooms, from Superior rooms to Pool House Villas with private pools.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
   description: DESCRIPTION,
   // Rooms/resort terms lead; pool-villa terms stay as secondary (9 of the 82
-  // rooms are Pool House villas).
+  // rooms are Pool House Villas).
   keywords: [
     "Isaan Isan",
     "Isaan Isan Resort Khaoyai",

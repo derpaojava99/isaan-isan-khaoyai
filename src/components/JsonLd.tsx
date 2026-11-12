@@ -17,7 +17,7 @@ export default function JsonLd() {
         "@id": `${SITE_URL}/#resort`,
         name: company.name,
         description:
-          "Boutique Isan resort 300 metres from Khao Yai National Park in Moo Si, Pak Chong. It has 82 rooms across 4 room types: Superior, Deluxe, Grand Deluxe and 9 Pool House villas with private pools. Guests enjoy authentic Isan dining at the resort restaurant and treatments at the Isaan Sumbai spa.",
+          "Boutique Isan resort 300 metres from Khao Yai National Park in Moo Si, Pak Chong. It has 82 rooms across 4 room types: Superior, Deluxe, Grand Deluxe and 9 Pool House Villas, 8 with a private pool. Guests enjoy authentic Isan dining at the resort restaurant and treatments at the Isaan Sumbai spa.",
         url: SITE_URL,
         numberOfRooms: 82,
         telephone: company.phones[0].tel,

@@ -141,7 +141,7 @@ export const translations: Record<Lang, Dict> = {
           image: "/picture/khao-yai-resort-big.webp",
           subtitle: "Your Access to Isan Culture",
           title: "Four Room Types, 82 Rooms",
-          desc: "Choose your way to unwind across 4 room types and 82 rooms — from warm garden-view rooms to Pool Houses with private pools, each designed with natural textures and authentic Isan craft.",
+          desc: "Choose your way to unwind across 4 room types and 82 rooms — from warm garden-view rooms to Pool House Villas with private pools, each designed with natural textures and authentic Isan craft.",
           cta: "Reserve Your Stay",
           ctaHref: "#booking",
           ctaStyle: "gold",
@@ -235,7 +235,7 @@ export const translations: Record<Lang, Dict> = {
         { name: "Superior", count: "50 rooms" },
         { name: "Deluxe", count: "14 rooms" },
         { name: "Grand Deluxe", count: "9 rooms" },
-        { name: "Pool House", count: "9 villas" },
+        { name: "Pool House Villa", count: "9 villas" },
       ],
       roomTypesTotal: "82 rooms in total",
       viewDetails: "View Details",
@@ -244,8 +244,8 @@ export const translations: Record<Lang, Dict> = {
     },
     facilities: {
       tagline: "Experiences at Isaan Isan",
-      title: "Facilities & Dining",
-      desc: "Indulge your senses with our curated wellness activities, authentic regional gastronomy, and scenic leisure spaces.",
+      title: "Spa, Dining & Leisure",
+      desc: "Unwind with traditional Isan herbal spa treatments, savour authentic local flavours, and slow down by the pool in the heart of Khao Yai.",
       items: [
         {
           badge: "Taste of Isan",
@@ -292,7 +292,7 @@ export const translations: Record<Lang, Dict> = {
     gallery: {
       tagline: "Visual Journey",
       title: "Resort Gallery",
-      desc: "Glimpse into the serene beauty, handcrafted architectural details, and natural splendor of Isaan Isan Resort Khaoyai.",
+      desc: "A closer look at Isaan Isan Resort Khaoyai — quiet gardens, hand-woven Isan textiles and the forests of Khao Yai, just steps from our gate.",
       filters: [
         { key: "all", label: "All Photos" },
         { key: "villas", label: "Rooms & Villas" },
@@ -359,7 +359,7 @@ export const translations: Record<Lang, Dict> = {
           image: "/picture/khao-yai-resort-big.webp",
           subtitle: "ประตูสู่วัฒนธรรมอีสาน",
           title: "ห้องพัก 4 ประเภท รวม 82 ห้อง",
-          desc: "เลือกการพักผ่อนในแบบของคุณ จากห้องพัก 4 ประเภท 82 ห้อง — ตั้งแต่ห้องวิวสวนอบอุ่น ไปจนถึงพูลเฮาส์พร้อมสระว่ายน้ำส่วนตัว ทุกห้องออกแบบด้วยพื้นผิวธรรมชาติและงานหัตถศิลป์อีสานแท้",
+          desc: "เลือกการพักผ่อนในแบบของคุณ จากห้องพัก 4 ประเภท 82 ห้อง — ตั้งแต่ห้องวิวสวนอบอุ่น ไปจนถึงพูลเฮาส์ วิลล่าพร้อมสระว่ายน้ำส่วนตัว ทุกห้องออกแบบด้วยพื้นผิวธรรมชาติและงานหัตถศิลป์อีสานแท้",
           cta: "จองที่พักของคุณ",
           ctaHref: "#booking",
           ctaStyle: "gold",
@@ -453,7 +453,7 @@ export const translations: Record<Lang, Dict> = {
         { name: "ซูพีเรีย", count: "50 ห้อง" },
         { name: "ดีลักซ์", count: "14 ห้อง" },
         { name: "แกรนด์ดีลักซ์", count: "9 ห้อง" },
-        { name: "พูลเฮาส์", count: "9 หลัง" },
+        { name: "พูลเฮาส์ วิลล่า", count: "9 หลัง" },
       ],
       roomTypesTotal: "รวมทั้งหมด 82 ห้อง",
       viewDetails: "ดูรายละเอียด",
@@ -462,8 +462,8 @@ export const translations: Record<Lang, Dict> = {
     },
     facilities: {
       tagline: "ประสบการณ์ ณ Isaan Isan",
-      title: "สิ่งอำนวยความสะดวกและร้านอาหาร",
-      desc: "ปรนเปรอทุกสัมผัสด้วยกิจกรรมเพื่อสุขภาพที่คัดสรร อาหารพื้นถิ่นแท้ และพื้นที่พักผ่อนท่ามกลางทิวทัศน์",
+      title: "สปา ห้องอาหาร และการพักผ่อน",
+      desc: "ผ่อนคลายกับสปาสมุนไพรตำรับอีสาน ลิ้มรสอาหารพื้นถิ่นต้นตำรับ และใช้เวลาช้าๆ ริมสระน้ำ ท่ามกลางธรรมชาติของเขาใหญ่",
       items: [
         {
           badge: "รสชาติแห่งอีสาน",
@@ -508,9 +508,9 @@ export const translations: Record<Lang, Dict> = {
       ],
     },
     gallery: {
-      tagline: "เส้นทางแห่งภาพ",
+      tagline: "ชมบรรยากาศ",
       title: "แกลเลอรีรีสอร์ต",
-      desc: "สัมผัสความงามอันเงียบสงบ รายละเอียดสถาปัตยกรรมทำมือ และความงดงามของธรรมชาติแห่ง Isaan Isan Resort Khaoyai",
+      desc: "สัมผัสความสงบของสวน งานผ้าทอมือและงานจักสานแบบอีสาน และผืนป่าเขาใหญ่ที่อยู่ห่างจากประตูรีสอร์ตเพียงไม่กี่ก้าว",
       filters: [
         { key: "all", label: "ภาพทั้งหมด" },
         { key: "villas", label: "ห้องพักและวิลลา" },

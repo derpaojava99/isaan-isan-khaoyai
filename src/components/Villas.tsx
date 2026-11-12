@@ -22,7 +22,7 @@ function VillaModal({ villa, lang, t, onBook }: { villa: Villa; lang: Lang; t: D
         <h3 className="modal-title">{villa.name[lang]}</h3>
         <p className="modal-tagline">{villa.tagline[lang]}</p>
         <p className="modal-desc">{villa.longDesc[lang]}</p>
-        <h4 className="modal-amenities-title">{t.villas.amenities}</h4>
+        <h4 className="modal-amenities-title">{villa.amenitiesTitle?.[lang] ?? t.villas.amenities}</h4>
         <div className="modal-features">
           {villa.features[lang].map((f, i) => (
             <div className="modal-feature-item" key={i}>
