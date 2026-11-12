@@ -6,7 +6,7 @@
  * Layout notes:
  *  - "full"    : Thai name / English name / price / description (food)
  *  - "compact" : Thai + English on one line with price (drinks, sides)
- * Groups let a chapter carry sub-headings (Sides & Rice, Soft Drinks, wineries).
+ * Groups let a chapter carry sub-headings (Sides, Soft Drinks, Beer).
  */
 
 export interface MenuItem {
@@ -26,7 +26,7 @@ export interface MenuGroup {
   /** Optional sub-heading inside a chapter. */
   th?: string;
   en?: string;
-  /** Intro paragraph (used for the wineries). */
+  /** Intro paragraph under a group heading (e.g. the spirits pricing note). */
   note?: string;
   layout?: "full" | "compact";
   items: MenuItem[];
@@ -747,14 +747,12 @@ export const menu: MenuChapter[] = [
   },
 
   {
-    id: "spirits-wine",
+    id: "spirits",
     numeral: "X",
-    th: "สุรา & ไวน์",
-    en: "Spirits & Wine",
+    th: "สุรา",
+    en: "Spirits",
     groups: [
       {
-        th: "สุรา",
-        en: "Spirits",
         note: "Priced per 45 ml shot · whole bottles as listed",
         items: [
           {
@@ -780,140 +778,6 @@ export const menu: MenuChapter[] = [
             priceNote: "Bottle 1,950",
             ingredients: "Community Spirit · Chaiyaphum",
             desc: "Chaiyaphum liquor refers to traditional community spirits from Chaiyaphum province, rooted in the fermentation and distillation traditions of Thailand's Isan region.",
-          },
-        ],
-      },
-      {
-        th: "ไวน์แดง",
-        en: "Red Wine",
-        note: "Priced per bottle",
-        layout: "compact",
-        items: [
-          {
-            th: "ซานตา คริสตินา ฟัตโตเรีย เล มาเอสเตรลเล",
-            en: "Santa Cristina Fattoria Le Maestrelle",
-            price: "1,800",
-            ingredients: "Italy · Medium-Bodied · Cherry, Vanilla, Chocolate",
-          },
-          {
-            th: "ฟามิเลีย คอร์เรอา ลิโซนี กาแบร์เนต์ โซวีญง",
-            en: "Familia Correa Lisoni Cabernet Sauvignon",
-            price: "1,200",
-            ingredients: "Cabernet Sauvignon · Medium to Full-Bodied",
-          },
-          {
-            th: "ฟามีย์ แปร์แรง ชาโตเนิฟ-ดู-ปาป เล ซินาร์ รูจ",
-            en: "Famille Perrin Châteauneuf-du-Pape Les Sinards Rouge",
-            price: "6,500",
-            ingredients: "Rhône, France · Medium to Full-Bodied · Silky Tannins",
-          },
-          {
-            th: "พีบี เขาใหญ่ รีเสิร์ฟ ชีราซ",
-            en: "2020 PB Khao Yai Reserve Shiraz",
-            price: "1,950",
-            ingredients: "Khao Yai, Thailand · Shiraz · Medium to Full-Bodied",
-          },
-          {
-            th: "พีบี เขาใหญ่ วัลเลย์ โปกูโร รีเสิร์ฟ คาร์เมแนร์",
-            en: "PB Khao Yai Valley Pocuro Reserve Carmenère",
-            price: "2,100",
-            ingredients: "Khao Yai, Thailand · Carmenère · Medium to Full-Bodied",
-          },
-          {
-            th: "สวาร์ทแลนด์ ไวเนอรี บุช ไวน์ ปิโนทาจ",
-            en: "Swartland Winery Bush Vine Pinotage",
-            price: "2,100",
-            ingredients: "South Africa · Pinotage · Medium to Full-Bodied",
-          },
-          {
-            th: "กันฟอร์ราเลส เทมปรานิลโล",
-            en: "Canforrales Tempranillo",
-            price: "2,100",
-            ingredients: "Spain · Tempranillo · Full-Bodied",
-          },
-          {
-            th: "บาเดีย อัล คอลเล เคียนติ ดีโอซีจี",
-            en: "2024 Badia al Colle Chianti DOCG",
-            price: "1,600",
-            ingredients: "Tuscany, Italy · Sangiovese · Medium-Bodied",
-          },
-          {
-            th: "โดนา เออร์เมลินดา ทินโต พัลเมลา ดีโอซี",
-            en: "2023 Dona Ermelinda Tinto Palmela DOC",
-            price: "1,600",
-            ingredients: "Portugal · Castelão, Touriga Nacional, Cabernet · Full-Bodied",
-          },
-        ],
-      },
-      {
-        th: "ไวน์ขาว",
-        en: "White Wine",
-        note: "Priced per bottle",
-        layout: "compact",
-        items: [
-          {
-            th: "ฟามิเลีย คอร์เรอา ลิโซนี โซวีญง บลอง",
-            en: "Familia Correa Lisoni Sauvignon Blanc",
-            price: "1,200",
-            ingredients: "Sauvignon Blanc · Light-Bodied · Dry",
-          },
-          {
-            th: "พีบี เขาใหญ่ รีเสิร์ฟ เชอแน็ง บลอง",
-            en: "2024 PB Khao Yai Reserve Chenin Blanc",
-            price: "1,950",
-            ingredients: "Khao Yai, Thailand · Chenin Blanc · Light Oak",
-          },
-          {
-            th: "กาฟ เดอ โรซอง กรองด์ หลุยส์ บอร์โดซ์ บลองก์",
-            en: "2023 Caves de Rauzan Grand Louis Bordeaux Blanc",
-            price: "1,600",
-            ingredients: "Bordeaux, France · Sauvignon Blanc & Sémillon",
-          },
-          {
-            th: "ควีน แอดิเลด ชาร์ดอนเนย์",
-            en: "2024 Queen Adelaide Chardonnay",
-            price: "1,350",
-            ingredients: "South Eastern Australia · Chardonnay · Light Oak",
-          },
-        ],
-      },
-      {
-        th: "สปาร์กลิง & โรเซ่",
-        en: "Sparkling & Rosé",
-        note: "Priced per bottle",
-        layout: "compact",
-        items: [
-          {
-            th: "อาโมเร รูบาโต โพรเซกโก เอ็กซ์ตร้า ดราย",
-            en: "Amore Rubato Prosecco Extra Dry",
-            price: "1,700",
-            ingredients: "Italy · Sparkling · Off-Dry",
-          },
-          {
-            th: "พีบี วัลเลย์ โปกูโร โรเซ่ เดอ ซีราห์",
-            en: "PB Valley Pocuro Rosé de Syrah",
-            price: "2,100",
-            ingredients: "Khao Yai, Thailand · Rosé · Syrah",
-          },
-        ],
-      },
-      {
-        th: "ไวน์แก้ว",
-        en: "Wine by the Glass",
-        note: "Priced per glass",
-        layout: "compact",
-        items: [
-          {
-            th: "ไวน์แดง ฟามิเลีย คอร์เรอา ลิโซนี กาแบร์เนต์ โซวีญง (แก้ว)",
-            en: "Familia Correa Lisoni Cabernet Sauvignon (Glass)",
-            price: "300",
-            ingredients: "Red · Cabernet Sauvignon",
-          },
-          {
-            th: "ไวน์ขาว ฟามิเลีย คอร์เรอา ลิโซนี โซวีญง บลอง (แก้ว)",
-            en: "Familia Correa Lisoni Sauvignon Blanc (Glass)",
-            price: "300",
-            ingredients: "White · Sauvignon Blanc",
           },
         ],
       },

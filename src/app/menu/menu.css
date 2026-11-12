@@ -464,7 +464,7 @@
   max-width: 68ch;
 }
 
-/* Compact rows: drinks and wines put both names on one line. */
+/* Compact rows: drinks put both names on one line. */
 .menu-list--compact .menu-item { padding: 10px 0; }
 .menu-list--compact .menu-item__head { align-items: baseline; }
 .menu-list--compact .menu-item__title {
