@@ -63,9 +63,10 @@ export const company = {
   email: "info@isaan-isan.com",
   // LINE OA matters more than email in Thailand (playbook §8).
   social: {
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
-    line: "https://line.me/",
+    facebook: "https://www.facebook.com/isaanisankhaoyai",
+    instagram: "https://www.instagram.com/isaanisanresort/",
+    // LINE OA @isaanisan — the /R/ti/p/ link opens "add friend" in the app.
+    line: "https://line.me/R/ti/p/@isaanisan",
     tripadvisor: "https://www.tripadvisor.com/",
   },
   priceRange: "฿฿฿",

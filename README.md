@@ -47,4 +47,4 @@ npm start        # serve the production build
 
 ## Still open
 
-- **Social URLs** in `company.ts` are generic placeholders (`facebook.com/`, `instagram.com/`, `line.me/`, `tripadvisor.com/`). They feed the footer, the floating LINE button and JSON-LD `sameAs` — replace them with the resort's real pages.
+- **Social URLs** in `company.ts` feed the footer, the floating LINE button and JSON-LD `sameAs`. Facebook, Instagram and LINE OA (`@isaanisan`) are real; `tripadvisor` is still a generic placeholder.
