@@ -261,7 +261,7 @@ export const menu: MenuChapter[] = [
             th: "ตำหลวงพระบาง",
             en: "Luang Prabang Papaya Salad",
             price: "240",
-            desc: "Hand-sliced green papaya cut into wide flat strips for a crisp texture that absorbs the dressing. Tossed with traditional seasonings and our rich, well-balanced shrimp paste from Pak Chong, with crispy fried prawns.",
+            desc: "Hand-sliced green papaya cut into wide flat strips for a crisp texture that absorbs the dressing. Tossed with traditional seasonings and our rich, well-balanced shrimp paste from Pak Chong.",
             pick: true,
           },
           {
