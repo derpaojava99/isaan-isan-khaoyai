@@ -35,8 +35,15 @@ function Group({ group }: { group: MenuGroup }) {
               <div className="menu-item__price">
                 {item.price}
                 <span className="baht">฿</span>
+                {item.priceNote && (
+                  <span className="menu-item__price-note">
+                    {item.priceNote}
+                    <span className="baht">฿</span>
+                  </span>
+                )}
               </div>
             </div>
+            {item.ingredients && <p className="menu-item__ingredients">{item.ingredients}</p>}
             {item.desc && <p className="menu-item__desc">{item.desc}</p>}
           </article>
         ))}

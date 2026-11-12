@@ -1,7 +1,7 @@
 /**
  * Restaurant menu — transcribed from the printed menu
- * "อีสานบ้านเฮา เขาใหญ่ / Isaan Baan Hao". Food names, prices and order follow
- * the owner's sheet of 04.11.2569, which overrides the print where they differ.
+ * "อีสานบ้านเฮา เขาใหญ่ / Isaan Baan Hao". Names, prices and order follow the
+ * owner's update sheet of 12.11.2569, which overrides the print where they differ.
  *
  * Layout notes:
  *  - "full"    : Thai name / English name / price / description (food)
@@ -13,6 +13,10 @@ export interface MenuItem {
   th: string;
   en: string;
   price: string;
+  /** Secondary price under the main one, e.g. a spirit's whole-bottle price. */
+  priceNote?: string;
+  /** Drinks: ingredients / style line from the owner's sheet. */
+  ingredients?: string;
   desc?: string;
   /** Marked แนะนำจากบ้านเฮา · Chef's Pick on the owner's menu sheet. */
   pick?: boolean;
@@ -77,7 +81,7 @@ export const menu: MenuChapter[] = [
         items: [
           {
             th: "ปีกไก่ทอดเขาใหญ่",
-            en: "Khao Yai Crispy Fried Chicken Wings",
+            en: "Khao Yai Crispy Deep-Fried Chicken Wings",
             price: "200",
             desc: "Juicy chicken wings marinated with fresh northeastern local herbs and spices, deep-fried until crispy and golden. Served with traditional Isan chilli dipping sauce.",
             pick: true,
@@ -90,40 +94,40 @@ export const menu: MenuChapter[] = [
             pick: true,
           },
           {
-            th: "ไส้กรอกอีสานย่าง",
-            en: "Charcoal-Grilled Isan Pork Sausage",
+            th: "ไส้กรอกอีสานทอด",
+            en: "Deep-Fried Isan Pork Sausage",
             price: "220",
-            desc: "Isan Khao Yai charcoal-grilled north-eastern premium local pork and rice sausage, with pickled ginger, chilli and garlic.",
+            desc: "Isan Khao Yai north-eastern premium local pork and rice sausage, deep-fried until golden, with pickled ginger, chilli and garlic.",
           },
           {
             th: "หมูแดดเดียว",
-            en: "Crispy Sun-Dried Pork",
+            en: "Deep-Fried Sun-Dried Pork",
             price: "220",
             desc: "Marinated premium kurobuta pork with northeastern local herbs & spices, naturally sun-dried and deep-fried until crispy outside, tender inside.",
           },
           {
             th: "เนื้อแดดเดียว",
-            en: "Crispy Sun-Dried Beef",
+            en: "Deep-Fried Sun-Dried Beef",
             price: "260",
             desc: "Marinated premium Korat beef with northeastern local herbs & spices, naturally sun-dried and deep-fried until crispy outside, tender inside.",
           },
           {
             th: "ลาบหมูทอด",
-            en: "Crispy Larb-Spiced Pork",
+            en: "Deep-Fried Larb-Spiced Pork",
             price: "260",
             desc: "Thinly-sliced premium kurobuta pork marinated with traditional larb spices and local herbs, deep-fried until crispy and golden with fragrant herbs in classic northeastern Isan style.",
           },
           {
             th: "ปลาส้มทอด",
-            en: "Crispy Fried Fermented Fish (Pla Som)",
+            en: "Deep-Fried Fermented Fish (Pla Som)",
             price: "260",
             desc: "Traditional northeastern Isan local fermented fish stuffed with rice and local herbs, deep-fried until golden and crispy, with a well-balanced savoury flavour. Served with pickled ginger, chilli and garlic.",
           },
           {
-            th: "แหนมหมูส้มทอด",
-            en: "Crispy Fried Fermented Pork (Moo Som)",
+            th: "แหนมหมูส้มย่าง",
+            en: "Grilled Fermented Pork (Moo Som)",
             price: "260",
-            desc: "Traditional northeastern fermented kurobuta pork marinated with garlic, rice and local spices — naturally fermented for a rich tangy flavour, deep-fried until golden and crispy. Served with pickled ginger and fresh chilli.",
+            desc: "Traditional northeastern fermented kurobuta pork marinated with garlic, rice and local spices — naturally fermented for a rich tangy flavour, grilled until golden and lightly smoky. Served with pickled ginger and fresh chilli.",
           },
         ],
       },
@@ -134,20 +138,20 @@ export const menu: MenuChapter[] = [
     id: "chilli-dip",
     numeral: "II",
     th: "น้ำพริก & แจ่ว",
-    en: "Chilli Dip",
+    en: "Chilli Dips",
     groups: [
       {
         items: [
           {
             th: "แจ่วขี้กาบ้านเฮา",
-            en: "House Roasted Chilli Dip with Crispy Mackerel & Vegetables",
+            en: "House Roasted Chilli Dip with Deep-Fried Mackerel & Local Vegetables",
             price: "240",
             desc: "House-made authentic northeastern Thai Isan chilli dip, prepared by pounding roasted chillies, garlic and local herbs with fermented fish sauce in a mortar — bold and rustic. Served with crispy fried mackerel, fresh and steamed vegetables.",
             pick: true,
           },
           {
             th: "แจ่วบองแซ่บนัว",
-            en: "Jaew Bong – Isan Fermented Fish Chilli Relish",
+            en: "Jaew Bong – Isan Fermented Fish Chilli Paste",
             price: "240",
             desc: "House-made authentic northeastern Thai chilli relish, slowly cooked fermented fish with roasted chillies, garlic, shallots and local herbs — rich and aromatic. Served with crispy fried mackerel, fresh and steamed vegetables.",
           },
@@ -172,7 +176,7 @@ export const menu: MenuChapter[] = [
     id: "spicy-salad",
     numeral: "III",
     th: "ลาบ & น้ำตก",
-    en: "Thai Spicy Salad",
+    en: "Isan Spicy Salads",
     quoteTh:
       "“รสนัวจากครกหินบ้านเฮา — ผักหอมจากสวน, ข้าวคั่วหอมกรุ่น, มะนาวสดไร้ที่ติ”",
     quoteEn: "— A bold dance of lime, chilli and toasted rice —",
@@ -237,7 +241,7 @@ export const menu: MenuChapter[] = [
     id: "papaya-salad",
     numeral: "IV",
     th: "ตำไทย & ตำลาว",
-    en: "Thai Papaya Salad",
+    en: "Papaya Salads",
     groups: [
       {
         items: [
@@ -255,20 +259,20 @@ export const menu: MenuChapter[] = [
           },
           {
             th: "ตำหลวงพระบาง",
-            en: "Luang Prabang Papaya Salad with Crispy Prawns",
+            en: "Luang Prabang Papaya Salad",
             price: "240",
             desc: "Hand-sliced green papaya cut into wide flat strips for a crisp texture that absorbs the dressing. Tossed with traditional seasonings and our rich, well-balanced shrimp paste from Pak Chong, with crispy fried prawns.",
             pick: true,
           },
           {
             th: "ตำบักหุ่งใส่ปูปลาร้า",
-            en: "Isan Papaya Salad with Field Crab & Pla Ra",
+            en: "Isan Papaya Salad with Salted Crab & Fermented Fish (Pla Ra)",
             price: "200",
             desc: "Garden-grown papaya tossed with house-cooked fermented fish sauce and naturally raised field crab from Pak Chong — pounded with chilli and lime for a bold, savoury Isan flavour.",
           },
           {
             th: "ตำป่าอีสานเขาใหญ่",
-            en: "Khao Yai Mixed Papaya Salad (Tam Pa)",
+            en: "Khao Yai Papaya Salad with Mixed Vegetables (Tam Pa)",
             price: "240",
             desc: "Our northeastern Isan papaya salad with a rich, well-balanced flavour packed with local ingredients. Tossed with our special fermented fish sauce and traditional seasonings — inspired by the rustic, rural ingredients of Khao Yai.",
           },
@@ -317,7 +321,7 @@ export const menu: MenuChapter[] = [
     id: "soup-curry",
     numeral: "V",
     th: "ต้ม & แกง",
-    en: "Spicy Soup",
+    en: "Soups & Curries",
     quoteTh:
       "“หม้อต้มข้างเตา — รสร้อนแรงจากพริกเผา, มะนาวสด, สมุนไพรไร่บ้านเฮา”",
     quoteEn: "— Slow-simmered, bold & soulful —",
@@ -426,7 +430,7 @@ export const menu: MenuChapter[] = [
     id: "a-la-carte",
     numeral: "VII",
     th: "เมนูจานเดียว & ข้าว",
-    en: "À la Carte & Rice",
+    en: "Rice & Noodle Dishes",
     groups: [
       {
         items: [
@@ -471,7 +475,7 @@ export const menu: MenuChapter[] = [
       },
       {
         th: "เคียงข้าว & ของแกล้ม",
-        en: "Sides & Rice",
+        en: "Sides",
         items: [
           {
             th: "เข่าสวยเดะนิ",
@@ -505,52 +509,121 @@ export const menu: MenuChapter[] = [
   {
     id: "cocktails",
     numeral: "VIII",
-    th: "ค็อกเทลอีสาน",
-    en: "Isaan Cocktails",
+    th: "ค็อกเทล",
+    en: "Cocktails",
     groups: [
       {
+        th: "ค็อกเทลอีสาน",
+        en: "Isaan Cocktails",
         items: [
           {
             th: "ซดแล้วเซ",
             en: "Sod Laew Zae · The Isan Tipsy",
             price: "250",
+            ingredients: "Rum · Lime Juice · Syrup",
             desc: "Rum Sour — A refreshing Isan rum cocktail with bright lime, gentle sweetness, and an optional silky egg-white finish.",
           },
           {
             th: "บักนัดลมทุ่ง",
             en: "Buk Nat Lom Tung · Golden Pineapple Isan",
-            price: "350",
+            price: "300",
+            ingredients: "Rum · Pineapple · Lime",
             desc: "Sunset — Ripe pineapple sweetness layered with fresh lime citrus, settling into a smooth, warming rum finish.",
           },
           {
             th: "ต้มแซ่บหม้อใหญ่",
             en: "Tom Zab Moh Yai · Spicy Lime Riot",
-            price: "250",
+            price: "300",
+            ingredients: "Tom Saap-Inspired · Lime · Lemongrass · Chilli",
             desc: "An Isan-inspired Tom Saap cocktail with bright lime, lemongrass, gentle chili heat, and savoury herbal depth.",
           },
           {
             th: "แซ่บออนซอน",
             en: "Zab On Son · Isan Euphoria",
             price: "300",
+            ingredients: "Old Fashioned · Pak Chong Corn · Khao Yai Honey",
             desc: "Old Fashioned with Pak Chong corn sweetness, wild Khao Yai honey, and aromatic bitters — gently stirred.",
           },
           {
             th: "บักม่วงน้ำปลาหวาน",
-            en: "Buk Muang Nam Pra Wan · Isan Mango Buzz",
+            en: "Buk Muang Nam Pla Wan · Isan Mango Buzz",
             price: "300",
+            ingredients: "Mango Margarita · Chilli-Salt Rim",
             desc: "Mango Margarita — local mango with bright lime acidity and a chili-salt rim for a subtle Isan-inspired kick.",
-          },
-          {
-            th: "คันแข่วบักนัด",
-            en: "Kan Khaew Buk Nat · Dizzy Delight Pineapple",
-            price: "300",
-            desc: "Pina Colada — Isan-inspired blend of fresh local coconut and sweet pineapple, creamy yet vibrant, with a naturally balanced tropical finish.",
           },
           {
             th: "หัวทิ่มบ่อ",
             en: "Hua Tim Bo · Mind-Blower",
             price: "350",
-            desc: "Long Island Iced Tea — local rice and corn spirits with tamarind, cane sugar, and Khao Yai honey: rustic, layered, powerfully balanced.",
+            ingredients: "White Rum · Dark Rum · Vodka · Gin · Tequila · Lime Juice · Syrup · Coca-Cola",
+          },
+        ],
+      },
+      {
+        th: "ค็อกเทลคลาสสิก",
+        en: "Classic Cocktails",
+        items: [
+          {
+            th: "โมฮิโต้",
+            en: "Mojito",
+            price: "250",
+            ingredients: "Rum · Brown Sugar · Mint Leaves · Lemon Juice",
+          },
+          {
+            th: "ไหมไท",
+            en: "Mai Tai",
+            price: "250",
+            ingredients: "White Rum · Dark Rum · Orange Curaçao · Pineapple Juice · Orange Juice · Lime Juice",
+          },
+          {
+            th: "จินฟิซ",
+            en: "Gin Fizz",
+            price: "250",
+            ingredients: "Gin · Triple Sec · Lime Juice · Soda · Sugar Syrup",
+          },
+          {
+            th: "พีน่า โคลาด้า",
+            en: "Piña Colada",
+            price: "250",
+            ingredients: "White Rum · Malibu · Pineapple · Coconut Milk",
+          },
+          {
+            th: "บลู ฮาวาย",
+            en: "Blue Hawaii",
+            price: "250",
+            ingredients: "Vodka · White Rum · Blue Curaçao · Pineapple Juice · Lime Juice · Sugar Syrup",
+          },
+          {
+            th: "มาร์การิต้า",
+            en: "Margarita",
+            price: "250",
+            ingredients: "Tequila · Triple Sec · Lime Juice",
+          },
+          {
+            th: "เตกีล่า ซันไรส์",
+            en: "Tequila Sunrise",
+            price: "250",
+            ingredients: "Tequila · Orange Juice · Lime Juice · Grenadine Syrup",
+          },
+          {
+            th: "คอสโมโพลิแทน",
+            en: "Cosmopolitan",
+            price: "250",
+            ingredients: "Vodka · Triple Sec · Cranberry Juice · Lime Juice · Sugar Syrup",
+          },
+          {
+            th: "เอสเปรสโซ มาร์ตินี่",
+            en: "Espresso Martini",
+            price: "250",
+            ingredients: "Espresso · Vodka · Kahlúa · Syrup",
+          },
+          { th: "มาร์ตินี่", en: "Martini", price: "250", ingredients: "Vodka · Dry Vermouth · Syrup" },
+          { th: "คิวบา ลิเบร", en: "Cuba Libre", price: "250", ingredients: "White Rum · Coca-Cola" },
+          {
+            th: "เมลอน ซาวร์",
+            en: "Melon Sour",
+            price: "250",
+            ingredients: "Melon Vodka · Lime Juice · Syrup",
           },
         ],
       },
@@ -559,46 +632,41 @@ export const menu: MenuChapter[] = [
         en: "Specialty Cocktails",
         items: [
           {
-            th: "น้ำลายแตกซวดๆ",
-            en: "Nam Lai Taek Zod Zod · Isan Spicy Lime",
-            price: "250",
-            desc: "Pink Lady — Local rice spirit with a light, airy body, finished with toasted rice powder for gentle nuttiness and depth.",
-          },
-          {
-            th: "อีสานม่วนกึ๊บ",
-            en: "Isaan Muan Gub! · Minty Muan-Go-Round",
-            price: "250",
-            desc: "Mojito — Rustic Isan-style Mojito with grainy depth, Wang Nam Keaw cane sugar, and fresh mint for a lively, cooling finish.",
-          },
-          {
-            th: "เป็นตาแซ่บอยู่",
-            en: "Pen Ta Zab Yu · Rum Sabai Isan",
+            th: "นะหน้าทอง",
+            en: "Na Na Thong",
             price: "300",
-            desc: "Mai Tai — Thai rum with pineapple and orchard-grown local fruits, offering sun-ripened sweetness and warm tropical depth.",
+            ingredients: "Mekhong · Passion Fruit · Lime Juice · Syrup",
           },
           {
-            th: "ลำซิ่ง ซอดแจ้ง (ไห)",
-            en: "Lam Zing Zod Jaeng · Isan Clay Jar Spirit",
+            th: "ขุนแผน",
+            en: "Khun Phaen",
             price: "300",
-            desc: "Mekhong · Coconut · Pandan — Isan-style cocktail with creamy local coconut and fragrant pandan, softly rounded and aromatic.",
+            ingredients: "Mekhong · Pineapple Juice · Lime Juice · Syrup",
           },
           {
             th: "แซ่บซ่าพาเพลิน",
             en: "Zabb Zaa Pa Plean · Isan Heritage Jar",
-            price: "250",
-            desc: "Mekhong · Lemongrass · Wild Honey — Homegrown lemongrass and Khao Yai wild honey bring citrusy freshness and soft natural sweetness.",
-          },
-          {
-            th: "บั้งไฟ",
-            en: "Bang Fai (Rocket) · One-Hit Wonder",
             price: "300",
-            desc: "Creamy coconut, milky sweetness, and smooth vodka — easy drinking with a warming, powerful finish.",
+            ingredients: "Mekhong · Tom Yum Herbs (Galangal, Lemongrass, Kaffir Lime Leaves) · Pineapple Juice · Lime Juice · Syrup · Chilli on Request",
           },
           {
-            th: "กำลังช้างสาร",
-            en: "Kamlang Chang San · Elephant Power · Ma Kratuep Long",
+            th: "ม้ากระทืบโรง",
+            en: "Ma Kratuep Rong · Horse Kick",
             price: "50",
+            ingredients: "Herbal Shot",
             desc: "Intensely herbal and earthy with pungent medicinal notes — bold, bitter, spicy, and warming with a powerful kick.",
+          },
+          {
+            th: "นารีรำพึง",
+            en: "Naree Ramphueng · Ladies' Delight",
+            price: "50",
+            ingredients: "Herbal Shot",
+          },
+          {
+            th: "โด่ไม่รู้ล้ม",
+            en: "Do Mai Roo Lom · Never-Ending Vigor",
+            price: "50",
+            ingredients: "Herbal Shot",
           },
         ],
       },
@@ -606,28 +674,17 @@ export const menu: MenuChapter[] = [
   },
 
   {
-    id: "mocktails",
+    id: "drinks",
     numeral: "IX",
-    th: "ม็อกเทล & เครื่องดื่ม",
-    en: "Mocktails & Non-Alcoholic Drinks",
+    th: "เครื่องดื่ม & เบียร์",
+    en: "Drinks & Beer",
     groups: [
-      {
-        th: "สาวร้อยผัว",
-        en: "Specialty Mocktails",
-        layout: "compact",
-        items: [
-          { th: "สาวร้อยผัว", en: "Sao Roy Phua · Naree Ramphueng / Ladies' Delight", price: "50" },
-          { th: "น้องเมียสะอื้น", en: "Nong Mia Sa-uen · Do Mai Roo Lom / Never-Ending Vigor", price: "50" },
-        ],
-      },
       {
         th: "เครื่องดื่มร้อน",
         en: "Hot Drinks",
         layout: "compact",
         items: [
-          { th: "น้ำขิงลมทุ่ง", en: "Ginger Juice", price: "50" },
-          { th: "มะตูมหอมทุ่ง", en: "Bael Fruit Juice", price: "50" },
-          { th: "น้ำผึ้งมะนาวบ้านเฮา", en: "Honey & Lemon", price: "50" },
+          { th: "น้ำผึ้งมะนาวบ้านเฮา", en: "Hot Honey & Lemon", price: "100" },
         ],
       },
       {
@@ -635,28 +692,28 @@ export const menu: MenuChapter[] = [
         en: "Cold Drinks",
         layout: "compact",
         items: [
-          { th: "น้ำมักนาวม่วนใจ", en: "Lime & Mint / Honey & Lemon", price: "50" },
-          { th: "น้ำใบเตยหอมอีหลี", en: "Fragrant Pandan Juice", price: "50" },
-          { th: "น้ำบ๊วยแซ่บ", en: "Plum Juice", price: "50" },
-          { th: "น้ำกระเจี๊ยบม่วนใจ", en: "Roselle Juice", price: "50" },
-          { th: "น้ำเก็กฮ้วยหอมหลาย", en: "Chrysanthemum Tea", price: "50" },
-          { th: "น้ำบักตูมม่วนใจ", en: "Bael Fruit Herbal Drink — Isan Style", price: "50" },
-          { th: "น้ำบักส้มเกี้ยง", en: "Orange Juice — Freshly Squeezed", price: "100" },
+          { th: "น้ำมักนาวม่วนใจ", en: "Iced Lime & Mint", price: "80" },
+          { th: "น้ำใบเตยหอมอีหลี", en: "Fragrant Pandan Juice", price: "80" },
+          { th: "น้ำบ๊วยแซ่บ", en: "Plum Juice", price: "80" },
+          { th: "น้ำกระเจี๊ยบม่วนใจ", en: "Roselle Juice", price: "80" },
+          { th: "น้ำเก็กฮวยหอมหลาย", en: "Chrysanthemum Tea", price: "80" },
+          { th: "น้ำบักตูมม่วนใจ", en: "Iced Bael Fruit Drink (Isan Style)", price: "80" },
+          { th: "น้ำบักส้มเกี้ยง", en: "Freshly Squeezed Orange Juice", price: "100" },
           { th: "บักม่วงหอมเย็น", en: "Mango & Mint", price: "100" },
           { th: "บักนัดใบเตยม่วนใจ", en: "Pineapple & Pandan", price: "100" },
           { th: "บักนัดหอมเย็นม่วนใจ", en: "Pineapple & Mint", price: "100" },
         ],
       },
       {
-        th: "หม่อง หนี กาแฟ",
-        en: "Mong Nee Coffee Station",
+        th: "หม่องหนีกาแฟ",
+        en: "Coffee & Tea",
         layout: "compact",
         items: [
           { th: "ชาไทย ร้อน / เย็น", en: "Thai Tea (Hot / Iced)", price: "120" },
           { th: "โอเลี้ยง ร้อน / เย็น", en: "O-Liang · Thai Black Coffee (Hot / Iced)", price: "120" },
           { th: "กาแฟโบราณ ร้อน / เย็น", en: "Traditional Thai Coffee (Hot / Iced)", price: "120" },
-          { th: "โอวันติน ร้อน / เย็น", en: "Ovaltine (Hot / Iced)", price: "120" },
-          { th: "นมชมพู / นมเย็น", en: "Pink Milk / Nom Yen", price: "120" },
+          { th: "โอวัลติน ร้อน / เย็น", en: "Ovaltine (Hot / Iced)", price: "120" },
+          { th: "นมชมพู (นมเย็น)", en: "Thai Pink Milk (Nom Yen)", price: "120" },
         ],
       },
       {
@@ -665,11 +722,12 @@ export const menu: MenuChapter[] = [
         layout: "compact",
         items: [
           { th: "น้ำแข็ง", en: "Ice Bucket", price: "50" },
-          { th: "น้ำเปล่า", en: "Water", price: "50" },
+          { th: "น้ำเปล่า", en: "Drinking Water", price: "50" },
           { th: "โซดา", en: "Soda Water", price: "50" },
           { th: "โคคา-โคล่า", en: "Coca-Cola", price: "50" },
           { th: "โค้ก ซีโร่", en: "Coca-Cola Zero", price: "50" },
-          { th: "พิงค์เลม่อน โซดา", en: "Pink Lemon Soda", price: "50" },
+          { th: "พิงค์เลมอนโซดา", en: "Pink Lemon Soda", price: "50" },
+          { th: "ชเวปส์ โทนิค วอเตอร์", en: "Schweppes Tonic Water", price: "50" },
         ],
       },
       {
@@ -677,11 +735,12 @@ export const menu: MenuChapter[] = [
         en: "Beer",
         layout: "compact",
         items: [
-          { th: "ช้างดราฟท์ (เหยือก)", en: "Chang Draft — Pitcher", price: "400" },
-          { th: "ช้างดราฟท์ (แก้ว)", en: "Chang Draft — Glass", price: "200" },
-          { th: "ช้าง", en: "Chang", price: "150" },
-          { th: "สิงห์", en: "Singha", price: "150" },
-          { th: "ลีโอ", en: "Leo", price: "150" },
+          { th: "ช้าง", en: "Chang (Bottle)", price: "150" },
+          { th: "ช้างดราฟท์ (แก้ว)", en: "Chang Draft (Glass)", price: "200" },
+          { th: "ช้างดราฟท์ (เหยือก)", en: "Chang Draft (Pitcher)", price: "490" },
+          { th: "ช้างดราฟท์ (ทาวเวอร์)", en: "Chang Draft (Tower)", price: "1,250" },
+          { th: "สิงห์", en: "Singha (Bottle)", price: "150" },
+          { th: "ลีโอ", en: "Leo (Bottle)", price: "150" },
         ],
       },
     ],
@@ -690,69 +749,172 @@ export const menu: MenuChapter[] = [
   {
     id: "spirits-wine",
     numeral: "X",
-    th: "สุรา & ช็อต",
-    en: "Spirits & Shots",
+    th: "สุรา & ไวน์",
+    en: "Spirits & Wine",
     groups: [
       {
-        note: "Available by the bottle or shot",
+        th: "สุรา",
+        en: "Spirits",
+        note: "Priced per 45 ml shot · whole bottles as listed",
         items: [
           {
-            th: "แม่โขง · Mekong",
-            en: "Thailand's Iconic National Spirit",
-            price: "220",
+            th: "แม่โขง",
+            en: "Mekhong",
+            price: "125",
+            priceNote: "Bottle 1,450",
+            ingredients: "Thai Spirit · Sugarcane & Rice",
             desc: "Mekhong is Thailand's iconic national spirit. Often mistaken for rum, it is actually a sugarcane- and rice-based blended spirit with distinctive herbal aromatics.",
           },
           {
-            th: "พระยารัม · Phraya Rum",
-            en: "Sugarcane Molasses Rum",
-            price: "350",
+            th: "พระยารัม",
+            en: "Phraya Rum",
+            price: "180",
+            priceNote: "Bottle 3,570",
+            ingredients: "Molasses Rum",
             desc: "Phraya is made from sugarcane molasses (not fresh-pressed cane juice), which is the standard base for most traditional rums.",
           },
           {
-            th: "หนุ่มชัยภูมิ · Num Chaiyaphum",
-            en: "Chaiyaphum Community Spirit",
-            price: "220",
+            th: "หนุ่มชัยภูมิ",
+            en: "Num Chaiyaphum",
+            price: "150",
+            priceNote: "Bottle 1,950",
+            ingredients: "Community Spirit · Chaiyaphum",
             desc: "Chaiyaphum liquor refers to traditional community spirits from Chaiyaphum province, rooted in the fermentation and distillation traditions of Thailand's Isan region.",
           },
+        ],
+      },
+      {
+        th: "ไวน์แดง",
+        en: "Red Wine",
+        note: "Priced per bottle",
+        layout: "compact",
+        items: [
           {
-            th: "สาโท · Sato",
-            en: "Thai Rice Wine",
-            price: "550",
-            desc: "Sato is a traditional Isan rice wine made from fermented glutinous rice, deeply rooted in northeastern Thailand's local culture and communal lifestyle.",
+            th: "ซานตา คริสตินา ฟัตโตเรีย เล มาเอสเตรลเล",
+            en: "Santa Cristina Fattoria Le Maestrelle",
+            price: "1,800",
+            ingredients: "Italy · Medium-Bodied · Cherry, Vanilla, Chocolate",
           },
           {
-            th: "ป้าดติโร่ · Pad-Ti-Tho",
-            en: "Community-Distilled Liquor",
-            price: "250",
-            desc: "“Community liquor” refers to locally-produced fermented and distilled spirits — clear or white distilled liquor made at the community level using crops such as rice or sugarcane.",
+            th: "ฟามิเลีย คอร์เรอา ลิโซนี กาแบร์เนต์ โซวีญง",
+            en: "Familia Correa Lisoni Cabernet Sauvignon",
+            price: "1,200",
+            ingredients: "Cabernet Sauvignon · Medium to Full-Bodied",
           },
           {
-            th: "ซอดแจ้ง · Sod Jang",
-            en: "Ubon Heritage White Spirit",
-            price: "220",
-            desc: "Traditional community-distilled white spirit from Ubon Ratchathani Province — rooted in Isan's local fermentation and distillation heritage.",
+            th: "ฟามีย์ แปร์แรง ชาโตเนิฟ-ดู-ปาป เล ซินาร์ รูจ",
+            en: "Famille Perrin Châteauneuf-du-Pape Les Sinards Rouge",
+            price: "6,500",
+            ingredients: "Rhône, France · Medium to Full-Bodied · Silky Tannins",
+          },
+          {
+            th: "พีบี เขาใหญ่ รีเสิร์ฟ ชีราซ",
+            en: "2020 PB Khao Yai Reserve Shiraz",
+            price: "1,950",
+            ingredients: "Khao Yai, Thailand · Shiraz · Medium to Full-Bodied",
+          },
+          {
+            th: "พีบี เขาใหญ่ วัลเลย์ โปกูโร รีเสิร์ฟ คาร์เมแนร์",
+            en: "PB Khao Yai Valley Pocuro Reserve Carmenère",
+            price: "2,100",
+            ingredients: "Khao Yai, Thailand · Carmenère · Medium to Full-Bodied",
+          },
+          {
+            th: "สวาร์ทแลนด์ ไวเนอรี บุช ไวน์ ปิโนทาจ",
+            en: "Swartland Winery Bush Vine Pinotage",
+            price: "2,100",
+            ingredients: "South Africa · Pinotage · Medium to Full-Bodied",
+          },
+          {
+            th: "กันฟอร์ราเลส เทมปรานิลโล",
+            en: "Canforrales Tempranillo",
+            price: "2,100",
+            ingredients: "Spain · Tempranillo · Full-Bodied",
+          },
+          {
+            th: "บาเดีย อัล คอลเล เคียนติ ดีโอซีจี",
+            en: "2024 Badia al Colle Chianti DOCG",
+            price: "1,600",
+            ingredients: "Tuscany, Italy · Sangiovese · Medium-Bodied",
+          },
+          {
+            th: "โดนา เออร์เมลินดา ทินโต พัลเมลา ดีโอซี",
+            en: "2023 Dona Ermelinda Tinto Palmela DOC",
+            price: "1,600",
+            ingredients: "Portugal · Castelão, Touriga Nacional, Cabernet · Full-Bodied",
           },
         ],
       },
       {
-        th: "รายการไวน์เขาใหญ่",
-        en: "PB Valley Khao Yai",
-        note: "Phaya Yen, Nakhon Ratchasima — One of the oldest and leading vineyards and wineries in the Khao Yai region. Located in Pak Chong, with guided tours of their vineyards and wine production facilities.",
+        th: "ไวน์ขาว",
+        en: "White Wine",
+        note: "Priced per bottle",
         layout: "compact",
         items: [
-          { th: "2024 PB Khao Yai Reserve", en: "Chenin Blanc", price: "1,950" },
-          { th: "2025 PB Khao Yai Reserve", en: "Rosé", price: "1,950" },
-          { th: "2020 PB Khao Yai Reserve", en: "Shiraz", price: "1,950" },
+          {
+            th: "ฟามิเลีย คอร์เรอา ลิโซนี โซวีญง บลอง",
+            en: "Familia Correa Lisoni Sauvignon Blanc",
+            price: "1,200",
+            ingredients: "Sauvignon Blanc · Light-Bodied · Dry",
+          },
+          {
+            th: "พีบี เขาใหญ่ รีเสิร์ฟ เชอแน็ง บลอง",
+            en: "2024 PB Khao Yai Reserve Chenin Blanc",
+            price: "1,950",
+            ingredients: "Khao Yai, Thailand · Chenin Blanc · Light Oak",
+          },
+          {
+            th: "กาฟ เดอ โรซอง กรองด์ หลุยส์ บอร์โดซ์ บลองก์",
+            en: "2023 Caves de Rauzan Grand Louis Bordeaux Blanc",
+            price: "1,600",
+            ingredients: "Bordeaux, France · Sauvignon Blanc & Sémillon",
+          },
+          {
+            th: "ควีน แอดิเลด ชาร์ดอนเนย์",
+            en: "2024 Queen Adelaide Chardonnay",
+            price: "1,350",
+            ingredients: "South Eastern Australia · Chardonnay · Light Oak",
+          },
         ],
       },
       {
-        en: "GranMonte Khao Yai",
-        note: "Pak Chong, Nakhon Ratchasima — Estate-grown grapes, award-winning GI (Geographical Indication) wines. An award-winning vineyard in Asoke Valley, Khao Yai, renowned for producing 100% Thai wines known as “New Latitude Wines.”",
+        th: "สปาร์กลิง & โรเซ่",
+        en: "Sparkling & Rosé",
+        note: "Priced per bottle",
         layout: "compact",
         items: [
-          { th: "2022 GranMonte", en: "Durif", price: "2,700" },
-          { th: "2023 Spring", en: "Syrah Cabernet", price: "1,750" },
-          { th: "GranMonte Spring · Unwooded Chenin / Syrah Cabernet", en: "By the Glass", price: "350" },
+          {
+            th: "อาโมเร รูบาโต โพรเซกโก เอ็กซ์ตร้า ดราย",
+            en: "Amore Rubato Prosecco Extra Dry",
+            price: "1,700",
+            ingredients: "Italy · Sparkling · Off-Dry",
+          },
+          {
+            th: "พีบี วัลเลย์ โปกูโร โรเซ่ เดอ ซีราห์",
+            en: "PB Valley Pocuro Rosé de Syrah",
+            price: "2,100",
+            ingredients: "Khao Yai, Thailand · Rosé · Syrah",
+          },
+        ],
+      },
+      {
+        th: "ไวน์แก้ว",
+        en: "Wine by the Glass",
+        note: "Priced per glass",
+        layout: "compact",
+        items: [
+          {
+            th: "ไวน์แดง ฟามิเลีย คอร์เรอา ลิโซนี กาแบร์เนต์ โซวีญง (แก้ว)",
+            en: "Familia Correa Lisoni Cabernet Sauvignon (Glass)",
+            price: "300",
+            ingredients: "Red · Cabernet Sauvignon",
+          },
+          {
+            th: "ไวน์ขาว ฟามิเลีย คอร์เรอา ลิโซนี โซวีญง บลอง (แก้ว)",
+            en: "Familia Correa Lisoni Sauvignon Blanc (Glass)",
+            price: "300",
+            ingredients: "White · Sauvignon Blanc",
+          },
         ],
       },
     ],
